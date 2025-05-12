@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login HUB DI UNLa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to bottom right, #6a4b8e, #3e2d4f);
+    }
+  </style>
+
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+    import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyD8RJRMdHCq1OCmiPav20rE3V3Xz4atidM",
+      authDomain: "capacitaciones-hub-di-lad-unla.firebaseapp.com",
+      projectId: "capacitaciones-hub-di-lad-unla",
+      storageBucket: "capacitaciones-hub-di-lad-unla.firebasestorage.app",
+      messagingSenderId: "513215452871",
+      appId: "1:51513215452871:web:d0501216696c6cfd6e50e2",
+      measurementId: "G-T7M70K037C"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Registro
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('regEmail').value;
+      const password = document.getElementById('regPassword').value;
+      const nombre = document.getElementById('regNombre').value;
+      const apellido = document.getElementById('regApellido').value;
+      const rol = document.getElementById('regRol').value;
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        await setDoc(doc(db, "usuarios", user.uid), {
+          nombre,
+          apellido,
+          rol,
+          email
+        });
+        alert('Usuario registrado con éxito');
+        window.location.href = "cursoshub.html";
+      } catch (error) {
+        alert(error.message);
+      }
+    });
+
+    // Login
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+
+      try {
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        const docRef = doc(db, "usuarios", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          sessionStorage.setItem('usuario', JSON.stringify(docSnap.data()));
+          window.location.href = "cursoshub.html";
+        } else {
+          alert('Perfil no encontrado');
+        }
+      } catch (error) {
+        alert(error.message);
+      }
+    });
+  </script>
+</head>
+<body class="flex items-center justify-center min-h-screen p-6">
+  <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-2xl">
+    <div class="text-center mb-6">
+      <img src="./images/Recurso 4B.png" class="mx-auto h-20 mb-2" alt="Logo HUB">
+      <h1 class="text-2xl font-bold text-[#80142f]">Acceso al HUB de Incubación</h1>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="mb-6">
+      <h2 class="text-lg font-semibold text-[#6a4b8e] mb-2">Iniciar sesión</h2>
+      <input type="email" id="loginEmail" placeholder="Correo electrónico" class="w-full mb-3 px-4 py-2 border rounded" required>
+      <input type="password" id="loginPassword" placeholder="Contraseña" class="w-full mb-3 px-4 py-2 border rounded" required>
+      <button type="submit" class="w-full bg-[#80142f] text-white py-2 rounded font-bold hover:bg-[#5e0f22]">Ingresar</button>
+    </form>
+
+    <!-- Registro Form -->
+    <form id="registerForm">
+      <h2 class="text-lg font-semibold text-[#6a4b8e] mb-2">Registrarse</h2>
+      <input type="text" id="regNombre" placeholder="Nombre" class="w-full mb-3 px-4 py-2 border rounded" required>
+      <input type="text" id="regApellido" placeholder="Apellido" class="w-full mb-3 px-4 py-2 border rounded" required>
+      <input type="email" id="regEmail" placeholder="Correo electrónico" class="w-full mb-3 px-4 py-2 border rounded" required>
+      <input type="password" id="regPassword" placeholder="Contraseña" class="w-full mb-3 px-4 py-2 border rounded" required>
+      <select id="regRol" class="w-full mb-4 px-4 py-2 border rounded" required>
+        <option value="">Seleccionar rol</option>
+        <option value="estudiante">Estudiante</option>
+        <option value="docente">Docente</option>
+        <option value="emprendedor">Emprendedor/a</option>
+      </select>
+      <button type="submit" class="w-full bg-[#6a4b8e] text-white py-2 rounded font-bold hover:bg-[#3e2d4f]">Crear cuenta</button>
+    </form>
+  </div>
+</body>
+</html>
+<!-- Fin del HTML -->
+

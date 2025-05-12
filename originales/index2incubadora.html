@@ -1,0 +1,446 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Incubadora Universitaria de Diseño</title>
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+   <!-- 🎨 Config personalizada -->
+   <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            violeta: '#9676d8',
+            morado: '#6A1B9A',
+            celeste: '#0c6d99',
+            bordo: '#a2263f',
+            fondo: '#FAF5FF',
+            azul: '#1D3B6D',
+            berenjena: '#5c4554',
+            bordooscuro: '#552c5b',
+            violaceo: '#6a4b8e', 
+            celestonoscuro: '#1394ad',
+            vino: '#80142f',
+            violetagrafito: '#3e2d4f', 
+
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+    .roboto {
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
+
+  <!-- Iconos Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Favicon -->
+
+  <link rel="icon" href="favicon_hub_only_rounded.ico" type="image/x-icon" />
+
+<link rel="icon" href="images/favicon_hub_only_rounded.ico" type="image/x-icon" />
+
+</head>
+
+
+<body class="bg-white text-gray-800">
+
+  <!-- NAV RESPONSIVE CON MENÚ DESPLEGABLE -->
+   <!-- NAV RESPONSIVE CON MENÚ DESPLEGABLE -->
+
+<nav class="fixed top-0 left-0 right-0 bg-[#3e2d4f] text-white shadow-md z-50 px-6 py-3 flex items-center justify-between">
+  
+  <!-- Contenedor de logos bien a la izquierda -->
+  <div class="flex items-center gap-3">
+    <!-- Logo UNLa -->
+    <a href="https://www.unla.edu.ar" target="_blank" rel="noopener noreferrer">
+      <img src="images/Logo UNLA Blanco.png" alt="Logo UNLa" class="h-10 w-auto" />
+    </a>
+
+    <!-- Logo LAD -->
+    <a href="https://www.unla.edu.ar/laboratorio-de-diseno-lad" target="_blank" rel="noopener noreferrer">
+      <img src="images/LAD-logo Blanco.png" alt="Logo LAD" class="h-10 w-auto" />
+    </a>
+
+    <!-- Logo HUB -->
+    <a href="index.html">
+      <img src="images/Recurso 5BW.png" alt="Logo HUB DI UNLa" class="h-10 w-auto" />
+    </a>
+  </div>
+
+  <!-- Botón hamburguesa visible solo en sm y md -->
+  <div class="lg:hidden">
+    <button id="menu-toggle" class="text-white text-3xl focus:outline-none">
+      <span id="menu-icon">&#9776;</span>
+    </button>
+  </div>
+
+  <!-- Menú visible en LG y desplegable en SM/MD -->
+  <ul id="menu" class="hidden lg:flex lg:flex-row items-start lg:items-center gap-4 text-base font text-white">
+    <li><a href="#sobre" class="block w-full py-1 hover:text-lila">Gestión del Diseño</a></li>
+    <li><a href="https://www.unla.edu.ar/laboratorio-de-diseno-lad" target="_blank" rel="noopener noreferrer" class="block w-full py-1 hover:text-lila">LAD</a></li>
+    <li><a href="#estudios" class="block w-full py-1 hover:text-lila">Servicios</a></li>
+    <li>
+      <a href="mailto:incubadoradetifypppunla@gmail.com?subject=Consulta%20sobre%20la%20incubadora" class="block w-full py-1 hover:text-lila flex items-center space-x-2">
+        <i class="fas fa-envelope"></i>
+        <span>Contacto</span>
+      </a>
+    </li>
+    <li class="flex flex-row gap-2 mt-2 lg:mt-0">
+      <a href="index.html" class="flex items-center gap-1 bg-white text-[#80142f] text-sm px-2 py-1 rounded-md shadow hover:bg-gray-100">
+        <img src="./images/ar.png" alt="Español" class="w-4 h-4 rounded-sm" />
+      </a>
+      <a href="indexen.html" class="flex items-center gap-1 bg-white text-[#80142f] text-sm px-2 py-1 rounded-md shadow hover:bg-gray-100">
+        <img src="./images/us.png" alt="English" class="w-4 h-4 rounded-sm" />
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+
+
+  <!-- HERO SECTION -->
+  <section class="relative h-[50vh] bg-cover bg-center bg-no-repeat" style="background-image: url('images/WhatsApp Image 2023-09-28 at 7.02.46 PM.jpeg');">
+    <div class="absolute inset-0 bg-white bg-opacity-70"></div>
+    <div class="relative z-10 flex flex-col items-center justify-center h-full text-violetagrafito text-center px-4">
+      <h2 class="text-6xl font-bold mb-4">Incubadora de Diseño</h2>
+      <a href="#modelos" class="bg-violaceo hover:bg-purple-800 text-white font-semibold py-2 px-6 rounded-lg transition">
+        Modelos de Incubación
+      </a>
+    </div>
+  </section>
+
+  <!-- SECCIÓN INTRO CON TÍTULO FLOTANTE Y FONDO VINO -->
+
+<section class="relative bg-[#5a2e74] text-white py-20 px-4 roboto">
+  <!-- Título flotante -->
+  <div class="relative max-w-3xl mx-auto -mb-6 z-10">
+    <h2 class="bg-violetagrafito text-white text-2xl sm:text-3xl font-bold px-6 py-3 rounded-xl shadow-lg w-full block text-center uppercase">
+      ¿TENÉS UN PROYECTO Y QUERÉS SABER SI ES INCUBABLE?
+    </h2>
+  </div>
+
+  <!-- Contenedor principal con fondo vino -->
+  <div class="max-w-3xl mx-auto bg-vino text-white rounded-2xl shadow-lg mt-10 p-6 sm:p-10 space-y-4 text-base leading-relaxed">
+    <h5 class="text-xl font-semibold uppercase text-center">¡NOSOTROS TE AYUDAMOS!</h5>
+    <p>
+      La incubadora de Diseño UNLa es un espacio de acompañamiento y asesoramiento para proyectos de diseño que buscan desarrollarse y crecer en el ámbito académico, productivo o social. Nuestro objetivo es brindar apoyo técnico, metodológico y estratégico a estudiantes, egresados/as y equipos de trabajo que deseen transformar sus ideas en soluciones concretas.
+    </p>
+    <p>
+      Entrá a nuestra incubadora de Diseño intra-institucional y solicitá asesoramiento personalizado para conocer en qué modelo de incubación se adapta mejor tu proyecto. Nuestro equipo te ayudará a evaluar su estado de desarrollo, su potencial de impacto y el recorrido más adecuado para llevarlo adelante de manera profesional.
+    </p>
+    <p>
+      Te orientamos para identificar fortalezas, aspectos a mejorar y oportunidades de vinculación con el entorno productivo, académico o comunitario. Conocé el grado de innovación, el nivel de segmentación y la proyección que tiene tu propuesta para lograr una inserción estratégica en los nuevos escenarios laborales post-pandemia.
+    </p>
+    <p>
+      La incubadora está abierta a estudiantes, egresados/as y equipos de trabajo que quieran transformar ideas en soluciones concretas, con acompañamiento técnico, metodológico y estratégico dentro del marco de la Universidad Nacional de Lanús.
+    </p>
+
+    <!-- Botón al final -->
+    <div class="text-center mt-6">
+      <a href="#formulario" class="inline-block bg-violetagrafito text-white text-base font-semibold px-6 py-3 rounded-xl shadow hover:bg-[#2f2138] transition">
+        Solicitar asesoramiento
+      </a>
+    </div>
+  </div>
+</section>
+
+ 
+
+  <!-- MODELOS -->
+  <section id="modelos" class="py-12 bg-[#3e0f66] text-white text-center">
+    <h2 class="text-2xl font-bold">MODELOS DE INCUBACIÓN INICIAL</h2>
+  </section>
+
+  <section class="py-12 px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+
+      <!-- Tarjeta 1 -->
+      <div class="bg-[#e0d1fa] p-6 rounded-2xl shadow flex flex-col justify-between min-h-[600px]">
+        <div>
+          <h3 class="text-lg font-bold bg-[#603c7a] text-white px-4 py-2 rounded-md mb-4 w-full text-center">MODELO 1: CONCURSO</h3>
+          <img src="images/concursos.png" alt="Concurso" class="w-full h-40 object-cover rounded-md shadow mb-4" />
+          <p class="text-sm roboto text-gray-700 text-justify">
+            <p>
+              La incubadora de concursos se encarga del asesoramiento y acompañamiento para la presentación del proyecto en un concurso de carácter nacional o internacional. Puede ser promovido por el LAD u otras instituciones.
+              <br><br>
+              Dirigida a cualquier postulante con una propuesta, ya sea en fase de desarrollo o completamente desarrollada, y que destaque por su singularidad. Permite considerar la participación en un concurso de convocatorias abierta o cerrada, representando a la UNLa y/o contando con el apoyo de un sponsor o institución aliada.
+            <br><br>
+            Propone guiar a los postulantes en la selección de la convocatoria acertada, la adecuación de su propuesta a los requisitos, la redacción técnica y estratégica de los formularios, y la planificación de etapas con presupuesto requerido. Te brindaremos todos los requisitos para que tu proyecto tenga la mejor oportunidad de ser seleccionado y premiado, y queremos que te lleves la mejor experiencia, porque participando, estas ganando.
+          </p>
+        </div>
+        <div class="text-center mt-6">
+          <a href="modelo1.html" target="_blank" class="inline-block bg-[#683a88] hover:bg-[#5520a5] text-white py-2 px-4 rounded-lg font-semibold transition">
+            Ir a Modelo CONCURSO
+          </a>
+        </div>
+      </div>
+
+      <!-- Tarjeta 2 -->
+      <div class="bg-[#e0d1fa] p-6 rounded-2xl shadow flex flex-col justify-between min-h-[600px]">
+        <div>
+          <h3 class="text-lg font-bold bg-[#603c7a] text-white px-4 py-2 rounded-md mb-4 w-full text-center">MODELO 2: CONVOCATORIAS</h3>
+          <img src="images/convocatorias.png" alt="Convocatorias" class="w-full h-40 object-cover rounded-md shadow mb-4" />
+          <p class="text-sm roboto text-gray-700 text-justify">
+            <p>
+              La incubadora de convocatorias ofrece asesoramiento y acompañamiento para la presentación de proyectos en instancias que brinden financiamiento específico para su desarrollo.
+              <br><br>
+              Está dirigida a cualquier individuo, equipo de investigación o emprendimiento en etapa temprana que cuente con una idea o formulación de proyecto y desee presentarse a una convocatoria nacional o internacional, con el objetivo de acceder a recursos económicos, técnicos o institucionales que impulsen su puesta en marcha o consolidación.
+              <br><br>
+              Este modelo de incubación propone guiar a los postulantes en la selección de la convocatoria adecuada, la adecuación de su propuesta a los requisitos, la redacción técnica y estratégica de los formularios, y la planificación de etapas y presupuesto requerido. Si tu proyecto tiene un enfoque específico, te brindaremos el apoyo necesario para que puedas llevarlo a cabo de manera efectiva y con impacto social y ambiental positivo y queremos acompañarte en ese camino.
+            </p>
+        </div>
+        <div class="text-center mt-6">
+          <a href="modelo3.html" target="_blank" class="inline-block bg-[#683a88] hover:bg-[#5520a5] text-white py-2 px-4 rounded-lg font-semibold transition">
+            Ir a Modelo CONVOCATORIA
+          </a>
+        </div>
+      </div>
+
+      <!-- Tarjeta 3 -->
+      <div class="bg-[#e0d1fa] p-6 rounded-2xl shadow flex flex-col justify-between min-h-[600px]">
+        <div>
+          <h3 class="text-lg font-bold bg-[#603c7a] text-white px-4 py-2 rounded-md mb-4 w-full text-center">MODELO 3: CODIGO ABIERTO</h3>
+          <img src="images/codigo abierto.jfif" alt="Llave en Mano" class="w-full h-40 object-cover rounded-md shadow mb-4" />
+          <p class="text-sm roboto text-gray-700 text-justify">
+            <p>
+              La incubadora de proyecto de código abierto ofrece asesoramiento y acompañamiento para la formulación y desarrollo de TIFs y/o PPPs cuyo objetivo sea brindar soluciones accesibles, replicables y compartidas bajo licencias abiertas.
+              <br><br>
+              Está orientada a proyectos que promuevan la colaboración, la transparencia y el bien común, permitiendo que los resultados puedan ser utilizados, adaptados y escalados por otras personas, instituciones o comunidades.
+              <br><br>
+              Esta modalidad es ideal para equipos o estudiantes que desarrollan herramientas digitales, productos físicos con planos liberados, documentación compartida o procesos abiertos que resuelvan problemáticas sociales, productivas o ambientales. Creemos en la importancia de fomentar la innovación abierta y el acceso al conocimiento, promoviendo la participación activa de la comunidad en el desarrollo de soluciones sostenibles y colaborativas. Creemos que el diseño puede ser un motor de cambio. 
+          </div> 
+        <div class="text-center mt-6">
+          <a href="modelo5.html" target="_blank" class="inline-block bg-[#683a88] hover:bg-[#5520a5] text-white py-2 px-4 rounded-lg font-semibold transition">
+            Ir a Modelo CODIGO ABIERTO
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODELOS -->
+  <section id="modelos" class="py-12 bg-[#3e0f66] text-white text-center">
+    <h2 class="text-2xl font-bold">MODELOS DE INCUBACIÓN AVANZADA</h2>
+  </section>
+
+
+<section class="py-12 px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+
+   <!-- Tarjeta 1 -->
+   <div class="bg-[#e0d1fa] p-6 rounded-2xl shadow flex flex-col justify-between min-h-[600px]">
+    <div>
+      <h3 class="text-lg font-bold bg-[#603c7a] text-white px-4 py-2 rounded-md mb-4 w-full text-center">MODELO 4: EMPRENDIMIENTO</h3>
+      <img src="images/emprendimiento.png" alt="Concurso" class="w-full h-40 object-cover rounded-md shadow mb-4" />
+      <p class="text-sm roboto text-gray-700 text-justify">
+        <p>
+          Este modelo está orientado a estudiantes o egresados/as que deseen transformar su TIF o PPP en un proyecto productivo o una empresa de base tecnológica o industrial.
+          <br><br>
+          La incubadora brinda acompañamiento para desarrollar un plan de negocios, validar el modelo de producto o servicio, establecer objetivos de mercado y proyecciones, así como la conformación de equipos de trabajo, estrategias de inversión y puesta en marcha.
+          <br><br>
+          Es ideal para ideas de negocios con alto potencial de escalabilidad o innovación, que pueden convertirse en emprendimientos sostenibles con impacto económico y social. Ademas de la posibilidad de acceder a financiamiento, incubación y aceleración en el sector privado o público. Emprender con nosotros es transformar tu proyecto en una realidad empresarial. Y lo hacemos juntos, desde la idea hasta la implementación. Te acompañamos en cada paso del camino, brindándote las herramientas y el apoyo necesario para que sea un éxito. 
+        </p>
+      </div>
+    <div class="text-center mt-6">
+      <a href="modelo6.html" target="_blank" class="inline-block bg-[#683a88] hover:bg-[#5520a5] text-white py-2 px-4 rounded-lg font-semibold transition">
+        Ir a Modelo EMPRENDIMIENTO
+      </a>
+    </div>
+  </div>
+
+  <!-- Tarjeta 2 -->
+  <div class="bg-[#e0d1fa] p-6 rounded-2xl shadow flex flex-col justify-between min-h-[600px]">
+    <div>
+      <h3 class="text-lg font-bold bg-[#603c7a] text-white px-4 py-2 rounded-md mb-4 w-full text-center">MODELO 5: LLAVE EN MANO</h3>
+      <img src="images/llave en mano.jfif" alt="Convocatorias" class="w-full h-40 object-cover rounded-md shadow mb-4" />
+      <p class="text-sm roboto text-gray-700 text-justify">
+        <p>
+          La incubadora de proyecto llave en mano ofrece asesoramiento y acompañamiento para la formulación, desarrollo y presentación de Trabajos Integradores Finales (TIFs) y/o Prácticas Preprofesionales (PPPs) que se estructuren como una carpeta técnica de proyecto llave en mano.
+          <br><br>
+          Esta modalidad está dirigida a cualquier individuo o equipo que cuente con un proyecto, una idea desarrollada o la identificación de una necesidad concreta del entorno productivo, social o institucional, y que desee transformarla en una propuesta ejecutable, completa y profesional.
+          <br><br>
+          El modelo permite construir una carpeta técnica que contemple todos los componentes clave del proyecto: diseño de producto o servicio, especificaciones técnicas, modelo de gestión, plan de implementación, materiales, costos y procesos. Es ideal para quienes buscan proponer soluciones reales, listas para implementarse o transferirse a un tercero, como una empresa, cooperativa, institución pública o privada.
+        </p>
+      </div>
+    <div class="text-center mt-6">
+      <a href="modelo4.html" target="_blank" class="inline-block bg-[#683a88] hover:bg-[#5520a5] text-white py-2 px-4 rounded-lg font-semibold transition">
+        Ir a Modelo LLAVE EN MANO
+      </a>
+    </div>
+  </div>
+
+  <!-- Tarjeta 3 -->
+  <div class="bg-[#e0d1fa] p-6 rounded-2xl shadow flex flex-col justify-between min-h-[600px]">
+    <div>
+      <h3 class="text-lg font-bold bg-[#603c7a] text-white px-4 py-2 rounded-md mb-4 w-full text-center">MODELO 6: LANZAMIENTO</h3>
+      <img src="images/lanzamiento.jfif" alt="Llave en Mano" class="w-full h-40 object-cover rounded-md shadow mb-4" />
+      <p class="text-sm roboto text-gray-700 text-justify">
+        <p>
+          La incubadora de lanzamiento está pensada para estudiantes o emprendedores/as que tienen un producto o servicio desarrollado y necesitan insertarlo estratégicamente en el mercado.
+          <br><br>
+          Acompaña la planificación del proceso de lanzamiento (launching), incluyendo la definición del segmento de mercado, el diseño de la identidad visual, las acciones de comunicación, la estrategia de precios y canales de distribución.
+          <br><br>
+          Es una modalidad recomendada para quienes desean profesionalizar la salida al mercado de una línea, familia, serie o propuesta de valor concreta, articulando diseño, estrategia comercial y posicionamiento. Dirigida a quienes buscan generar un impacto inmediato en el mercado, con una propuesta de valor clara y diferenciada. Lanzar un producto o servicio requiere de un enfoque integral que contemple todos los aspectos clave para su éxito, pero además estarás acompañado por un equipo de expertos que te guiarán en cada paso del proceso.
+        </p>
+      </div>
+    <div class="text-center mt-6">
+      <a href="modelo7.html" target="_blank" class="inline-block bg-[#683a88] hover:bg-[#5520a5] text-white py-2 px-4 rounded-lg font-semibold transition">
+        Ir a Modelo LANZAMIENTO
+      </a>
+    </div>
+  </div>
+</div>
+</section>
+
+<br>
+
+ <!-- SECCIÓN INCUBADORA CON TÍTULO FLOTANTE Y FONDO VINO -->
+
+<section class="relative bg-[#e0d1fa] text-white py-20 px-4 roboto">
+
+  <!-- Título flotante -->
+  <div class="relative max-w-5xl mx-auto -mb-6 z-10">
+    <h2 class="bg-violetagrafito text-white text-2xl sm:text-3xl font-bold px-6 py-3 rounded-xl shadow-lg w-full block text-center uppercase">
+      INCUBADORA DE DISEÑO UNLA PARA TIFS Y PPP
+    </h2>
+  </div>
+
+  <!-- Contenido con fondo vino -->
+  <div class="max-w-5xl mx-auto bg-vino text-white rounded-2xl shadow-lg mt-10 p-6 sm:p-10 space-y-4 text-base leading-relaxed">
+
+    <h6 class="text-lg font-semibold text-center mb-4">
+      Las incubadoras intra-institucionales como mecanismo de innovación y progreso hacia el ingreso a los nuevos mercados laborales post-pandemia.
+    </h6>
+
+    <p>
+      En esta página web encontrarán los diferentes modelos de incubadora para proyectos de diseño, orientados específicamente a TIFs (Trabajos Integradores Finales) y PPPs (Prácticas Preprofesionales). Esta propuesta surge como una herramienta institucional para potenciar proyectos de estudiantes de la Universidad Nacional de Lanús, brindando acompañamiento metodológico, técnico y estratégico desde la etapa de ideación hasta la posible implementación real del proyecto.
+    </p>
+
+    <p>
+      La Incubadora funciona como un espacio de articulación entre el ámbito académico y el sector productivo, público y privado, permitiendo que los proyectos no queden como simples ejercicios teóricos sino que se proyecten como soluciones aplicables, sostenibles y con impacto social o territorial. A través de esta plataforma, los y las estudiantes pueden seleccionar el modelo de incubación más adecuado a su proyecto, según su nivel de avance, tipo de producto o servicio, y objetivos personales o profesionales.
+    </p>
+
+    <p>
+      Cada modelo de incubación ofrece lineamientos, herramientas y ejemplos que permiten al equipo de trabajo construir una carpeta técnica robusta y coherente, considerando criterios como viabilidad técnica, propuesta de valor, perfil de usuario, estrategia de comunicación, e incluso la posibilidad de presentarse a convocatorias, concursos o esquemas de financiamiento. Además, el HUB de Incubación de Diseño promueve un enfoque interdisciplinario, con perspectiva de género, sostenibilidad ambiental y desarrollo local.
+    </p>
+
+    <p>
+      Esta propuesta no solo busca fortalecer los proyectos finales de la carrera de Diseño Industrial, sino también sembrar las bases para una futura vinculación con incubadoras externas, empresas, organizaciones sociales o políticas públicas que requieran del diseño como motor de innovación y transformación. De esta manera, la incubadora universitaria se convierte en una puerta de entrada al mundo profesional, con el respaldo institucional y la solidez metodológica que caracteriza a nuestra universidad, exponiendo los puntos estratégicos fundamentales para el éxito de la incubadora y los posibles parámetros para determinar la viabilidad de incubación de un proyecto de diseño.
+    </p>
+
+    <!-- Imágenes -->
+    <div class="flex justify-center gap-6 flex-wrap pt-4">
+      <img src="images/caratula manual de incubables.png" alt="manual" class="w-52 rounded shadow" />
+      <img src="images/Caratula Catalogo de TIFs y PPPs.png" alt="catálogo" class="w-52 rounded shadow" />
+    </div>
+
+  </div>
+</section>
+
+<!-- BOTÓN FORMULARIO -->
+<div class="text-center my-10">
+  <a href="https://forms.gle/da8Ga4AxGSDkqQ61A" target="_blank" rel="noopener noreferrer" 
+  class="inline-block bg-[#7c2626] text-white text-lg font-semibold px-8 py-3 rounded-lg shadow hover:bg-red-800 transition">
+    Completar formulario de consulta
+  </a>
+</div>
+
+<!-- SECCIÓN CONTACTO -->
+<section class="bg-[#a2263f] text-white py-10 mt-12">
+  <div class="flex justify-center flex-wrap gap-4 text-sm">
+
+    <a href="https://wa.me/5492215916452?text=Hola%21%20Gracias%20por%20comunicarte%20con%20el%20HUB%20de%20Incubaci%C3%B3n%20de%20Dise%C3%B1o.%20%C2%BfEn%20qu%C3%A9%20podemos%20ayudarte%3F" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="bg-[#482764] hover:bg-[#2e084d] text-white font-semibold px-6 py-2 rounded-lg transition flex items-center gap-2">
+      <i class="fab fa-whatsapp text-white"></i>
+      CONTACTO
+    </a>
+
+    <a href="http://www.unla.edu.ar/carreras/grado/licenciaturas/diseno-industrial" 
+       target="_blank" 
+       class="bg-[#482764] hover:bg-[#2e084d] text-white font-semibold px-6 py-2 rounded-lg transition">
+      DISEÑO INDUSTRIAL UNLA
+    </a>
+
+    <a href="https://padlet.com/tifdiunla/catalogo-de-tifs-y-ppp-mfgoakvzegfwoc21" 
+       target="_blank" 
+       class="bg-[#482764] hover:bg-[#2e084d] text-white font-semibold px-6 py-2 rounded-lg transition">
+      CATÁLOGO DE TIFS Y PPPs
+    </a>
+
+  </div>
+</section>
+
+<br>
+
+<!-- FOOTER -->
+<footer class="bg-[#3e2d4f] text-white text-center py-6 font-bold">
+  <div class="flex justify-center items-center gap-6 mb-4 flex-wrap">
+    <div class="bg-white flex items-center justify-center rounded p-4" style="height: 4rem; width: auto;">
+      <img src="images/Recurso 4B.png" alt="Logo HUB" class="h-[2.6rem] sm:h-[3.4rem] object-contain" />
+    </div>
+    <img src="images/UNLA RECTANGULAR GRANATE.jpg" alt="Logo UNLa" class="w-12 sm:w-16 h-auto" />
+    <img src="images/LAD-logo chico.png" alt="Logo LAD" class="w-12 sm:w-16 h-auto" />
+  </div>
+  <p class="mb-2">© 2025 HUB DI UNLa</p>
+  <p class="text-sm">
+    2023 <a href="#" class="underline hover:text-white">HUB de Incubación</a>, Diseño WEB
+  </p>
+</footer>
+
+<!-- SCRIPT PARA MENÚ DESPLEGABLE -->
+ <!-- JS para abrir/cerrar el menú en móvil -->
+
+
+ <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    const icon = document.getElementById('menu-icon');
+
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
+      menu.classList.toggle('flex-col');
+      menu.classList.toggle('absolute');
+      menu.classList.toggle('top-full');
+      menu.classList.toggle('left-0');
+      menu.classList.toggle('bg-[#3e2d4f]');
+      menu.classList.toggle('w-full');
+      menu.classList.toggle('p-4');
+      menu.classList.toggle('shadow-md');
+      menu.classList.toggle('z-40');
+
+      // Cambiar icono
+      if (menu.classList.contains('hidden')) {
+        icon.innerHTML = '&#9776;'; // ☰
+      } else {
+        icon.innerHTML = '&#10005;'; // ✖
+      }
+    });
+  });
+</script>
+
+
+
+
+</body>
+</html>

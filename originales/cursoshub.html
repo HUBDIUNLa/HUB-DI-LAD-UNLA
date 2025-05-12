@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cursos HUB DI UNLa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #FAF5FF;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <nav class="bg-[#3e2d4f] text-white px-6 py-4 flex justify-between items-center shadow-md">
+    <div class="flex items-center gap-3">
+      <img src="./images/Recurso 4B.png" class="h-10" alt="Logo HUB">
+      <h1 class="text-xl font-bold">HUB DI UNLa - Cursos Asincrónicos</h1>
+    </div>
+    <button id="logoutBtn" class="bg-[#80142f] px-4 py-2 rounded hover:bg-[#5e0f22] font-semibold">Cerrar sesión</button>
+  </nav>
+
+  <main class="flex-1 p-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold text-[#6a4b8e] mb-2">Bienvenido/a, <span id="userName">Usuario</span></h2>
+      <p class="text-sm text-gray-700 mb-6">Rol: <span id="userRole">...</span></p>
+
+      <h3 class="text-xl font-semibold text-[#3e2d4f] mb-4">Tus cursos disponibles:</h3>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Curso ejemplo -->
+        <div class="bg-white border rounded-xl shadow hover:shadow-lg p-6 flex flex-col">
+          <h4 class="text-lg font-bold text-[#80142f] mb-2">Diseño Sostenible</h4>
+          <p class="text-sm text-gray-700 mb-4">Introducción a principios de circularidad, materiales y ciclo de vida.</p>
+          <a href="#" class="mt-auto inline-block text-center bg-[#6a4b8e] text-white py-2 rounded hover:bg-[#3e2d4f]">Acceder al curso</a>
+        </div>
+
+        <!-- Más cursos -->
+        <div class="bg-white border rounded-xl shadow hover:shadow-lg p-6 flex flex-col">
+          <h4 class="text-lg font-bold text-[#80142f] mb-2">Fabricación Digital</h4>
+          <p class="text-sm text-gray-700 mb-4">Uso de herramientas digitales aplicadas al diseño industrial.</p>
+          <a href="#" class="mt-auto inline-block text-center bg-[#6a4b8e] text-white py-2 rounded hover:bg-[#3e2d4f]">Acceder al curso</a>
+        </div>
+
+        <div class="bg-white border rounded-xl shadow hover:shadow-lg p-6 flex flex-col">
+          <h4 class="text-lg font-bold text-[#80142f] mb-2">Prototipado y Testeo</h4>
+          <p class="text-sm text-gray-700 mb-4">Estrategias para validar ideas mediante prototipos funcionales.</p>
+          <a href="#" class="mt-auto inline-block text-center bg-[#6a4b8e] text-white py-2 rounded hover:bg-[#3e2d4f]">Acceder al curso</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-[#3e2d4f] text-white text-center py-4 mt-10">
+    <p class="text-sm">© 2025 HUB DI UNLa – Plataforma de Formación</p>
+  </footer>
+
+  <script>
+    const userData = JSON.parse(sessionStorage.getItem('usuario'));
+    if (!userData) {
+      window.location.href = 'logincursos.html';
+    } else {
+      document.getElementById('userName').innerText = userData.nombre + ' ' + userData.apellido;
+      document.getElementById('userRole').innerText = userData.rol;
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      sessionStorage.clear();
+      window.location.href = 'logincursos.html';
+    });
+  </script>
+</body>
+</html>
