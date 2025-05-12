@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HUB DI UNLa</title>
+
+  <!-- Meta para redes sociales -->
+  <meta property="og:title" content="HUB DI UNLa" />
+  <meta property="og:description" content="Diseño, Diagnóstico e Incubación de proyectos de diseño industrial." />
+  <meta property="og:image" content="https://hubdiunla.github.io/WEB-HUB-DI-UNLa/images/logo-hubdi-rectangular.png" />
+  <meta property="og:url" content="https://hubdiunla.github.io/WEB-HUB-DI-UNLa/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Icono -->
+  <link rel="icon" href="favicon_hub_only_rounded.ico" type="image/x-icon" />
+  <link rel="icon" href="images/favicon_hub_only_rounded.ico" type="image/x-icon" />
+
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Fuente Outfit -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            violeta: '#9676d8',
+            morado: '#6A1B9A',
+            fondo: '#FAF5FF',
+            bordo: '#a2263f',
+            celeste: '#0c6d99',
+            azul: '#1D3B6D',
+            berenjena: '#5c4554',
+            bordooscuro: '#552c5b',
+            violaceo: '#6a4b8e',
+            celestonoscuro: '#1394ad',
+            vino: '#80142f',
+            violetagrafito: '#3e2d4f',
+            lila: '#C587C5',
+            violaceoclaro: '#e0d1fa',
+          },
+          fontSize: {
+            '2xl': '1.5rem',
+            '3xl': '1.875rem',
+            '4xl': '2.25rem',
+            '5xl': '3rem',
+            '6xl': '3.75rem',
+          },
+          fontWeight: {
+            normal: 400,
+            medium: 500,
+            bold: 700,
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+ <!-- Seguridad: redirección si no hay sesión -->
+  <script src="auth.js"></script> 
+
+  <!-- Animaciones -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 1.2s ease-out forwards;
+    }
+
+    .animate-fade-in-delay {
+      animation: fadeIn 1.2s ease-out 0.3s forwards;
+    }
+  </style>
+
+</head>
+
+
+
+<body class="bg-[#f9f7f4] text-[#222] font-sans pt-20">
+
+  <!-- NAV RESPONSIVE CON MENÚ DESPLEGABLE -->
+
+<nav class="fixed top-0 left-0 right-0 bg-[#3e2d4f] text-white shadow-md z-50 px-6 py-3 flex items-center justify-between">
+  <a href="#inicio" class="flex items-center gap-2 text-lg sm:text-xl font text-white hover:underline">
+    <img src="./images/LAD-logo chico.png" alt="LAD Logo" class="h-10 sm:h-12 md:h-14 w-auto" />
+    <img src="./images/UNLA RECTANGULAR GRANATE.jpg" alt="UNLa Logo" class="h-10 sm:h-12 md:h-14 w-auto" />
+    DESIGN INCUBATION HUB
+  </a>
+
+  <!-- Botón hamburguesa visible solo en sm y md -->
+  <div class="lg:hidden">
+    <button id="menu-toggle" class="text-white text-3xl focus:outline-none">
+      <span id="menu-icon">&#9776;</span>
+    </button>
+  </div>
+
+  <!-- Menú visible en LG y desplegable en SM/MD -->
+  <ul id="menu" class="hidden lg:flex lg:flex-row items-start lg:items-center gap-4 text-base font text-white">
+  
+    <li><a href="#sobre" class="block w-full py-1 hover:text-lila">About the HUB</a></li>
+    <li><a href="https://www.unla.edu.ar/laboratorio-de-diseno-lad" target="_blank" rel="noopener noreferrer" class="block w-full py-1 hover:text-lila">LAD</a></li>
+    <li><a href="#estudios" class="block w-full py-1 hover:text-lila">Ecosystem</a></li>
+    <li>
+      <a href="mailto:incubadoradetifypppunla@gmail.com?subject=Consulta%20sobre%20la%20incubadora" class="block w-full py-1 hover:text-lila flex items-center space-x-2">
+        <i class="fas fa-envelope"></i>
+        <span>Contact</span>
+      </a>
+    </li>
+    <li class="flex flex-row gap-2 mt-2 lg:mt-0">
+      <a href="index.html" class="flex items-center gap-1 bg-white text-[#80142f] text-sm px-2 py-1 rounded-md shadow hover:bg-gray-100">
+        <img src="./images/ar.png" alt="Español" class="w-4 h-4 rounded-sm" />
+      </a>
+      <a href="indexen.html" class="flex items-center gap-1 bg-white text-[#80142f] text-sm px-2 py-1 rounded-md shadow hover:bg-gray-100">
+        <img src="./images/us.png" alt="English" class="w-4 h-4 rounded-sm" />
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+
+<section id="inicio" class="relative h-[calc(100vh-80px)] bg-center bg-no-repeat flex items-center justify-center" style="background-image: url('images/Recurso 4B.png'); background-size: 65%;">
+  <a href="#hub" class="absolute inset-0 z-20 cursor-pointer" aria-label="Go to start"></a>
+  <div class="absolute inset-0 bg-black/0.025"></div>
+  <div class="relative z-10 text-white text-center animate-fade-in"></div>
+</section>
+
+<section id="hub" class="text-center py-20 px-4">
+  <h1 class="text-5xl font-bold mb-4">DESIGN INCUBATION HUB</h1>
+  <p class="text-xl max-w-xl mx-auto mb-8">
+    Design Diagnosis, strategies and purpose to transform your idea into a real venture.
+  </p>
+  <p class="text-xl max-w-xl mx-auto mb-8">
+    We invite you to explore our ecosystem.
+  </p>
+  <div class="flex flex-wrap justify-center gap-4">
+    <button class="bg-[#6a4b8e] text-white px-6 py-3 rounded-2xl text-lg font-bold shadow hover:bg-[#3b2d4c] transition">
+      EXECUTING UNITS
+    </button>
+    <button class="bg-[#6a4b8e] text-white px-6 py-3 rounded-2xl text-lg font-bold shadow hover:bg-[#3b2d4c] transition">
+      SERVICES
+    </button>
+    <button class="bg-[#6a4b8e] text-white px-6 py-3 rounded-2xl text-lg font-bold shadow hover:bg-[#3b2d4c] transition">
+      PROJECTS
+    </button>
+    <button class="bg-[#6a4b8e] text-white px-6 py-3 rounded-2xl text-lg font-bold shadow hover:bg-[#3b2d4c] transition">
+      PERSONALIZED CONSULTING
+    </button>
+  </div>
+</section>
+
+
+
+<section id="sobre" class="py-20 px-6 bg-violaceoclaro text-center">
+  <h2 class="text-5xl font-semibold mb-6">About the HUB</h2>
+  <div class="max-w-3xl mx-auto text-lg leading-relaxed space-y-6 text-justify sm:text-center">
+    <p>
+      The Design Incubation HUB is an ecosystem that connects academic and productive units related to the Industrial Design degree and the Design Lab (LAD).
+    </p>
+    <p>
+      We act as a collaborative community focused on transforming ideas into creative and strategic ventures. We support students developing their final degree projects (TIFs) and pre-professional practices (PPPs), as well as entrepreneurs, cooperatives, and small and medium-sized enterprises.
+    </p>
+    <p>
+      Our goal is to offer incubation and technical assistance for the development of design projects, promoting innovation and sustainable growth.
+    </p>
+    <p>
+      We have a multidisciplinary team of professionals providing advice on design, business management, and marketing, along with access to resources and tools to enhance project success.
+    </p>
+    <p>
+      The HUB seeks to foster creativity, collaboration, and continuous learning, generating a positive impact in the entrepreneurial ecosystem and contributing to regional economic and social development.
+    </p>
+    <p>
+      We provide tools for diagnosis, design, training, coaching in management and finance, and development focused on innovation. We believe in collaboration, purpose, and comprehensive development as engines of change.
+    </p>
+  </div>
+  <div class="text-center mt-8">
+    <a href="https://forms.gle/nwAM4uo8n2Hq824S9" target="_blank" rel="noopener noreferrer" class="inline-block bg-violaceo text-white text-2xl font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-[#5520a5] transition">
+      Complete inquiry form
+    </a>
+  </div>
+</section>
+
+<!-- Studies Section -->
+<section id="estudios" class="py-16 px-6 bg-[#B4A7D6]">
+    <h2 class="text-5xl font-semibold text-center mb-12 text-white">HUB ECOSYSTEM</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+  
+      <!-- DIAGNOSIS -->
+      <div class="rounded-2xl p-6 shadow text-white flex flex-col items-center text-center justify-between bg-[#1D3B6D] hover:scale-105 transition">
+        <div class="text-6xl mb-4 h-20 flex items-center justify-center">
+          <div class="w-16 h-16 flex items-center justify-center">
+            <i class="fas fa-briefcase-medical text-white text-[3.6rem]"></i>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-1">DIAGNOSIS</h3>
+        <p class="text-sm text-white/80 mb-4">First step: Product and Service Design Diagnosis. Reports and insights.</p>
+        <a href="index1diagnostico-en.html" target="_blank" rel="noopener noreferrer" class="bg-white text-[#1D3B6D] font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">
+          Visit site
+        </a>
+      </div>
+  
+      <!-- BRANDING -->
+      <div class="rounded-2xl p-6 shadow text-white flex flex-col items-center text-center justify-between bg-[#a2263f] hover:scale-105 transition">
+        <div class="text-6xl mb-4 h-20 flex items-center justify-center">
+          <div class="w-16 h-16 flex items-center justify-center">
+            <i class="fas fa-palette text-white text-[3.6rem]"></i>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-1">BRANDING & MARKETING</h3>
+        <p class="text-sm text-white/80 mb-4">Brand design, packaging, and sales strategies.</p>
+        <a href="index1branding-en.html" target="_blank" rel="noopener noreferrer" class="bg-white text-[#a2263f] font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">
+          Visit site
+        </a>
+      </div>
+  
+      <!-- PRODUCT DESIGN -->
+      <div class="rounded-2xl p-6 shadow text-white flex flex-col items-center text-center justify-between bg-[#552c5b] hover:scale-105 transition">
+        <div class="text-8xl mb-4 h-20 flex items-center justify-center">
+          <div class="w-16 h-16 flex items-center justify-center">
+            <i class="fas fa-tools text-white text-[3.6rem]"></i>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-1">PRODUCT DESIGN</h3>
+        <p class="text-sm text-white/80 mb-4">Product and service ladder. Production feasibility.</p>
+        <a href="index1producto-en.html" target="_blank" rel="noopener noreferrer" class="bg-white text-[#552c5b] font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">
+          Visit site
+        </a>
+      </div>
+  
+      <!-- ENTREPRENEURSHIP -->
+      <div class="rounded-2xl p-6 shadow text-white flex flex-col items-center text-center justify-between bg-[#1394ad] hover:scale-105 transition">
+        <div class="text-6xl mb-4 h-20 flex items-center justify-center">
+          <div class="w-16 h-16 flex items-center justify-center">
+            <i class="fas fa-briefcase text-white text-[3.6rem]"></i>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-1">ENTREPRENEURSHIP MANAGEMENT</h3>
+        <p class="text-sm text-white/80 mb-4">Consulting for entrepreneurs and businesses.</p>
+        <a href="index1emprendimiento-en.html" target="_blank" rel="noopener noreferrer" class="bg-white text-[#1394ad] font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">
+          Visit site
+        </a>
+      </div>
+  
+      <!-- INCUBATOR -->
+      <div class="rounded-2xl p-6 shadow text-white flex flex-col items-center text-center justify-between bg-[#6a4b8e] hover:scale-105 transition">
+        <div class="flex items-center justify-center text-[5rem] hover:scale-125 transition">
+          <div class="relative w-20 h-20 flex items-center justify-center">
+            <i class="fas fa-bowl-rice text-white text-[3rem] absolute bottom-0"></i>
+            <i class="fas fa-seedling text-white text-[2.5rem] absolute top-0"></i>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-1">IDEA & PROJECT INCUBATOR</h3>
+        <p class="text-sm text-white/80 mb-4">Incubation models based on needs and potential. We make ideas happen.</p>
+        <a href="index1incubadora-en.html" target="_blank" rel="noopener noreferrer" class="bg-white text-[#6a4b8e] font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">
+          Visit site
+        </a>
+      </div>
+  
+      <!-- TECHNICAL ASSISTANCE -->
+      <div class="rounded-2xl p-6 shadow text-white flex flex-col items-center text-center justify-between bg-[#0c6d99] hover:scale-105 transition">
+        <div class="text-6xl mb-4 h-20 flex items-center text-[5rem] justify-center">
+          <div class="w-16 h-16 flex items-center justify-center">
+            <i class="fas fa-industry text-white text-[3.6rem]"></i>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-1">TECHNICAL ASSISTANCE TO COOPERATIVES AND SMES</h3>
+        <p class="text-sm text-white/80 mb-4">Consulting and advisory services for companies.</p>
+        <a href="index1asistencia-en.html" target="_blank" rel="noopener noreferrer" class="bg-white text-[#0c6d99] font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">
+          Visit site
+        </a>
+      </div>
+  
+      <!-- TRAINING -->
+      <div class="rounded-2xl p-6 shadow text-white flex flex-col items-center text-center justify-between bg-[#5c4554] hover:scale-105 transition">
+        <div class="text-6xl mb-4 h-20 flex items-center justify-center">
+          <div class="w-16 h-16 flex items-center justify-center">
+            <i class="fas fa-book text-white text-[3.6rem]"></i>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-1">TRAINING & SHORT COURSES</h3>
+        <p class="text-sm text-white/80 mb-4">Expand your skills in eCommerce, management, and product design.</p>
+        <a href="index1capacitaciones-en.html" target="_blank" rel="noopener noreferrer" class="bg-white text-[#5c4554] font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">
+          Visit site
+        </a>
+      </div>
+  
+      <!-- TURNKEY PROJECT -->
+      <div class="rounded-2xl p-6 shadow text-white flex flex-col items-center text-center justify-between bg-[#80142f] hover:scale-105 transition">
+        <div class="text-6xl mb-4 h-20 flex items-center justify-center">
+          <div class="w-16 h-16 flex items-center justify-center">
+            <i class="fas fa-key text-white text-[3.6rem]"></i>
+          </div>
+        </div>
+        <h3 class="text-xl font-semibold mb-1">TURNKEY PROJECT</h3>
+        <p class="text-sm text-white/80 mb-4">Designed, customized, franchisable and executable for your needs.</p>
+        <a href="index1llave-en.html" target="_blank" rel="noopener noreferrer" class="bg-white text-[#80142f] font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">
+          Visit site
+        </a>
+      </div>
+  
+    </div>
+  </section>
+
+  <!-- Community -->
+<section id="community" class="py-20 px-6 bg-[#a2263f] text-center">
+    <h2 class="text-5xl font-semibold mb-6 text-white">Join the HUB</h2>
+    <p class="max-w-xl mx-auto mb-6 text-lg text-white">
+      Get resources, updates about our HUB, and news from the design entrepreneurship ecosystem.
+    </p>
+    <div class="flex justify-center flex-wrap gap-2">
+      <input
+        type="email"
+        placeholder="Your email address"
+        class="px-4 py-2 rounded-l-xl border border-gray-300"
+      />
+      <button class="bg-violaceo text-white px-4 py-2 rounded-r-xl hover:bg-[#1f3556] transition">
+        Subscribe
+      </button>
+    </div>
+  </section>
+
+<!-- FOOTER -->
+<footer class="bg-[#3e2d4f] text-white text-center py-6 font-bold">
+  <div class="flex justify-center items-center gap-6 mb-4 flex-wrap">
+    <div class="bg-white flex items-center justify-center rounded p-4" style="height: 4rem; width: auto;">
+      <img src="images/Recurso 4B.png" alt="Logo HUB" class="h-[2.6rem] sm:h-[3.4rem] object-contain" />
+    </div>
+    <img src="images/UNLA RECTANGULAR GRANATE.jpg" alt="Logo UNLa" class="w-12 sm:w-16 h-auto" />
+    <img src="images/LAD-logo chico.png" alt="Logo LAD" class="w-12 sm:w-16 h-auto" />
+  </div>
+  <p class="mb-2">© 2025 HUB DI UNLa</p>
+  <p class="text-sm">
+    2023 <a href="#" class="underline hover:text-white">HUB de Incubación</a>, Diseño WEB
+  </p>
+</footer>
+
+<!-- JS para abrir/cerrar el menú en móvil -->
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    const icon = document.getElementById('menu-icon');
+
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
+      menu.classList.toggle('flex-col');
+      menu.classList.toggle('absolute');
+      menu.classList.toggle('top-full');
+      menu.classList.toggle('left-0');
+      menu.classList.toggle('bg-[#3e2d4f]');
+      menu.classList.toggle('w-full');
+      menu.classList.toggle('p-4');
+      menu.classList.toggle('shadow-md');
+      menu.classList.toggle('z-40');
+
+      // Cambiar icono
+      if (menu.classList.contains('hidden')) {
+        icon.innerHTML = '&#9776;'; // ☰
+      } else {
+        icon.innerHTML = '&#10005;'; // ✖
+      }
+    });
+  });
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diagnóstico de Diseño</title>
+
+  <!-- ✅ Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- 🎨 Configuración personalizada -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            violeta: '#9676d8',
+            morado: '#6A1B9A',
+            fondo: '#FAF5FF',
+            bordo: '#a2263f',
+            celeste: '#0c6d99',
+            azul: '#1D3B6D',
+            berenjena: '#5c4554',
+            bordooscuro: '#552c5b',
+            violaceo: '#6a4b8e',
+            celestonoscuro: '#1394ad',
+            vino: '#80142f',
+            violetagrafito: '#3e2d4f',
+
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+<link rel="icon" href="favicon_hub_only_rounded.ico" type="image/x-icon" />
+
+<link rel="icon" href="images/favicon_hub_only_rounded.ico" type="image/x-icon" />
+
+</head>
+
+<body class="bg-fondo text-gray-800">
+
+  <!-- HEADER -->
+  <header class="bg-[#1D3B6D] text-white text-center py-10 shadow-md px-4">
+    <a href="index.html">
+      <div class="bg-white p-6 rounded-xl shadow-md max-w-xs mx-auto my-8">
+        <img src="./images/Recurso 4B.png" alt="Logo HUB DI UNLa" class="w-full h-auto rounded-lg" />
+      </div>
+    </a>
+    <h1 class="text-3xl font-bold">Diseño, Diagnóstico e Incubación</h1>
+   
+  </header>
+
+  <!-- CONTENIDO -->
+  <div class="max-w-3xl mx-auto bg-white my-10 p-10 rounded-2xl shadow-lg">
+    <h2 class="text-2xl text-morado font-bold mb-6">Subí una imagen de tu producto</h2>
+    <input type="file" accept="image/*" id="imageUpload" onchange="previewImage(event)" class="mb-6" />
+    
+    <div class="flex justify-center mb-8">
+      <img id="imagePreview" class="hidden rounded-xl max-w-full h-auto" />
+    </div>
+
+    <h2 class="text-2xl text-morado font-bold mb-4">Responde las siguientes preguntas</h2>
+    <button onclick="startDiagnosis()" class="bg-[#1D3B6D] text-white py-3 px-6 rounded-lg hover:bg-morado transition mb-8">
+      Iniciar Diagnóstico
+    </button>
+
+    <form id="diagnosisForm" class="hidden space-y-6" onsubmit="showResults(event)">
+      <div>
+        <label class="font-bold text-morado block mb-1">Tipo de Producto</label>
+        <select id="tipoProducto" required class="w-full p-3 rounded-lg bg-violet-100">
+          <option value="">Seleccionar</option>
+          <option value="Familia">Familia</option>
+          <option value="Línea">Línea</option>
+          <option value="Serie">Serie</option>
+          <option value="Cápsula">Cápsula</option>
+          <option value="Único">Único</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="font-bold text-morado block mb-1">Condicionantes y Limitantes de Diseño</label>
+        <textarea id="condicionantes" required class="w-full p-3 rounded-lg bg-violet-100" placeholder="Describe las decisiones y restricciones de diseño"></textarea>
+      </div>
+
+      <div>
+        <label class="font-bold text-morado block mb-1">Requisitos Semánticos y Sintácticos</label>
+        <textarea id="requisitos" required class="w-full p-3 rounded-lg bg-violet-100" placeholder="Define los requisitos del producto"></textarea>
+      </div>
+
+      <div>
+        <label class="font-bold text-morado block mb-1">Interfaces del Producto y UX</label>
+        <textarea id="interfaces" required class="w-full p-3 rounded-lg bg-violet-100" placeholder="Describe las interfaces y la experiencia de usuario"></textarea>
+      </div>
+
+      <div>
+        <label class="font-bold text-morado block mb-1">Evaluación de Costos y Materiales</label>
+        <textarea id="costos" required class="w-full p-3 rounded-lg bg-violet-100" placeholder="Analiza costos, optimización y materiales"></textarea>
+      </div>
+
+      <div>
+        <label class="font-bold text-morado block mb-1">Obsolescencia</label>
+        <select id="obsolescencia" required class="w-full p-3 rounded-lg bg-violet-100">
+          <option value="">Seleccionar</option>
+          <option value="Percibida">Percibida</option>
+          <option value="Programada">Programada</option>
+          <option value="Real">Real</option>
+        </select>
+      </div>
+
+      <button type="submit" class="bg-[#1D3B6D] text-white py-3 px-6 rounded-lg hover:bg-morado transition">
+        Ver Resumen
+      </button>
+    </form>
+
+    <div id="result" class="result hidden bg-violet-100 p-6 rounded-xl mt-8 animate-fadeIn"></div>
+  </div>
+
+  <br>
+
+<!-- FOOTER -->
+<footer class="bg-[#3e2d4f] text-white text-center py-6 font-bold">
+  <div class="flex justify-center items-center gap-6 mb-4 flex-wrap">
+    <div class="bg-white flex items-center justify-center rounded p-4" style="height: 4rem; width: auto;">
+      <img src="images/Recurso 4B.png" alt="Logo HUB" class="h-[2.6rem] sm:h-[3.4rem] object-contain" />
+    </div>
+    <img src="images/UNLA RECTANGULAR GRANATE.jpg" alt="Logo UNLa" class="w-12 sm:w-16 h-auto" />
+    <img src="images/LAD-logo chico.png" alt="Logo LAD" class="w-12 sm:w-16 h-auto" />
+  </div>
+  <p class="mb-2">© 2025 HUB DI UNLa</p>
+  <p class="text-sm">
+    2023 <a href="#" class="underline hover:text-white">HUB de Incubación</a>, Diseño WEB
+  </p>
+</footer>
+
+
+  
+
+  <!-- JS -->
+  <script>
+    function previewImage(event) {
+      const image = document.getElementById("imagePreview");
+      image.src = URL.createObjectURL(event.target.files[0]);
+      image.style.display = "block";
+    }
+
+    function startDiagnosis() {
+      document.getElementById("diagnosisForm").classList.remove("hidden");
+    }
+
+    function showResults(event) {
+      event.preventDefault();
+
+      const tipo = document.getElementById("tipoProducto").value;
+      const condicionantes = document.getElementById("condicionantes").value;
+      const requisitos = document.getElementById("requisitos").value;
+      const interfaces = document.getElementById("interfaces").value;
+      const costos = document.getElementById("costos").value;
+      const obsolescencia = document.getElementById("obsolescencia").value;
+
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = `
+        <h3 class="text-xl font-bold text-morado mb-3">Resumen del Diagnóstico</h3>
+        <p><strong>Tipo de Producto:</strong> ${tipo}</p>
+        <p><strong>Condicionantes:</strong> ${condicionantes}</p>
+        <p><strong>Requisitos:</strong> ${requisitos}</p>
+        <p><strong>Interfaces y UX:</strong> ${interfaces}</p>
+        <p><strong>Costos y Materiales:</strong> ${costos}</p>
+        <p><strong>Obsolescencia:</strong> ${obsolescencia}</p>
+      `;
+      resultDiv.classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>

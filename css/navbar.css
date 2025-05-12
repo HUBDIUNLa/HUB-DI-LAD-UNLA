@@ -1,0 +1,146 @@
+
+
+/* NAV GENERAL */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #6a4b8e;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand-logo {
+  width: 54px;
+  height: auto;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* espacio entre los logos */
+
+  height: 50px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-button {
+  color: white;
+  background: none;
+  border: none;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .nav-links a {
+    padding: 1rem;
+    border-top: 1px solid #ffffff33;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+}
+
+.navbar {
+    background-color:var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    font-family: Montserrat;
+        
+}
+
+
+
+
+
+.nav-title {
+    font-size: 3rem;
+    text-align: center;
+    max-width: 400px;
+    background-color:white;
+    border: 1px solid white;
+
+}
+
+.nav-button {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    background-color: #6a4b8e;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+.nav-button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; /* negrita */
+    background: none;
+    border: none;
+    color: #000; /* o el color que estés usando */
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-button:hover {
+    color: #f7f1f4; /* ejemplo de hover, podés personalizarlo */
+  }
+
+.nav-button {
+    border: 1px solid var(--tan-color);
+    background-color: var(--tan-color) ;
+    color: white;
+    padding: 0.75em 1em;
+    border-radius: 20px;
+    width: fit-content;
+    transition-duration: 300ms;
+
+
+}
+
+.nav-button:hover {
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--black-color);
+ 
+
+}
+    

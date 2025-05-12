@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HUB DI UNLa</title>
+
+  <!-- Meta para redes sociales -->
+  <meta property="og:title" content="HUB DI UNLa" />
+  <meta property="og:description" content="Diseño, Diagnóstico e Incubación de proyectos de diseño industrial." />
+  <meta property="og:image" content="https://hubdiunla.github.io/WEB-HUB-DI-UNLa/images/logo-hubdi-rectangular.png" />
+  <meta property="og:url" content="https://hubdiunla.github.io/WEB-HUB-DI-UNLa/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fuente Outfit -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 1.2s ease-out forwards;
+    }
+
+    .animate-fade-in-delay {
+      animation: fadeIn 1.2s ease-out 0.3s forwards;
+    }
+  </style>
+</head>
+
+<body class="bg-[#f9f7f4] text-[#222] font-sans pt-20">
+
+  <!-- NAVBAR RESPONSIVO -->
+  <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 px-6 py-3 flex justify-between items-center">
+    <a href="#inicio" class="text-sm md:text-xl font-bold text-[#6A0DAD] hover:underline">HUB INCUBACION DE DISEÑO UNLa</a>
+    <div class="md:hidden">
+      <button id="menu-toggle" class="text-[#6A0DAD] focus:outline-none text-3xl">☰</button>
+    </div>
+    <ul id="menu" class="hidden md:flex gap-4 text-sm font-semibold text-[#222]">
+      <li><a href="#sobre" class="hover:text-[#6A0DAD]">Sobre Nosotros</a></li>
+      <li><a href="#proyectos" class="hover:text-[#6A0DAD]">Proyectos</a></li>
+      <li><a href="#estudios" class="hover:text-[#6A0DAD]">HUB</a></li>
+      <li><a href="#comunidad" class="hover:text-[#6A0DAD]">Consultas</a></li>
+    </ul>
+  </nav>
+
+  <!-- Script para menú hamburguesa -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggle = document.getElementById("menu-toggle");
+      const menu = document.getElementById("menu");
+      toggle.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+        menu.classList.toggle("flex");
+        menu.classList.toggle("flex-col");
+        menu.classList.add("absolute", "top-[60px]", "right-6", "bg-white", "rounded", "p-4", "shadow-md", "z-50");
+      });
+    });
+  </script>
+
+  <!-- HERO -->
+  <section id="inicio" class="relative h-[calc(100vh-80px)] bg-center bg-no-repeat flex items-center justify-center" style="background-image: url('images/logo-hubdi-rectangular.png'); background-size: 80%;">
+    <div class="absolute inset-0 bg-black/0.025"></div>
+    <div class="relative z-10 text-white text-center animate-fade-in"></div>
+  </section>
+
+  <!-- HERO TEXT -->
+  <section class="text-center py-20 px-4">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">HUB DE INCUBACION DE DISEÑO</h1>
+    <p class="text-lg md:text-xl max-w-xl mx-auto mb-4">
+      Diagnostico de Diseño, estrategias y propósito para que tu idea se convierta en un emprendimiento real.
+    </p>
+    <p class="text-lg md:text-xl max-w-xl mx-auto mb-8">
+      Te invitamos a que conozcas nuestro ecosistema.
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="#estudios">
+        <button class="bg-[#6A0DAD] text-white px-6 py-3 rounded-2xl text-sm md:text-lg font-bold shadow hover:bg-[#3b2d4c] transition">
+          UNIDADES EJECUTORAS
+        </button>
+      </a>
+      <button class="bg-[#6A0DAD] text-white px-6 py-3 rounded-2xl text-sm md:text-lg font-bold shadow hover:bg-[#3b2d4c] transition">
+        UNIDADES DE NEGOCIO
+      </button>
+      <button class="bg-[#6A0DAD] text-white px-6 py-3 rounded-2xl text-sm md:text-lg font-bold shadow hover:bg-[#3b2d4c] transition">
+        PROYECTOS
+      </button>
+      <button class="bg-[#6A0DAD] text-white px-6 py-3 rounded-2xl text-sm md:text-lg font-bold shadow hover:bg-[#3b2d4c] transition">
+        ASESORIAS PERSONALIZADAS
+      </button>
+    </div>
+  </section>
+
+  <!-- ECOSISTEMA DEL HUB -->
+  <section id="estudios" class="bg-[#ece7f6] py-16 px-6 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6">ECOSISTEMA DEL HUB</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <div class="bg-white rounded-xl shadow p-6">Unidad Ejecutora 1</div>
+      <div class="bg-white rounded-xl shadow p-6">Unidad Ejecutora 2</div>
+      <div class="bg-white rounded-xl shadow p-6">Unidad Ejecutora 3</div>
+      <div class="bg-white rounded-xl shadow p-6">Unidad de Negocio 1</div>
+      <div class="bg-white rounded-xl shadow p-6">Unidad de Negocio 2</div>
+      <div class="bg-white rounded-xl shadow p-6">Proyecto 1</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#6A0DAD] text-white text-center p-6 mt-16">
+    <p class="text-sm">© 2025 HUB DI UNLa. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

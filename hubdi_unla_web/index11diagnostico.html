@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUB DI UNLa</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #F3E5F5, #E1BEE7);
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FAF5FF;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            text-align: center;
+        }
+        header {
+            background-color: #1D3B6D;
+            color: white;
+            padding: 30px 20px;
+        }
+        .logo {
+    max-width: 200px;
+    margin-bottom: 10px;
+    border-radius: 12px; /* esto lo redondea totalmente */
+            
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin: 40px auto;
+            max-width: 1000px;
+            padding: 20px;
+        }
+        .button {
+            display: block;
+            background-color: #8E24AA;
+            color: white;
+            padding: 15px 25px;
+            margin: 20px auto;
+            width: 250px;
+            border-radius: 12px;
+            font-size: 18px;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s;
+            
+        }
+
+        .button:hover {
+            background-color: #6A1B9A;
+            transform: scale(1.05);
+        }
+
+        .btn-azul {
+    background-color: #1D3B6D; /* azul medio */
+}
+.btn-azul:hover {
+    background-color: #1565C0; /* azul más oscuro al hacer hover */
+}
+.btn-bordo {
+    background-color: #a2263f; /* bordo */
+}
+.btn-bordo:hover {
+    background-color: #7d170e74; /* azul más oscuro al hacer hover */
+}
+
+.btn-celeste {
+    background-color: #0c6d99; /* bordo */
+}
+.btn-celeste:hover {
+    background-color: #5270d474; /* azul más oscuro al hacer hover */
+}
+        
+        .catalogo {
+            margin-top: 30px;
+        }
+        .catalogo img {
+            width: 200px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        footer {
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+            margin-top: 50px;
+            background: #6A1B9A;
+            color: white;
+            padding: 20px;
+        }
+        footer img {
+            max-width: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html"> <!-- Reemplaza URL_DE_TU_DESTINO con la página que deseas -->
+            <img src="./images/logo-hubdi-rectangular.png" alt="Logo HUB DI UNLa" class="logo">
+        </a>
+        <h1>HUB DI UNLa</h1>
+        <p style="font-size: 1.5em; margin-top: 10px;">Diseño, Diagnóstico e Incubación</p>
+    </header>
+
+    <div class="container">
+        <a href="./index2diagnosticoapp.html" target="_blank" rel="noopener noreferrer" class="button btn-azul">Diagnóstico de Diseño</a>
+
+        <!-- Sección informativa sobre el Diagnóstico de Diseño -->
+<div style="margin: 30px auto; max-width: 700px; text-align: left; font-size: 1.1em; line-height: 1.6;">
+    <h2 style="color: #1D3B6D;">¿Qué es el Diagnóstico de Diseño?</h2>
+    <p>
+      El Diagnóstico de Diseño es una herramienta pensada para evaluar productos o proyectos desde una mirada integral del diseño industrial. 
+      A través de una serie de preguntas y análisis de imágenes, se identifican oportunidades de mejora, aspectos técnicos y de comunicación visual.
+    </p>
+    <p>
+      Esta instancia permite detectar fortalezas, debilidades y propuestas de acción para potenciar productos, marcas o procesos productivos, y está destinada a estudiantes, emprendedores y profesionales.
+    </p>
+    <p>
+        Si queres, tambien podes conocer otras areas del HUB que pueden ser de tu interes, haciendo click en los siguientes botones
+    </p>
+  </div>
+  
+<a href="./incubadora/index.html" class="button">Incubadora de Diseño</a>
+
+        <a href="./diagnostico/index.html" class="button btn-bordo">Branding y Marketing</a>
+        <a href="./incubadora/index.html" class="button btn-celeste">Asistencia tecnica</a>
+
+        <div class="catalogo">
+            <h2>Catálogos Disponibles</h2>
+            <a href="./images/Caratula Catalogo de myh.png" download>
+                <img src="./images/Caratula Catalogo de myh.png" alt="Catálogo MYH">
+            </a>
+            <a href="./images/Caratula Catalogo de TIFs y PPPs.png" download>
+                <img src="./images/Caratula Catalogo de TIFs y PPPs.png" alt="Catálogo TIFs y PPPs">
+            </a>
+            <a href="./images/Caratula Catalogo de vyt tif.png" download>
+                <img src="./images/Caratula Catalogo de vyt tif.png" alt="Catálogo VYT TIF">
+            </a>
+            <a href="./images/caratula manual de incubables.png" download>
+                <img src="./images/caratula manual de incubables.png" alt="Manual de Incubables">
+            </a>
+        </div>
+    </div>
+
+  <!-- Footer -->
+<footer class="bg-[#9676d8] text-white py-6 text-center font-bold">
+    <div class="flex justify-center items-center gap-6 mb-4 flex-wrap">
+      <img src="./images/logo-unla.png" alt="Logo UNLa" class="w-16 sm:w-20 h-auto" />
+      <img src="./images/logo-bloms.png" alt="Blöms Consultora" class="w-16 sm:w-20 h-auto" />
+    </div>
+  
+    <p class="mb-2">© 2025 HUB DI UNLa | Consultora Blöms</p>
+  
+    <p>
+      2023 <a href="#" class="underline hover:text-white">HUB DE INCUBACION</a>, Diseño WEB
+      <a href="BLÖMS.html" target="_blank" class="underline hover:text-white">BLÖMS</a>, Design concept
+      <a href="https://bloms.ar" target="_blank" class="underline hover:text-white">BLÖMS Consultora</a>
+    </p>
+  </footer>
+  
+</body>
+</html>

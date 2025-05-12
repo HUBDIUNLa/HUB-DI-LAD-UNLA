@@ -1,0 +1,311 @@
+ <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>HUB DI UNLa</title>
+    
+      <!-- Meta para redes sociales -->
+      <meta property="og:title" content="HUB DI UNLa" />
+      <meta property="og:description" content="Diseño, Diagnóstico e Incubación de proyectos de diseño industrial." />
+      <meta property="og:image" content="https://hubdiunla.github.io/WEB-HUB-DI-UNLa/images/logo-hubdi-rectangular.png" />
+      <meta property="og:url" content="https://hubdiunla.github.io/WEB-HUB-DI-UNLa/" />
+      <meta name="twitter:card" content="summary_large_image" />
+    
+      <!-- Estilos -->
+      <link rel="stylesheet" href="style.css" />
+    </head>
+        
+      <!-- Fuente Outfit -->
+      <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+    
+      <!-- Tailwind CSS CDN -->
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                sans: ['Outfit', 'sans-serif'],
+              },
+            },
+          },
+        };
+      </script>
+    
+      <style>
+        html {
+          scroll-behavior: smooth;
+        }
+    
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+    
+        .animate-fade-in {
+          animation: fadeIn 1.2s ease-out forwards;
+        }
+    
+        .animate-fade-in-delay {
+          animation: fadeIn 1.2s ease-out 0.3s forwards;
+        }
+      </style>
+    </head>
+    
+    <body class="bg-[#f9f7f4] text-[#222] font-sans pt-20"> <!-- Compensa altura del menú fijo -->
+    
+<!-- NAV RESPONSIVE -->
+<nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 px-6 py-3 flex items-center justify-between">
+  <a href="#inicio" class="text-lg sm:text-xl font-bold text-[#6A0DAD] hover:underline">HUB INCUBACION DE DISEÑO UNLa</a>
+  <div class="sm:hidden">
+    <button id="menu-toggle" class="text-[#6A0DAD] text-3xl">&#9776;</button>
+  </div>
+  <ul id="menu" class="hidden sm:flex gap-4 text-sm font-semibold text-[#222]">
+    <li><a href="#sobre" class="hover:text-[#6A0DAD]">Sobre Nosotros</a></li>
+    <li><a href="#proyectos" class="hover:text-[#6A0DAD]">Proyectos</a></li>
+    <li><a href="#estudios" class="hover:text-[#6A0DAD]">HUB</a></li>
+    <li><a href="#comunidad" class="hover:text-[#6A0DAD]">Consultas</a></li>
+  </ul>
+</nav>
+
+   <!-- Script para el toggle -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
+      menu.classList.toggle('flex-col');
+      menu.classList.toggle('absolute');
+      menu.classList.toggle('top-full');
+      menu.classList.toggle('left-0');
+      menu.classList.toggle('bg-white');
+      menu.classList.toggle('w-full');
+      menu.classList.toggle('p-4');
+      menu.classList.toggle('shadow-md');
+    });
+  });
+</script> 
+
+      <!-- HERO con logo de fondo -->
+
+      <section
+  id="inicio"
+  class="relative h-[calc(100vh-80px)] bg-center bg-no-repeat flex items-center justify-center"
+  style="background-image: url('images/logo-hubdi-rectangular.png'); background-size: 80%;"
+>
+  <div class="absolute inset-0 bg-black/0.025"></div>
+
+        <!-- Overlay para mejor contraste -->
+        <div class="absolute inset-0 bg-black/0.025"></div>
+        <div class="relative z-10 text-white text-center animate-fade-in">
+          <!-- Contenido opcional -->
+          <!-- <h1 class="text-4xl font-bold">HUB DI UNLa</h1> -->
+        </div>
+      </section>
+    
+      <!-- Hero principal con texto -->
+      <section class="text-center py-20 px-4">
+        <h1 class="text-5xl font-bold mb-4">HUB DE INCUBACION DE DISEÑO</h1>
+        <p class="text-xl max-w-xl mx-auto mb-8">
+          Diagnostico de Diseño, estrategias y propósito para que tu idea se convierta en un emprendimiento real.
+        </p>
+        <p class="text-xl max-w-xl mx-auto mb-8">
+            Te invitamos a que conozcas nuestro ecosistema.
+          </p>
+
+          <div class="flex flex-wrap justify-center gap-4">
+            <button class="bg-[#6A0DAD] text-white px-6 py-3 rounded-2xl text-lg font-bold shadow hover:bg-[#3b2d4c] transition">
+              UNIDADES EJECUTORAS
+            </button>
+            <button class="bg-[#6A0DAD] text-white px-6 py-3 rounded-2xl text-lg font-bold shadow hover:bg-[#3b2d4c] transition">
+              UNIDADES DE NEGOCIO
+            </button>
+            <button class="bg-[#6A0DAD] text-white px-6 py-3 rounded-2xl text-lg font-bold shadow hover:bg-[#3b2d4c] transition">
+              PROYECTOS
+            </button>
+            <button class="bg-[#6A0DAD] text-white px-6 py-3 rounded-2xl text-lg font-bold shadow hover:bg-[#3b2d4c] transition">
+              ASESORIAS PERSONALIZADAS
+            </button>
+          </div>
+          
+      </section>
+  
+  <!-- Animaciones personalizadas -->
+  <style>
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    .animate-fade-in {
+      animation: fadeIn 1.2s ease-out forwards;
+    }
+  
+    .animate-fade-in-delay {
+      animation: fadeIn 1.2s ease-out 0.3s forwards;
+    }
+  </style>
+
+    <!-- Sección de estudios -->
+    <section id="estudios" class="py-16 px-6 bg-[#B4A7D6]">
+      <h2 class="text-3xl font-semibold text-center mb-12 text-white">ECOSISTEMA DEL HUB</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        
+        <!-- DIAGNOSTICO -->
+        <div class="rounded-2xl p-6 shadow text-white flex flex-col items-center text-center justify-between bg-[#1D3B6D] hover:scale-105 transition">
+          <div class="text-6xl mb-4 h-20 flex items-center justify-center">
+            <div class="w-11 h-11 bg-current rounded-full"></div>
+          </div>
+          <h3 class="text-xl font-semibold mb-1">DIAGNOSTICO</h3>
+          <p class="text-sm text-white/80 mb-4">Primer escala: Diagnostico de Diseño.</p>
+          <a href="index1diagnostico.html" target="_blank" rel="noopener noreferrer" class="bg-white text-[#1D3B6D] font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">
+            Ir al sitio
+          </a>
+        </div>
+
+        <!-- BRANDING -->
+        <div class="rounded-2xl p-6 shadow text-white flex flex-col items-center text-center justify-between bg-[#a2263f] hover:scale-105 transition">
+          <div class="text-6xl mb-4 h-20 flex items-center justify-center">◐</div>
+          <h3 class="text-xl font-semibold mb-1">BRANDING Y MARKETING</h3>
+          <p class="text-sm text-white/80 mb-4">Diseño de marca, estrategias digitales de venta.</p>
+          <a href="branding.html" target="_blank" rel="noopener noreferrer" class="bg-white text-[#a2263f] font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">
+            Ir al sitio
+          </a>
+        </div>
+
+        <!-- DISEÑO DE PRODUCTO -->
+        <div class="rounded-2xl p-6 shadow text-white flex flex-col items-center text-center justify-between bg-[#552c5b] hover:scale-105 transition">
+            <div class="text-8xl mb-4 h-20 flex items-center justify-center">■</div>
+            <h3 class="text-xl font-semibold mb-1">DISEÑO DE PRODUCTO</h3>
+            <p class="text-sm text-white/80 mb-4">Escalera de productos y servicios.</p>
+            <a href="index.html" target="_blank" rel="noopener noreferrer" class="bg-white text-[#552c5b] font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">
+              Ir al sitio
+            </a>
+          </div>
+
+        <!-- EMPRENDIMIENTO -->
+        <div class="rounded-2xl p-6 shadow text-white flex flex-col items-center text-center justify-between bg-[#1394ad] hover:scale-105 transition">
+          <div class="text-6xl mb-4 h-20 flex items-center justify-center">▲</div>
+          <h3 class="text-xl font-semibold mb-1">GESTION INTEGRAL DE EMPRENDIMIENTOS</h3>
+          <p class="text-sm text-white/80 mb-4">Consultoría para emprendedores y empresas.</p>
+          <a href="index.html" target="_blank" rel="noopener noreferrer" class="bg-white text-[#1394ad] font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">
+            Ir al sitio
+          </a>
+        </div>
+
+        <!-- INCUBADORA -->
+        <div class="rounded-2xl p-6 shadow text-white flex flex-col items-center text-center justify-between bg-[#6a4b8e] hover:scale-105 transition">
+            <div class="flex items-center justify-center text-[5rem] hover:scale-125 transition">★</div>
+          <h3 class="text-xl font-semibold mb-1">INCUBADORA DE IDEAS Y PROYECTOS</h3>
+          <p> </p>
+          <p> </p>
+          <p class="text-sm text-white/80 mb-4">Modelos de incubación segun necesidad y potencialidad.</p>
+          <a href="index.html" target="_blank" rel="noopener noreferrer" class="bg-white text-[#6a4b8e] font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">
+            Ir al sitio
+          </a>
+        </div>
+
+        <!-- ASISTENCIA TECNICA -->
+        <div class="rounded-2xl p-6 shadow text-white flex flex-col items-center text-center justify-between bg-[#0c6d99] hover:scale-105 transition">
+            <div class="text-6xl mb-4 h-20 flex items-center text-[5rem]  justify-center">◆</div>
+            <h3 class="text-xl font-semibold mb-1">ASISTENCIA TECNICA DE EMPRESAS RECUPERADAS</h3>
+            <p class="text-sm text-white/80 mb-4">Consultoría para cooperativas y empresas recuperadas.</p>
+            <a href="index.html" target="_blank" rel="noopener noreferrer" class="bg-white text-[#0c6d99] font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">
+              Ir al sitio
+            </a>
+          </div>
+
+          <!-- CAPACITACIONES -->
+        <div class="rounded-2xl p-6 shadow text-white flex flex-col items-center text-center justify-between bg-[#5c4554] hover:scale-105 transition">
+            <div class="text-6xl mb-4 h-20 flex items-center justify-center">
+              <div class="w-11 h-11 bg-current">▣</div>
+            </div>
+            <h3 class="text-xl font-semibold mb-1">CAPACITACIONES </h3>
+            <p class="text-sm text-white/80 mb-4">Primer escala: Profundiza conocimientos en Diseño de productos.</p>
+            <a href="index.html" target="_blank" rel="noopener noreferrer" class="bg-white text-[#5c4554] font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">
+              Ir al sitio
+            </a>
+          </div>
+
+          <!-- PROYECTO LLAVE EN MANO -->
+        <div class="rounded-2xl p-6 shadow text-white flex flex-col items-center text-center justify-between bg-[#80142f] hover:scale-105 transition">
+            <div class="text-6xl mb-4 h-20 flex items-center justify-center">▶</div>
+            <h3 class="text-xl font-semibold mb-1">PROYECTO LLAVE EN MANO</h3>
+            <p class="text-sm text-white/80 mb-4">Diseñados, personalizados y ejecutables para quien lo solicite  .</p>
+            <a href="branding.html" target="_blank" rel="noopener noreferrer" class="bg-white text-[#80142f] font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">
+              Ir al sitio
+            </a>
+          </div>
+
+      </div>
+    </section>
+
+    <!-- Sobre HUB -->
+    <section id="sobre" class="py-20 px-6 bg-[#f0eee8] text-center">
+      <h2 class="text-3xl font-semibold mb-6">Sobre el HUB</h2>
+      <p class="max-w-3xl mx-auto text-lg">
+        El HUB de INCUBACION de DISEÑO es un ecosistema de unidades ejecutoras y de negocios que interaccionan en comunidad para transformar ideas en emprendimientos creativos y estratégicos dedicada a acompañar a personas emprendedoras a través del diagnostico, diseño, educación, coaching financiero y la innovación. Creemos en la colaboración, el propósito y el desarrollo integral.
+      </p>
+    </section>
+
+    <!-- Comunidad -->
+    <section id="comunidad" class="py-20 px-6 bg-[#a2263f] text-center">
+      <h2 class="text-3xl font-semibold mb-6 text-white">Sumate al HUB</h2>
+      <p class="max-w-xl mx-auto mb-6 text-lg text-white">
+        Recibí recursos y novedades sobre nuestro HUB y el ecosistema emprendedor de Diseño.
+      </p>
+      <div class="flex justify-center flex-wrap gap-2">
+        <input
+          type="email"
+          placeholder="Tu correo electrónico"
+          class="px-4 py-2 rounded-l-xl border border-gray-300"
+        />
+        <button class="bg-[#2D4C7A] text-white px-4 py-2 rounded-r-xl hover:bg-[#1f3556] transition">
+          Suscribirme
+        </button>
+      </div>
+    </section>
+
+<!-- Footer -->
+<footer class="bg-[#9676d8] text-white py-6 text-center font-bold">
+  <div class="flex justify-center items-center gap-6 mb-4 flex-wrap">
+    <img src="./images/logo-unla.png" alt="Logo UNLa" class="w-16 sm:w-20 h-auto" />
+    <img src="./images/logo-bloms.png" alt="Blöms Consultora" class="w-16 sm:w-20 h-auto" />
+  </div>
+
+  <p class="mb-2">© 2025 HUB DI UNLa | Consultora Blöms</p>
+
+  <p>
+    2023 <a href="#" class="underline hover:text-white">HUB DE INCUBACION</a>, Diseño WEB
+    <a href="BLÖMS.html" target="_blank" class="underline hover:text-white">BLÖMS</a>, Design concept
+    <a href="https://bloms.ar" target="_blank" class="underline hover:text-white">BLÖMS Consultora</a>
+  </p>
+</footer>
+
+
+    <!-- Footer -->
+    <footer class="bg-[#9676d8] text-white py-6 text-center font-bold">
+        <img src="./images/logo-unla.png" alt="Logo UNLa" style="max-width: 80px;">
+        <p>© 2025 HUB DI UNLa | Consultora Blöms</p>
+        <img src="./images/logo-bloms.png" alt="Blöms Consultora" style="max-width: 80px;">
+      <p>
+        2023 <a href="#" class="underline hover:text-white">HUB DE INCUBACION</a>, Diseño WEB <a href="BLÖMS.html" target="_blank" class="underline hover:text-white">BLÖMS</a>, Design concept <a href="https://bloms.ar" target="_blank" class="underline hover:text-white">BLÖMS Consultora</a>
+      </p>
+    </footer>
+  </body>
+</html>

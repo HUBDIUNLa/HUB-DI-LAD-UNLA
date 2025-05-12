@@ -1,0 +1,47 @@
+.navbar {
+    background-color:var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    font-family: Montserrat;
+        
+}
+
+.brand {
+    width: 40px;
+    height: auto;
+
+}
+
+
+.nav-title {
+    font-size: 3rem;
+    text-align: center;
+    max-width: 400px;
+    background-color:white;
+    border: 1px solid white;
+
+}
+
+.nav-button {
+    border: 1px solid var(--tan-color);
+    background-color: var(--tan-color) ;
+    color: white;
+    padding: 0.75em 1em;
+    border-radius: 20px;
+    width: fit-content;
+    transition-duration: 300ms;
+
+
+}
+
+.nav-button:hover {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--black-color);
+    border: 1px solid var(--black-color);
+    scale: 1.05;
+    box-shadow: 5px;
+
+}
+    

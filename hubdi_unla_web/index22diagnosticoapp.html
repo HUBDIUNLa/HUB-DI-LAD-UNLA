@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUB DI UNLa - Diagnóstico de Diseño</title>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FAF5FF;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: #1D3B6D;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            max-width: 200px;
+            margin-bottom: 10px;
+            border-radius: 12px; /* esto lo redondea totalmente */
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px;
+            background: white;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+        }
+        h2, h3 {
+            color: #6A1B9A;
+        }
+        .preview-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .preview {
+            max-width: 100%;
+            height: auto;
+            display: none;
+            border-radius: 15px;
+        }
+        label {
+            display: block;
+            margin-top: 25px;
+            font-weight: bold;
+            color: #6A1B9A;
+            font-size: 1.1em;
+        }
+        select, textarea {
+            width: 100%;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 12px;
+            border: 1px solid #ccc;
+            background: #F3E5F5;
+            font-size: 16px;
+            resize: vertical;
+        }
+        button {
+            background-color: #1D3B6D ;
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 10px;
+            margin-top: 30px;
+            transition: background 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: #6A1B9A;
+            transform: scale(1.05);
+        }
+        .hidden {
+            display: none;
+        }
+        .result {
+            background: #EDE7F6;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #6A1B9A;
+            color: white;
+            margin-top: 50px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html"> <!-- Reemplaza URL_DE_TU_DESTINO con la página que deseas -->
+            <img src="./images/logo-hubdi-rectangular.png" alt="Logo HUB DI UNLa" class="logo">
+        </a>
+        <h1>HUB DI UNLa</h1>
+        <p style="font-size: 1.5em; margin-top: 10px;">Diseño, Diagnóstico e Incubación</p>
+    </header>
+   
+
+    <div class="container">
+        <h2>Subí una imagen de tu producto</h2>
+        <input type="file" accept="image/*" id="imageUpload" onchange="previewImage(event)">
+        <div class="preview-container">
+            <img id="imagePreview" class="preview">
+        </div>
+
+        <h2>Responde las siguientes preguntas</h2>
+        <button onclick="startDiagnosis()">Iniciar Diagnóstico</button>
+
+        <form id="diagnosisForm" class="hidden" onsubmit="showResults(event)">
+            <label>Tipo de Producto</label>
+            <select id="tipoProducto" required>
+                <option value="">Seleccionar</option>
+                <option value="Familia">Familia</option>
+                <option value="Línea">Línea</option>
+                <option value="Serie">Serie</option>
+                <option value="Cápsula">Cápsula</option>
+                <option value="Único">Único</option>
+            </select>
+
+            <label>Condicionantes y Limitantes de Diseño</label>
+            <textarea id="condicionantes" required placeholder="Describe las decisiones y restricciones de diseño"></textarea>
+
+            <label>Requisitos Semánticos y Sintácticos</label>
+            <textarea id="requisitos" required placeholder="Define los requisitos del producto"></textarea>
+
+            <label>Interfaces del Producto y UX</label>
+            <textarea id="interfaces" required placeholder="Describe las interfaces y la experiencia de usuario"></textarea>
+
+            <label>Evaluación de Costos y Materiales</label>
+            <textarea id="costos" required placeholder="Analiza costos, optimización y materiales"></textarea>
+
+            <label>Obsolescencia</label>
+            <select id="obsolescencia" required>
+                <option value="">Seleccionar</option>
+                <option value="Percibida">Percibida</option>
+                <option value="Programada">Programada</option>
+                <option value="Real">Real</option>
+            </select>
+
+            <button type="submit">Ver Resumen</button>
+        </form>
+
+        <div id="result" class="result hidden"></div>
+    </div>
+
+    <!-- Footer -->
+<footer class="bg-[#9676d8] text-white py-6 text-center font-bold">
+    <div class="flex justify-center items-center gap-6 mb-4 flex-wrap">
+      <img src="./images/logo-unla.png" alt="Logo UNLa" class="w-16 sm:w-20 h-auto" />
+      <img src="./images/logo-bloms.png" alt="Blöms Consultora" class="w-16 sm:w-20 h-auto" />
+    </div>
+  
+    <p class="mb-2">© 2025 HUB DI UNLa | Consultora Blöms</p>
+  
+    <p>
+      2023 <a href="#" class="underline hover:text-white">HUB DE INCUBACION</a>, Diseño WEB
+      <a href="BLÖMS.html" target="_blank" class="underline hover:text-white">BLÖMS</a>, Design concept
+      <a href="https://bloms.ar" target="_blank" class="underline hover:text-white">BLÖMS Consultora</a>
+    </p>
+  </footer>
+
+    <script>
+        function previewImage(event) {
+            const image = document.getElementById('imagePreview');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            image.style.display = 'block';
+        }
+
+        function startDiagnosis() {
+            document.getElementById('diagnosisForm').classList.remove('hidden');
+        }
+
+        function showResults(event) {
+            event.preventDefault();
+
+            const tipo = document.getElementById('tipoProducto').value;
+            const condicionantes = document.getElementById('condicionantes').value;
+            const requisitos = document.getElementById('requisitos').value;
+            const interfaces = document.getElementById('interfaces').value;
+            const costos = document.getElementById('costos').value;
+            const obsolescencia = document.getElementById('obsolescencia').value;
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <h3>Resumen del Diagnóstico</h3>
+                <p><strong>Tipo de Producto:</strong> ${tipo}</p>
+                <p><strong>Condicionantes:</strong> ${condicionantes}</p>
+                <p><strong>Requisitos:</strong> ${requisitos}</p>
+                <p><strong>Interfaces y UX:</strong> ${interfaces}</p>
+                <p><strong>Costos y Materiales:</strong> ${costos}</p>
+                <p><strong>Obsolescencia:</strong> ${obsolescencia}</p>
+            `;
+            resultDiv.classList.remove('hidden');
+        }
+    </script>
+
+    
+
+</body>
+</html>
