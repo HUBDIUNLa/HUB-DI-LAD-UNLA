@@ -74,7 +74,7 @@
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           sessionStorage.setItem('usuario', JSON.stringify(docSnap.data()));
-          window.location.href = "cursos.html";
+          window.location.href = "cursoshub.html";
         } else {
           alert('Perfil no encontrado');
         }
