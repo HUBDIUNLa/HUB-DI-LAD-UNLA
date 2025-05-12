@@ -50,6 +50,48 @@
 
 <body class="bg-berenjena text-gray-800 text-center m-0 p-0">
 
+  <!-- NAV RESPONSIVE CON MENÚ DESPLEGABLE -->
+
+<nav class="fixed top-0 left-0 right-0 bg-[#3e2d4f] text-white shadow-md z-50 px-6 py-3 flex items-center justify-between">
+  <div class="flex items-center gap-2 text-lg sm:text-xl font text-white">
+    
+    <!-- Logo LAD -->
+    <a href="https://www.unla.edu.ar/laboratorio-de-diseno-lad" target="_blank" rel="noopener noreferrer" class="hover:underline">
+      <img src="./images/LAD-logo chico.png" alt="LAD Logo" class="h-10 sm:h-12 md:h-14 w-auto" />
+    </a>
+
+    <!-- Logo UNLa -->
+    <a href="https://www.unla.edu.ar" target="_blank" rel="noopener noreferrer" class="hover:underline">
+      <img src="./images/UNLA RECTANGULAR GRANATE.jpg" alt="UNLa Logo" class="h-10 sm:h-12 md:h-14 w-auto" />
+    </a>
+
+    <!-- Título -->
+    <span>HUB INCUBACION DE DISEÑO</span>
+  </div>
+
+ 
+    <!-- Botón hamburguesa visible solo en sm y md -->
+    <div class="lg:hidden">
+      <button id="menu-toggle" class="text-white text-3xl focus:outline-none">
+        <span id="menu-icon">&#9776;</span>
+      </button>
+    </div>
+  
+    <!-- Menú visible en LG y desplegable en SM/MD -->
+    <ul id="menu" class="hidden lg:flex lg:flex-row items-start lg:items-center gap-4 text-base font text-white">
+    
+      <li><a href="#sobre" class="block w-full py-1 hover:text-lila">Sobre el HUB</a></li>
+      <li><a href="logincursos.html" target="_blank" rel="noopener noreferrer" class="block w-full py-1 hover:text-lila">Aula Web</a></li>
+      <li><a href="#estudios" class="block w-full py-1 hover:text-lila">Ecosistema</a></li>
+      <li>
+        <a href="mailto:incubadoradetifypppunla@gmail.com?subject=Consulta%20sobre%20la%20incubadora" class="block w-full py-1 hover:text-lila flex items-center space-x-2">
+          <i class="fas fa-envelope"></i>
+          <span>Contacto</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
  <!-- Selector de idioma flotante -->
 
  <!-- Selector de idioma flotante arriba a la derecha -->
@@ -117,21 +159,11 @@
     <a href="./index1incubadora.html" class="w-64 bg-violaceo text-white py-3 px-6 rounded-xl text-lg font-semibold hover:bg-purple-800 transition">
       Incubadora de Diseño
     </a>
-    <a href="./index1branding.html" class="w-64 bg-bordo text-white py-3 px-6 rounded-xl text-lg font-semibold hover:bg-[#7d170e74] transition">
-      Branding y Marketing
-    </a>
+    
     <a href="./index1asistencia.html" class="w-64 bg-celeste text-white py-3 px-6 rounded-xl text-lg font-semibold hover:bg-[#5270d474] transition">
       Asistencia técnica
     </a>
-    <a href="./index1diagnostico.html" class="w-64 bg-azul text-white py-3 px-6 rounded-xl text-lg font-semibold hover:bg-blue-700 transition">
-        Diagnostico
-      </a>
-    <a href="./index1emprendimientos.html" class="w-64 bg-[#1394ad] text-white py-3 px-6 rounded-xl text-lg font-semibold hover:bg-[#7d170e74] transition">
-      Gestion integral de Emprendimientos
-    </a>
-    <a href="./index1producto.html" class="w-64 bg-[#552c5b] text-white py-3 px-6 rounded-xl text-lg font-semibold hover:bg-purple-800 transition">
-        Diseño de Producto
-      </a>
+   
     </div>
   </div>
   
@@ -172,7 +204,39 @@
   </p>
 </footer>
 
- 
+ <!-- JS para abrir/cerrar el menú en móvil -->
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('menu');
+      const icon = document.getElementById('menu-icon');
+  
+      toggle.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('flex');
+        menu.classList.toggle('flex-col');
+        menu.classList.toggle('absolute');
+        menu.classList.toggle('top-full');
+        menu.classList.toggle('left-0');
+        menu.classList.toggle('bg-[#3e2d4f]');
+        menu.classList.toggle('w-full');
+        menu.classList.toggle('p-4');
+        menu.classList.toggle('shadow-md');
+        menu.classList.toggle('z-40');
+  
+        // Cambiar icono
+        if (menu.classList.contains('hidden')) {
+          icon.innerHTML = '&#9776;'; // ☰
+        } else {
+          icon.innerHTML = '&#10005;'; // ✖
+        }
+      });
+    });
+  </script>
+
+  
 
 
 </body>

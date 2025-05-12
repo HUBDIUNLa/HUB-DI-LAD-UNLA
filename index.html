@@ -107,44 +107,54 @@
 <!-- NAV RESPONSIVE CON MENÚ DESPLEGABLE -->
 
 <nav class="fixed top-0 left-0 right-0 bg-[#3e2d4f] text-white shadow-md z-50 px-6 py-3 flex items-center justify-between">
-  <a href="#inicio" class="flex items-center gap-2 text-lg sm:text-xl font text-white hover:underline">
-    <img src="./images/LAD-logo chico.png" alt="LAD Logo" class="h-10 sm:h-12 md:h-14 w-auto" />
-    <li><a href="https://www.unla.edu.ar/laboratorio-de-diseno-lad" target="_blank" rel="noopener noreferrer" class="block w-full py-1 hover:text-lila">LAD</a></li>
-    <img src="./images/UNLA RECTANGULAR GRANATE.jpg" alt="UNLa Logo" class="h-10 sm:h-12 md:h-14 w-auto" />
-    HUB INCUBACION DE DISEÑO INDUSTRIAL
-  </a>
+  <div class="flex items-center gap-2 text-lg sm:text-xl font text-white">
+    
+    <!-- Logo LAD -->
+    <a href="https://www.unla.edu.ar/laboratorio-de-diseno-lad" target="_blank" rel="noopener noreferrer" class="hover:underline">
+      <img src="./images/LAD-logo chico.png" alt="LAD Logo" class="h-10 sm:h-12 md:h-14 w-auto" />
+    </a>
 
-  <!-- Botón hamburguesa visible solo en sm y md -->
-  <div class="lg:hidden">
-    <button id="menu-toggle" class="text-white text-3xl focus:outline-none">
-      <span id="menu-icon">&#9776;</span>
-    </button>
+    <!-- Logo UNLa -->
+    <a href="https://www.unla.edu.ar" target="_blank" rel="noopener noreferrer" class="hover:underline">
+      <img src="./images/UNLA RECTANGULAR GRANATE.jpg" alt="UNLa Logo" class="h-10 sm:h-12 md:h-14 w-auto" />
+    </a>
+
+    <!-- Título -->
+    <span>HUB INCUBACION DE DISEÑO</span>
   </div>
 
-  <!-- Menú visible en LG y desplegable en SM/MD -->
-  <ul id="menu" class="hidden lg:flex lg:flex-row items-start lg:items-center gap-4 text-base font text-white">
+ 
+    <!-- Botón hamburguesa visible solo en sm y md -->
+    <div class="lg:hidden">
+      <button id="menu-toggle" class="text-white text-3xl focus:outline-none">
+        <span id="menu-icon">&#9776;</span>
+      </button>
+    </div>
   
-    <li><a href="#sobre" class="block w-full py-1 hover:text-lila">Sobre el HUB</a></li>
-    <li><a href="logincursos.html" target="_blank" rel="noopener noreferrer" class="block w-full py-1 hover:text-lila">Cursos</a></li>
-    <li><a href="#estudios" class="block w-full py-1 hover:text-lila">Ecosistema</a></li>
-    <li>
-      <a href="mailto:incubadoradetifypppunla@gmail.com?subject=Consulta%20sobre%20la%20incubadora" class="block w-full py-1 hover:text-lila flex items-center space-x-2">
-        <i class="fas fa-envelope"></i>
-        <span>Contacto</span>
-      </a>
-    </li>
-    <li class="flex flex-row gap-2 mt-2 lg:mt-0">
-      <a href="index.html" class="flex items-center gap-1 bg-white text-[#80142f] text-sm px-2 py-1 rounded-md shadow hover:bg-gray-100">
-        <img src="./images/ar.png" alt="Español" class="w-4 h-4 rounded-sm" />
-      </a>
-      <a href="indexen.html" class="flex items-center gap-1 bg-white text-[#80142f] text-sm px-2 py-1 rounded-md shadow hover:bg-gray-100">
-        <img src="./images/us.png" alt="English" class="w-4 h-4 rounded-sm" />
-      </a>
-    </li>
-  </ul>
-</nav>
-
-
+    <!-- Menú visible en LG y desplegable en SM/MD -->
+    <ul id="menu" class="hidden lg:flex lg:flex-row items-start lg:items-center gap-4 text-base font text-white">
+    
+      <li><a href="#sobre" class="block w-full py-1 hover:text-lila">Sobre el HUB</a></li>
+      <li><a href="logincursos.html" target="_blank" rel="noopener noreferrer" class="block w-full py-1 hover:text-lila">Aula Web</a></li>
+      <li><a href="#estudios" class="block w-full py-1 hover:text-lila">Ecosistema</a></li>
+      <li>
+        <a href="mailto:incubadoradetifypppunla@gmail.com?subject=Consulta%20sobre%20la%20incubadora" class="block w-full py-1 hover:text-lila flex items-center space-x-2">
+          <i class="fas fa-envelope"></i>
+          <span>Contacto</span>
+        </a>
+      </li>
+      <li class="flex flex-row gap-2 mt-2 lg:mt-0">
+        <a href="index.html" class="flex items-center gap-1 bg-white text-[#80142f] text-sm px-2 py-1 rounded-md shadow hover:bg-gray-100">
+          <img src="./images/ar.png" alt="Español" class="w-4 h-4 rounded-sm" />
+        </a>
+        <a href="indexen.html" class="flex items-center gap-1 bg-white text-[#80142f] text-sm px-2 py-1 rounded-md shadow hover:bg-gray-100">
+          <img src="./images/us.png" alt="English" class="w-4 h-4 rounded-sm" />
+        </a>
+      </li>
+    </ul>
+  </nav>
+  
+  
       <!-- HERO con logo de fondo -->
 
       <section
