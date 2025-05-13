@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presupuestador LAD</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function calcularTotal() {
+      let filas = document.querySelectorAll('.item');
+      let total = 0;
+      filas.forEach(fila => {
+        let cantidad = parseFloat(fila.querySelector('.cantidad').value) || 0;
+        let precio = parseFloat(fila.querySelector('.precio').value) || 0;
+        let sinPlano = !fila.querySelector('.plano').checked;
+        let extra = sinPlano ? parseFloat(fila.querySelector('.extra').value) || 0 : 0;
+        let subtotal = (cantidad * precio) + extra;
+        fila.querySelector('.subtotal').innerText = "$ " + subtotal.toFixed(2);
+        total += subtotal;
+      });
+      document.getElementById('totalFinal').innerText = "$ " + total.toFixed(2);
+    }
+
+    function agregarFila() {
+      const template = document.querySelector('.item-template');
+      const clone = template.cloneNode(true);
+      clone.classList.remove('hidden', 'item-template');
+      clone.classList.add('item');
+      document.getElementById('itemsContainer').appendChild(clone);
+    }
+  </script>
+</head>
+<body class="bg-gray-50 p-6">
+  <h1 class="text-2xl font-bold mb-4">Presupuestador Interactivo - LAD</h1>
+  <div id="itemsContainer" class="space-y-4">
+    <div class="item flex flex-wrap gap-2 bg-white p-4 rounded-lg shadow item-template hidden">
+      <select class="servicio border p-2 rounded">
+        <option>Seleccionar servicio</option>
+        <option>Corte Láser</option>
+        <option>Fresado CNC</option>
+        <option>Escaneado 3D</option>
+        <option>Impresión 3D</option>
+        <option>Modelado 3D</option>
+        <option>Confección de plano</option>
+        <option>Router CNC</option>
+      </select>
+      <input type="number" placeholder="Cantidad" class="cantidad w-20 border p-2 rounded" oninput="calcularTotal()" />
+      <input type="number" placeholder="Precio unidad" class="precio w-32 border p-2 rounded" oninput="calcularTotal()" />
+      <input type="number" placeholder="Costo extra sin plano" class="extra w-40 border p-2 rounded" oninput="calcularTotal()" />
+      <label class="flex items-center gap-1">
+        <input type="checkbox" class="plano" onclick="calcularTotal()"> ¿Tiene plano?
+      </label>
+      <div class="subtotal font-semibold text-right w-full">$ 0.00</div>
+    </div>
+  </div>
+
+  <button onclick="agregarFila()" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded shadow">Agregar ítem</button>
+
+  <div class="mt-6 p-4 bg-white rounded shadow">
+    <h2 class="text-xl font-bold mb-2">Resumen</h2>
+    <p class="text-lg">Total estimado: <span id="totalFinal" class="font-bold">$ 0.00</span></p>
+  </div>
+
+  <div class="mt-6 print:hidden">
+    <button onclick="window.print()" class="bg-green-600 text-white px-4 py-2 rounded shadow">Imprimir presupuesto</button>
+  </div>
+</body>
+</html>

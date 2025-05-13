@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presupuestador LAD</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    const materiales = {
+      "chapa 2.0mm - 1x2m": 64527.61,
+      "chapa 2.0mm - 1.245x2.44m": 102150.18,
+      "chapa 2.5mm - 1.245x2.44m": 113161.25,
+      "chapa 3.2mm - 1.5x3m": 206320.50,
+      "chapa 3.2mm - 1.5x6m": 412641.00,
+      "chapa 4.7mm - 1.5x3m": 319883.92,
+      "chapa 6.3mm - 1.5x3m": 428880.42,
+      "PLA bobina 1kg": 8500.00,
+      "MDF 18mm 1.22x2.44m": 29000.00
+    };
+
+    const coefTamanio = { "Chico": 0.2, "Mediano": 0.5, "Grande": 1 };
+    const coefComplejidad = { "Baja": 1, "Media": 1.5, "Alta": 2 };
+    const coefProceso = {
+      "Corte Láser": 1,
+      "Fresado CNC": 1.2,
+      "Escaneado 3D": 1.1,
+      "Impresión 3D": 1.3,
+      "Modelado 3D": 1.4,
+      "Confección de plano": 1.2,
+      "Router CNC": 1.2
+    };
+
+    function calcularTotal() {
+      let filas = document.querySelectorAll('.item');
+      let total = 0;
+      filas.forEach(fila => {
+        let proceso = fila.querySelector('.proceso').value;
+        let material = fila.querySelector('.material').value;
+        let tamanio = fila.querySelector('.tamanio').value;
+        let complejidad = fila.querySelector('.complejidad').value;
+        let sinPlano = !fila.querySelector('.plano').checked;
+        let extra = sinPlano ? 3000 : 0;
+
+        let precioMaterial = materiales[material] || 0;
+        let coefProc = coefProceso[proceso] || 1;
+
+        let subtotal = precioMaterial * coefTamanio[tamanio] * coefComplejidad[complejidad] * coefProc + extra;
+
+        fila.querySelector('.subtotal').innerText = "$ " + subtotal.toFixed(2);
+        total += subtotal;
+      });
+      document.getElementById('totalFinal').innerText = "$ " + total.toFixed(2);
+    }
+
+    function agregarFila() {
+      const template = document.querySelector('.item-template');
+      const clone = template.cloneNode(true);
+      clone.classList.remove('hidden', 'item-template');
+      clone.classList.add('item');
+      document.getElementById('itemsContainer').appendChild(clone);
+    }
+  </script>
+</head>
+<body class="bg-gray-50 p-6">
+  <h1 class="text-2xl font-bold mb-4">Presupuestador Interactivo - LAD</h1>
+
+  <div class="mb-6 p-4 bg-white shadow rounded">
+    <h2 class="font-semibold text-lg mb-2">Definiciones:</h2>
+    <p><strong>Tamaño:</strong> Chico (<=20x20cm), Mediano (<=50x50cm), Grande (>50x50cm)</p>
+    <p><strong>Complejidad:</strong> Baja (simple), Media (intermedia), Alta (múltiples detalles)</p>
+    <p><strong>Extra sin plano:</strong> $3000</p>
+  </div>
+
+  <div id="itemsContainer" class="space-y-4">
+    <div class="item flex flex-wrap gap-2 bg-white p-4 rounded-lg shadow item-template hidden">
+      <label class="flex flex-col">
+        <span class="font-medium">Proceso</span>
+        <select class="proceso border p-2 rounded" onchange="calcularTotal()">
+          <option>Seleccionar</option>
+          <option>Corte Láser</option>
+          <option>Fresado CNC</option>
+          <option>Escaneado 3D</option>
+          <option>Impresión 3D</option>
+          <option>Modelado 3D</option>
+          <option>Confección de plano</option>
+          <option>Router CNC</option>
+        </select>
+      </label>
+
+      <label class="flex flex-col">
+        <span class="font-medium">Material</span>
+        <select class="material border p-2 rounded" onchange="calcularTotal()">
+          <option>Seleccionar</option>
+          <option>chapa 2.0mm - 1x2m</option>
+          <option>chapa 2.0mm - 1.245x2.44m</option>
+          <option>chapa 2.5mm - 1.245x2.44m</option>
+          <option>chapa 3.2mm - 1.5x3m</option>
+          <option>chapa 3.2mm - 1.5x6m</option>
+          <option>chapa 4.7mm - 1.5x3m</option>
+          <option>chapa 6.3mm - 1.5x3m</option>
+          <option>PLA bobina 1kg</option>
+          <option>MDF 18mm 1.22x2.44m</option>
+        </select>
+      </label>
+
+      <label class="flex items-center gap-2">
+        <span class="font-medium">Tamaño</span>
+        <select class="tamanio border p-2 rounded" onchange="calcularTotal()">
+          <option>Chico</option>
+          <option>Mediano</option>
+          <option>Grande</option>
+        </select>
+      </label>
+
+      <label class="flex items-center gap-2">
+        <span class="font-medium">Complejidad</span>
+        <select class="complejidad border p-2 rounded" onchange="calcularTotal()">
+          <option>Baja</option>
+          <option>Media</option>
+          <option>Alta</option>
+        </select>
+      </label>
+
+      <label class="flex items-center gap-1">
+        <input type="checkbox" class="plano" onclick="calcularTotal()"> ¿Tiene plano?
+      </label>
+      <div class="subtotal font-semibold text-right w-full">$ 0.00</div>
+    </div>
+  </div>
+
+  <button onclick="agregarFila()" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded shadow">Agregar ítem</button>
+
+  <div class="mt-6 p-4 bg-white rounded shadow">
+    <h2 class="text-xl font-bold mb-2">Resumen</h2>
+    <p class="text-lg">Total estimado: <span id="totalFinal" class="font-bold">$ 0.00</span></p>
+  </div>
+
+  <div class="mt-6 print:hidden">
+    <button onclick="window.print()" class="bg-green-600 text-white px-4 py-2 rounded shadow">Imprimir presupuesto</button>
+  </div>
+</body>
+</html>

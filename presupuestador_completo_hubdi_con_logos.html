@@ -1,0 +1,483 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presupuestador HUB DI UNLa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+   <!-- Icono -->
+  <link rel="icon" href="favicon_hub_only_rounded.ico" type="image/x-icon" />
+  <link rel="icon" href="images/favicon_hub_only_rounded.ico" type="image/x-icon" />
+
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Fuente Outfit -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            violeta: '#9676d8',
+            morado: '#6A1B9A',
+            fondo: '#FAF5FF',
+            bordo: '#a2263f',
+            celeste: '#0c6d99',
+            azul: '#1D3B6D',
+            berenjena: '#5c4554',
+            bordooscuro: '#552c5b',
+            violaceo: '#6a4b8e',
+            celestonoscuro: '#1394ad',
+            vino: '#80142f',
+            violetagrafito: '#3e2d4f',
+            lila: '#C587C5',
+            violaceoclaro: '#e0d1fa',
+          },
+          fontSize: {
+            '2xl': '1.5rem',
+            '3xl': '1.875rem',
+            '4xl': '2.25rem',
+            '5xl': '3rem',
+            '6xl': '3.75rem',
+          },
+          fontWeight: {
+            normal: 400,
+            medium: 500,
+            bold: 700,
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+
+  <!-- Animaciones -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 1.2s ease-out forwards;
+    }
+
+    .animate-fade-in-delay {
+      animation: fadeIn 1.2s ease-out 0.3s forwards;
+    }
+  </style>
+
+  <!-- Estilos para impresión -->
+
+
+<style>
+@media print {
+  /* Oculta navegación, footer y elementos con clase print:hidden */
+  nav, footer, .print-hidden {
+    display: none !important;
+  }
+
+  /* Muestra elementos específicos solo para impresión */
+  .print-flex {
+    display: flex !important;
+  }
+
+  .print-header {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .logo-impresion {
+    max-height: 80px;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Oculta encabezado de impresión en pantalla */
+@media screen {
+  .print-header {
+    display: none !important;
+  }
+}
+</style>
+
+  
+
+  <script>
+    const materialesPorProceso = {
+      "Corte Láser": ["MDF 3mm", "MDF 6mm", "Acrílico 3mm", "Cartón 2mm", "Chapa 2.0mm - 1x2m", "Chapa 2.0mm - 1.245x2.44m", "Chapa 2.5mm - 1.245x2.44m", "Chapa 3.2mm - 1.5x3m", "Chapa 3.2mm - 1.5x6m", "Chapa 4.7mm - 1.5x3m", "Chapa 6.3mm - 1.5x3m"],
+      "Router CNC": ["MDF 3mm", "MDF 6mm", "Acrílico 3mm", "MDF 18mm", "Fenólico 18mm", "Pino laminado", "Multilaminado"],
+      "Impresión 3D": ["PLA", "ABS", "PETG", "TPU", "Nylon", "Ceramica", "Resina", "Filamento flexible"],
+      "Escaneado 3D": ["-"],
+      "Modelado 3D": ["-"],
+      "Confección de plano": ["-"],
+      "Confección de archivo": ["-"],
+    };
+
+    const coefTamanio = { "Chico": 0.2, "Mediano": 0.5, "Grande": 1 };
+    const coefComplejidad = { "Baja": 1, "Media": 1.5, "Alta": 2 };
+    const coefProceso = {
+      "Corte Láser": 1,
+      "Escaneado 3D": 1.1,
+      "Impresión 3D": 1.3,
+      "Modelado 3D": 1.4,
+      "Confección de plano": 1.2,
+      "Confección de archivo": 1.2,
+      "Router CNC": 1.2
+    };
+    const precioMaterial = {
+      "MDF 3mm": 25000,
+      "MDF 6mm": 35000,
+      "Acrílico 3mm": 42000,
+      "Cartón 2mm": 8000,
+      "MDF 18mm": 60000,
+      "Fenólico 18mm": 100000,
+      "Pino laminado": 85000,
+      "Multilaminado": 95000,
+      "PLA": 8500,
+      "ABS": 9200,
+      "PETG": 9700,
+      "TPU": 11000,
+      "Nylon": 12500,
+      "Aluminio": 15000,
+      "Madera dura": 9500,
+      "Plástico técnico": 8800,
+      "-": 60000,
+      "Chapa 2.0mm - 1x2m": 64527.61,
+      "Chapa 2.0mm - 1.245x2.44m": 102150.18,
+      "Chapa 2.5mm - 1.245x2.44m": 113161.25,
+      "Chapa 3.2mm - 1.5x3m": 206320.50,
+      "Chapa 3.2mm - 1.5x6m": 412641.00,
+      "Chapa 4.7mm - 1.5x3m": 319883.92,
+      "Chapa 6.3mm - 1.5x3m": 428880.42,
+
+    };
+
+    function actualizarMateriales(selectProceso) {
+      const fila = selectProceso.closest('.item');
+      const materialSelect = fila.querySelector('.material');
+      const materiales = materialesPorProceso[selectProceso.value] || [];
+      materialSelect.innerHTML = "";
+      materiales.forEach(mat => {
+        const option = document.createElement("option");
+        option.value = mat;
+        option.textContent = mat;
+        materialSelect.appendChild(option);
+      });
+      calcularTotal();
+    }
+
+    function calcularTotal() {
+  const filas = document.querySelectorAll('.item');
+  let total = 0;
+  let resumenBody = document.getElementById("resumenBody");
+  resumenBody.innerHTML = "";
+
+  filas.forEach((fila, index) => {
+    const proceso = fila.querySelector('.proceso').value;
+    const material = fila.querySelector('.material').value;
+    const tamanio = fila.querySelector('.tamanio').value;
+    const complejidad = fila.querySelector('.complejidad').value;
+    const sinPlano = !fila.querySelector('.plano').checked;
+    const extra = sinPlano ? 60000 : 0;
+
+    const precioBase = precioMaterial[material] || 0;
+    const precio = precioBase * coefTamanio[tamanio] * coefComplejidad[complejidad] * (coefProceso[proceso] || 1) + extra;
+    total += precio;
+
+    // Mostrar subtotal en la misma fila
+    const subtotalDiv = fila.querySelector('.subtotal');
+    if (subtotalDiv) {
+      subtotalDiv.textContent = `$ ${precio.toFixed(2)}`;
+    }
+
+    // Agregar al resumen
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td class="border px-2 py-1 text-center"><i class="fas fa-${iconoProceso(proceso)}"></i> ${proceso}</td>
+      <td class="border px-2 py-1 text-center">${material}</td>
+      <td class="border px-2 py-1 text-center">${tamanio}</td>
+      <td class="border px-2 py-1 text-center">${complejidad}</td>
+      <td class="border px-2 py-1 text-center">${sinPlano ? "No" : "Sí"}</td>
+      <td class="border px-2 py-1 text-right">$ ${precio.toFixed(2)}</td>`;
+    resumenBody.appendChild(row);
+  });
+
+  document.getElementById("totalFinal").textContent = "$ " + total.toFixed(2);
+}
+
+
+    function iconoProceso(proceso) {
+      return {
+        "Corte Láser": "cut",
+        "Escaneado 3D": "camera",
+        "Impresión 3D": "cube",
+        "Modelado 3D": "project-diagram",
+        "Confección de plano": "drafting-compass",
+        "Confección de archivo": "file-alt",
+        "Router CNC": "tree"
+      }[proceso] || "tools";
+    }
+
+    function agregarFila() {
+      const container = document.getElementById("itemsContainer");
+      const div = document.createElement("div");
+      div.className = "item bg-white p-4 rounded shadow mb-4 grid gap-2 sm:grid-cols-3 md:grid-cols-6";
+      div.innerHTML = `
+        <select class="proceso border p-2 rounded" onchange="actualizarMateriales(this)">
+          <option disabled selected>Proceso</option>
+          ${Object.keys(materialesPorProceso).map(p => `<option>${p}</option>`).join("")}
+        </select>
+        <select class="material border p-2 rounded"></select>
+        <select class="tamanio border p-2 rounded" onchange="calcularTotal()">
+          <option>Chico</option><option>Mediano</option><option>Grande</option>
+        </select>
+        <select class="complejidad border p-2 rounded" onchange="calcularTotal()">
+          <option>Baja</option><option>Media</option><option>Alta</option>
+        </select>
+        <label class="flex items-center"><input type="checkbox" class="plano mr-2" onchange="calcularTotal()">¿Tiene plano o archivo listo para el servicio productivo?</label>
+        <div class="subtotal text-right font-semibold">$ 0.00</div>`;
+      container.appendChild(div);
+      calcularTotal();
+    }
+
+  // Función para eliminar la última fila
+  function sacarFila() {
+    const container = document.getElementById("itemsContainer");
+    const items = container.getElementsByClassName("item");
+    if (items.length > 0) {
+      container.removeChild(items[items.length - 1]);
+      calcularTotal(); // actualiza el resumen
+    }
+  }
+
+
+    window.onload = () => agregarFila();
+  </script>
+</head>
+
+  <body class="bg-[#f9f7f4] text-[#222] font-sans pt-20"> <!-- Compensa altura del menú fijo -->
+
+    
+
+    <!-- Encabezado para impresión -->
+<div class="print-header hidden print:flex justify-between items-center px-6 py-4 border-b border-gray-300">
+  <img src="./images/LAD-logo chico.png" alt="Logo LAD" class="h-12 w-auto" />
+  <h1 class="text-center text-xl font-semibold">Presupuesto HUB DI UNLa</h1>
+  <img src="./images/UNLA RECTANGULAR GRANATE.jpg" alt="Logo UNLa" class="h-12 w-auto" />
+</div>
+
+<!-- NUEVA PÁGINA: UNIDADES EJECUTORAS HUB DI UNLa -->
+
+<!-- NAV RESPONSIVE CON MENÚ DESPLEGABLE -->
+
+<nav class="fixed top-0 left-0 right-0 bg-[#3e2d4f] text-white shadow-md z-50 px-6 py-3 flex items-center justify-between">
+  <div class="flex items-center gap-2 text-lg sm:text-xl font text-white">
+    
+    <!-- Logo LAD -->
+    <a href="https://www.unla.edu.ar/laboratorio-de-diseno-lad" target="_blank" rel="noopener noreferrer" class="hover:underline">
+      <img src="./images/LAD-logo chico.png" alt="LAD Logo" class="h-10 sm:h-12 md:h-14 w-auto object-contain" />
+    </a>
+
+    <!-- Logo UNLa -->
+    <a href="https://www.unla.edu.ar" target="_blank" rel="noopener noreferrer" class="hover:underline">
+      <img src="./images/UNLA RECTANGULAR GRANATE.jpg" alt="UNLa Logo" class="h-10 sm:h-12 md:h-14 w-auto object-contain" />
+      
+    </a>
+
+    <!-- Título -->
+      <a href="index.html#hub" class="block w-full py-1 hover:text-lila">HUB INCUBACION DE DISEÑO INDUSTRIAL</a>
+    
+  </div>
+  
+    <!-- Botón hamburguesa visible solo en sm y md -->
+    <div class="lg:hidden">
+      <button id="menu-toggle" class="text-white text-3xl focus:outline-none">
+        <span id="menu-icon">&#9776;</span>
+      </button>
+    </div>
+  
+    <!-- Menú visible en LG y desplegable en SM/MD -->
+    <ul id="menu" class="hidden lg:flex lg:flex-row items-start lg:items-center gap-4 text-base font text-white">
+    
+      <li><a href="#sobre" class="block w-full py-1 hover:text-lila">Sobre el HUB</a></li>
+      <li><a href="logincursos.html" target="_blank" rel="noopener noreferrer" class="block w-full py-1 hover:text-lila">Aula Web</a></li>
+      <li><a href="#estudios" class="block w-full py-1 hover:text-lila">Ecosistemas</a></li>
+      <li>
+        <a href="mailto:incubadoradetifypppunla@gmail.com?subject=Consulta%20sobre%20la%20incubadora" class="block w-full py-1 hover:text-lila flex items-center space-x-2">
+          <i class="fas fa-envelope"></i>
+          <span>Contacto</span>
+        </a>
+      </li>
+      <li class="flex flex-row gap-2 mt-2 lg:mt-0">
+        <a href="index.html" class="flex items-center gap-1 bg-white text-[#80142f] text-sm px-2 py-1 rounded-md shadow hover:bg-gray-100">
+          <img src="./images/ar.png" alt="Español" class="w-4 h-4 rounded-sm" />
+        </a>
+        <a href="indexen.html" class="flex items-center gap-1 bg-white text-[#80142f] text-sm px-2 py-1 rounded-md shadow hover:bg-gray-100">
+          <img src="./images/us.png" alt="English" class="w-4 h-4 rounded-sm" />
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+<br>
+<br>
+<br>
+
+ <div class="print-header print:flex hidden justify-center">
+  <img src="images/Recurso 4Bfondoblanco.png" alt="Logo HUB" class="logo-impresion" />
+</div>
+
+  <h1 class="text-3xl font-bold mb-6 text-center">Presupuestador Interactivo HUB DI UNLa</h1>
+
+  <div class="max-w-7xl mx-auto">
+  <div class="mb-6 p-4 bg-white shadow rounded">
+    <h2 class="font-semibold text-lg mb-2">Instrucciones:</h2>
+    <p>1. Selecciona el proceso y material deseado.</p>
+    <p>2. Completa los campos de tamaño, complejidad y si tiene plano.</p>
+    <p>3. Haz clic en "Agregar ítem" para añadir más servicios.</p>
+    <p>4. Revisa el resumen de presupuesto al final.</p>
+    <p>5. Imprime el presupuesto si es necesario.</p>
+    <p>6. Para eliminar un ítem, simplemente bórralo del formulario.</p>
+    <p>7. Si necesitas ayuda, contacta a nuestro equipo.</p>
+    <p>8. Recuerda que los precios son estimativos y pueden variar.</p>
+    <p>9. Para consultas específicas, envía un correo a <a href="mailto:incubadoradetifypppunla@gmail.com">
+      </a>
+      </p>
+    <p>10. ¡Gracias por elegir HUB DI UNLa!</p>
+  </div>
+  
+
+  <div class="mb-6 p-4 bg-white shadow rounded">
+    <h2 class="font-semibold text-lg mb-2">Definiciones:</h2>
+    <p><strong>Tamaño:</strong> Chico (hasta =20x20cm), Mediano (hasta =50x50cm), Grande (Mayor a 50x50cm)</p>
+    <p><strong>Complejidad:</strong> Baja (simple), Media (intermedia), Alta (múltiples detalles)</p>
+    <p><strong>Extra sin archivo o plano:</strong> $60000</p>
+  </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto">
+  <div id="itemsContainer"></div>
+
+  <div class="flex gap-4 mt-4">
+    <button onclick="agregarFila()" class="bg-violeta text-white px-4 py-2 rounded shadow w-32">Agregar ítem</button>
+    <button onclick="sacarFila()" class="bg-violeta text-white px-4 py-2 rounded shadow w-32">Sacar ítem</button>
+  </div>
+</div>
+
+    
+
+<div class="max-w-7xl mx-auto">
+<div id="resumen" class="mt-10 p-4 bg-white rounded shadow">
+      <h2 class="text-2xl font-bold mb-4">Resumen de presupuesto</h2>
+      <table class="table-auto w-full border border-gray-300 text-sm">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border px-2 py-1">Proceso</th>
+            <th class="border px-2 py-1">Material</th>
+            <th class="border px-2 py-1">Tamaño</th>
+            <th class="border px-2 py-1">Complejidad</th>
+            <th class="border px-2 py-1">Archivo o plano listo para corte o ejecución</th>
+            <th class="border px-2 py-1 text-right">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="resumenBody"></tbody>
+        <tfoot>
+          <tr class="font-bold">
+            <td colspan="5" class="text-right px-2 py-2">Total:</td>
+            <td class="text-right px-2 py-2" id="totalFinal">$ 0.00</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    </div>
+
+    <br>
+
+     <div class="print-header print:flex hidden justify-end pr-4 gap-2 items-end">
+  <div class="flex flex-col text-right">
+    <h2 class="font-semibold text-lg mb-0">Firma autorizada</h2>
+    <h3 class="font-semibold text-lg mb-0">HUB DI UNLa</h3>
+  </div>
+  <img src="images/firmahubpdf.png" alt="Logo HUB" class="logo-impresion" />
+</div>
+
+ 
+    <div class="mt-6 print:hidden text-center">
+      <button onclick="window.print()" class="bg-vino text-white px-6 py-2 rounded shadow">Imprimir presupuesto</button>
+    </div>
+  </div>
+
+<footer class="bg-[#3e2d4f] text-white text-center py-6 mt-20 print:hidden">
+  <div class="flex justify-center items-center gap-6 mb-4">
+    <img src="images/Recurso 4Bfondoblanco.png" alt="Logo HUB" class="h-10" />
+    <img src="images/LAD-logo chico.png" alt="Logo LAD" class="h-10" />
+    <img src="images/UNLA RECTANGULAR GRANATE.jpg" alt="Logo UNLa" class="h-10" />
+  </div>
+  <p class="text-sm">© 2025 HUB DI UNLa</p>
+</footer>
+
+<!-- JS para abrir/cerrar el menú en móvil -->
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('menu');
+      const icon = document.getElementById('menu-icon');
+  
+      toggle.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('flex');
+        menu.classList.toggle('flex-col');
+        menu.classList.toggle('absolute');
+        menu.classList.toggle('top-full');
+        menu.classList.toggle('left-0');
+        menu.classList.toggle('bg-[#3e2d4f]');
+        menu.classList.toggle('w-full');
+        menu.classList.toggle('p-4');
+        menu.classList.toggle('shadow-md');
+        menu.classList.toggle('z-40');
+  
+        // Cambiar icono
+        if (menu.classList.contains('hidden')) {
+          icon.innerHTML = '&#9776;'; // ☰
+        } else {
+          icon.innerHTML = '&#10005;'; // ✖
+        }
+      });
+    });
+  </script>
+
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://kit.fontawesome.com/6b2cd6c162.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Presupuestador</title>
+</head>
+<body class="bg-gray-100 text-gray-900">
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-4 text-center">Presupuestador de Servicios</h1>
+    <div id="formulario" class="space-y-4"></div>
+    <button onclick="agregarFila()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+      Agregar Ítem
+    </button>
+    <button onclick="calcularTotal()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+      Calcular Total
+    </button>
+
+    <div class="mt-8">
+      <h2 class="text-2xl font-bold mb-2">Resumen</h2>
+      <table class="min-w-full bg-white">
+        <thead>
+          <tr>
+            <th class="py-2">Proceso</th>
+            <th class="py-2">Material</th>
+            <th class="py-2">Tamaño</th>
+            <th class="py-2">Complejidad</th>
+            <th class="py-2">Plano</th>
+            <th class="py-2">Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="resumenBody"></tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5" class="text-right font-bold py-2 pr-4">Total:</td>
+            <td id="totalFinal" class="text-right font-bold py-2">$ 0.00</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const precioMaterial = {
+      PLA: 1000,
+      PETG: 1200,
+      ABS: 1500,
+      FLEX: 1800,
+    };
+
+    const coefTamanio = {
+      Chico: 1,
+      Mediano: 1.5,
+      Grande: 2,
+    };
+
+    const coefComplejidad = {
+      Baja: 1,
+      Media: 1.2,
+      Alta: 1.5,
+    };
+
+    const coefProceso = {
+      Impresion3D: 1,
+      CorteLaser: 0.8,
+      Fresado: 1.3,
+    };
+
+    function iconoProceso(proceso) {
+      switch (proceso) {
+        case "Impresion3D": return "cube";
+        case "CorteLaser": return "burn";
+        case "Fresado": return "cogs";
+        default: return "tools";
+      }
+    }
+
+    function agregarFila() {
+      const formulario = document.getElementById("formulario");
+      const div = document.createElement("div");
+      div.classList.add("item", "p-4", "bg-white", "rounded", "shadow", "grid", "grid-cols-6", "gap-2", "items-center");
+
+      div.innerHTML = `
+        <select class="proceso border p-2 rounded col-span-1">
+          <option value="Impresion3D">Impresión 3D</option>
+          <option value="CorteLaser">Corte Láser</option>
+          <option value="Fresado">Fresado</option>
+        </select>
+        <select class="material border p-2 rounded col-span-1">
+          <option value="PLA">PLA</option>
+          <option value="PETG">PETG</option>
+          <option value="ABS">ABS</option>
+          <option value="FLEX">FLEX</option>
+        </select>
+        <select class="tamanio border p-2 rounded col-span-1">
+          <option value="Chico">Chico</option>
+          <option value="Mediano">Mediano</option>
+          <option value="Grande">Grande</option>
+        </select>
+        <select class="complejidad border p-2 rounded col-span-1">
+          <option value="Baja">Baja</option>
+          <option value="Media">Media</option>
+          <option value="Alta">Alta</option>
+        </select>
+        <label class="col-span-1 flex items-center space-x-2">
+          <input type="checkbox" class="plano" checked />
+          <span>Con plano</span>
+        </label>
+        <div class="subtotal text-right font-semibold col-span-1">$ 0.00</div>
+      `;
+      formulario.appendChild(div);
+    }
+
+    function calcularTotal() {
+      const filas = document.querySelectorAll('.item');
+      let total = 0;
+      let resumenBody = document.getElementById("resumenBody");
+      resumenBody.innerHTML = "";
+
+      filas.forEach((fila) => {
+        const proceso = fila.querySelector('.proceso').value;
+        const material = fila.querySelector('.material').value;
+        const tamanio = fila.querySelector('.tamanio').value;
+        const complejidad = fila.querySelector('.complejidad').value;
+        const sinPlano = !fila.querySelector('.plano').checked;
+        const extra = sinPlano ? 3000 : 0;
+
+        const precioBase = precioMaterial[material] || 0;
+        const precio = precioBase * coefTamanio[tamanio] * coefComplejidad[complejidad] * (coefProceso[proceso] || 1) + extra;
+        total += precio;
+
+        const subtotalDiv = fila.querySelector('.subtotal');
+        if (subtotalDiv) {
+          subtotalDiv.textContent = `$ ${precio.toFixed(2)}`;
+        }
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td class="border px-2 py-1 text-center"><i class="fas fa-${iconoProceso(proceso)}"></i> ${proceso}</td>
+          <td class="border px-2 py-1 text-center">${material}</td>
+          <td class="border px-2 py-1 text-center">${tamanio}</td>
+          <td class="border px-2 py-1 text-center">${complejidad}</td>
+          <td class="border px-2 py-1 text-center">${sinPlano ? "No" : "Sí"}</td>
+          <td class="border px-2 py-1 text-right">$ ${precio.toFixed(2)}</td>`;
+        resumenBody.appendChild(row);
+      });
+
+      document.getElementById("totalFinal").textContent = "$ " + total.toFixed(2);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Presupuestador Final HUB</title>
+  <style>
+    @media print {
+      nav, footer, .print\:hidden {
+        display: none !important;
+      }
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      .print\:flex {
+        display: flex !important;
+      }
+      .logo-impresion {
+        max-height: 80px;
+      }
+      .print-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="print-header print:flex hidden">
+    <img src="images/Recurso 4Bfondoblanco.png" alt="Logo HUB" class="logo-impresion" />
+    <img src="images/LAD-logo chico.png" alt="Logo LAD" class="logo-impresion" />
+    <img src="images/UNLA RECTANGULAR GRANATE.jpg" alt="Logo UNLa" class="logo-impresion" />
+  </div>
+
+  <div id="resumen" class="mt-10 p-4 bg-white rounded shadow">
+    <h2>Resumen de presupuesto</h2>
+    <!-- tabla aquí -->
+  </div>
+</body>
+</html>
