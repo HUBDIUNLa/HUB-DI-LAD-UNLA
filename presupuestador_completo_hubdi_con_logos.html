@@ -130,6 +130,7 @@
 }
 </style>
 
+
   <script>
   const materialesPorProceso = {
     "Corte Láser": ["MDF 3mm", "MDF 6mm", "Acrílico 3mm", "Cartón 2mm", "Chapa 2.0mm - 1x2m", "Chapa 2.0mm - 1.245x2.44m", "Chapa 2.5mm - 1.245x2.44m", "Chapa 3.2mm - 1.5x3m", "Chapa 3.2mm - 1.5x6m", "Chapa 4.7mm - 1.5x3m", "Chapa 6.3mm - 1.5x3m"],
@@ -350,6 +351,8 @@ document.getElementById('generarResumen').addEventListener('click', () => {
 
   
 </head>
+
+
 
   <body class="bg-[#f9f7f4] text-[#222] font-sans pt-20"> <!-- Compensa altura del menú fijo -->
 
@@ -577,7 +580,7 @@ document.getElementById('generarResumen').addEventListener('click', () => {
     <div class="flex justify-end mt-6">
       <div class="bg-gray-100 border border-gray-300 rounded-lg px-6 py-4 text-right shadow-sm">
         <p class="font-semibold text-lg">Total:</p>
-        <p id="totalFinal" class="text-2xl font-bold text-green-700">$ 0.00</p>
+        <p id="totalFinal" class="text-2xl font-bold text-vino">$ 0.00</p>
       </div>
     </div>
   </div>
@@ -645,6 +648,40 @@ document.getElementById('generarResumen').addEventListener('click', () => {
       });
     });
   </script>
+
+<script>
+  function actualizarPlazo(fechaBaseStr) {
+    const fecha = new Date(fechaBaseStr);
+    if (isNaN(fecha)) return;
+
+    fecha.setDate(fecha.getDate() + 15);
+
+    const dia = String(fecha.getDate()).padStart(2, '0');
+    const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+    const anio = fecha.getFullYear();
+
+    document.getElementById('plazoValidez').value = `${dia}/${mes}/${anio}`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const fechaInput = document.getElementById('fecha');
+
+    const hoy = new Date();
+    const yyyy = hoy.getFullYear();
+    const mm = String(hoy.getMonth() + 1).padStart(2, '0');
+    const dd = String(hoy.getDate()).padStart(2, '0');
+    const hoyStr = `${yyyy}-${mm}-${dd}`;
+
+    fechaInput.value = hoyStr;
+
+    actualizarPlazo(hoyStr);
+
+    fechaInput.addEventListener('change', function () {
+      actualizarPlazo(this.value);
+    });
+  });
+</script>
+
 
 
 </body>
