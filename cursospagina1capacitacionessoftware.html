@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cursos HUB DI UNLa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Meta para redes sociales -->
+  <meta property="og:title" content="HUB DI UNLa" />
+  <meta property="og:description" content="Diseño, Diagnóstico e Incubación de proyectos de diseño industrial." />
+  <meta property="og:image" content="https://hubdiunla.github.io/WEB-HUB-DI-UNLa/images/Recurso-4B" />
+  <meta property="og:url" content="https://hubdiunla.github.io/WEB-HUB-DI-UNLa/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Icono -->
+  <link rel="icon" href="favicon_hub_only_rounded.ico" type="image/x-icon" />
+  <link rel="icon" href="images/favicon_hub_only_rounded.ico" type="image/x-icon" />
+
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Fuente Outfit -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            violeta: '#9676d8',
+            morado: '#6A1B9A',
+            fondo: '#FAF5FF',
+            bordo: '#a2263f',
+            celeste: '#0c6d99',
+            azul: '#1D3B6D',
+            berenjena: '#5c4554',
+            bordooscuro: '#552c5b',
+            violaceo: '#6a4b8e',
+            celestonoscuro: '#1394ad',
+            vino: '#80142f',
+            violetagrafito: '#3e2d4f',
+            lila: '#C587C5',
+            violaceoclaro: '#e0d1fa',
+          },
+          fontSize: {
+            '2xl': '1.5rem',
+            '3xl': '1.875rem',
+            '4xl': '2.25rem',
+            '5xl': '3rem',
+            '6xl': '3.75rem',
+          },
+          fontWeight: {
+            normal: 400,
+            medium: 500,
+            bold: 700,
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+
+  <!-- Animaciones -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 1.2s ease-out forwards;
+    }
+
+    .animate-fade-in-delay {
+      animation: fadeIn 1.2s ease-out 0.3s forwards;
+    }
+  </style>
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #FAF5FF;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <nav class="bg-[#3e2d4f] text-white px-6 py-4 flex justify-between items-center shadow-md">
+  <!-- Contenedor izquierdo: logo + título -->
+  <div class="flex items-center gap-3">
+    <div class="bg-white flex items-center justify-center rounded p-4" style="height: 4rem; width: auto;">
+      <img src="images/Recurso 4Bfondoblanco.png" alt="Logo HUB" class="h-[2.6rem] sm:h-[3.4rem] object-contain" />
+    </div>
+    <div>
+      <h1 class="text-xl font-bold">HUB DI UNLa - Cursos Asincrónicos</h1>
+    </div>
+  </div>
+
+  <!-- Botón a la derecha -->
+
+  <!-- Botón a la derecha -->
+
+  <div class="hidden md:flex items-center gap-4">
+    <a href="index.html" class="bg-[#80142f] px-4 py-2 rounded hover:bg-[#5e0f22] font-semibold">Inicio</a>
+     
+  <a href="capacitacionesdisponibles.html" class="bg-[#80142f] px-4 py-2 rounded hover:bg-[#5e0f22] font-semibold">
+    Volver a Capacitaciones
+  </a>
+
+   <a href="servicios.html" class="bg-[#80142f] px-4 py-2 rounded hover:bg-[#5e0f22] font-semibold">
+    Volver a Servicios
+  </a>
+  </div>
+  
+  
+</nav>
+
+  <main class="flex-1 p-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-[#3e2d4f] mb-6">Bienvenido a la oferta de cursos asincrónicos del HUB DI UNLa</h2>
+      <p class="text-lg text-gray-700 mb-4">Aquí encontrarás una variedad de cursos diseñados para potenciar tus habilidades profesionales mediante softwares de necesidad fundamental en entornos laborales tecnologicos.</p>
+     
+      <h3 class="text-xl font-semibold text-[#3e2d4f] mb-4">Tus cursos disponibles:</h3>
+
+      <div class="space-y-6">
+      
+
+        <!-- Curso 2 -->
+        <div class="flex flex-col md:flex-row gap-4 bg-white border rounded-xl shadow hover:shadow-lg p-6">
+          <div class="md:w-1/2 flex flex-col items-center">
+            <img src="images/curso solid.png" alt="Flyer del curso" class="w-full max-w-[300px]" />
+            <a href="cursosolid.html" class="inline-block text-center bg-[#6a4b8e] text-white py-2 w-full rounded mt-4 hover:bg-[#3e2d4f]">Acceder al curso</a>
+          </div>
+          <div class="md:w-1/2 flex flex-col justify-center">
+            <h4 class="text-lg font-bold text-[#80142f] mb-2">Solid Works - Modelado 3D</h4>
+            <p class="text-sm text-gray-700">Fundamentos del diseño mecánico y modelado 3D en SolidWorks. Aplicación de la norma IRAM 14001 en proyectos técnicos. Cada decisión de diseño influye en la eficiencia del producto y su viabilidad industrial. El dominio de SolidWorks es clave para insertarse en el mercado laboral actual y responder a las demandas del sector productivo.</p>
+           <br>
+            <br>
+          <p class="text-sm text-gray-700">El curso está orientado a estudiantes, técnicos y profesionales de la industria, el diseño industrial, diseño gráfico, arquitectura y áreas afines.</p>  
+            </p>
+          </div>
+        </div>  
+
+        <!-- Curso 3 -->
+        <div class="flex flex-col md:flex-row gap-4 bg-white border rounded-xl shadow hover:shadow-lg p-6">
+          <div class="md:w-1/2 flex flex-col items-center">
+            <img src="images/curso ia.png" alt="Flyer del curso" class="w-full max-w-[300px]" />
+            <a href="cursoia.html" class="inline-block text-center bg-[#6a4b8e] text-white py-2 w-full rounded mt-4 hover:bg-[#3e2d4f]">Acceder al curso</a>
+          </div>
+          <div class="md:w-1/2 flex flex-col justify-center">
+            <h4 class="text-lg font-bold text-[#80142f] mb-2">IA Aplicada</h4>
+             <p class="text-sm text-gray-700">Estrategias para integrar la inteligencia artificial como una herramienta clave en el proceso de diseño y desarrollo. Aplicación de IA para validar conceptos, optimizar tiempos y tareas repetitivas, anticipar errores y mejorar la toma de decisiones técnicas. Su implementación permite acelerar tiempos de desarrollo, reducir costos y aumentar la competitividad en el entorno laboral actual.
+            </p>
+                        <br>
+          <p class="text-sm text-gray-700">El curso está orientado a estudiantes, técnicos y profesionales de la industria, el diseño industrial, diseño gráfico, arquitectura y áreas afines.</p>  
+            </p>
+          </div>
+        </div> 
+
+        <!-- Curso 7-9 -->
+        <div class="flex flex-col md:flex-row gap-4 bg-white border rounded-xl shadow hover:shadow-lg p-6">
+          <div class="md:w-1/2 flex flex-col items-center">
+            <img src="ruta-del-flyer.jpg" alt="Flyer del curso" class="w-full max-w-[300px]" />
+            <a href="#" class="inline-block text-center bg-[#6a4b8e] text-white py-2 w-full rounded mt-4 hover:bg-[#3e2d4f]">Acceder al curso</a>
+          </div>
+          <div class="md:w-1/2 flex flex-col justify-center">
+            <h4 class="text-lg font-bold text-[#80142f] mb-2">Próximos Cursos</h4>
+            <p class="text-sm text-gray-700">Estate atento a nuestra oferta de cursos y capacitaciones certificadas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-[#3e2d4f] text-white text-center py-4 mt-10">
+    <p class="text-sm">© 2025 HUB DI UNLa – Plataforma de Formación</p>
+  </footer>
+
+ <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('menu');
+      const icon = document.getElementById('menu-icon');
+  
+      toggle.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('flex');
+        menu.classList.toggle('flex-col');
+        menu.classList.toggle('absolute');
+        menu.classList.toggle('top-full');
+        menu.classList.toggle('left-0');
+        menu.classList.toggle('bg-[#3e2d4f]');
+        menu.classList.toggle('w-full');
+        menu.classList.toggle('p-4');
+        menu.classList.toggle('shadow-md');
+        menu.classList.toggle('z-40');
+  
+        // Cambiar icono
+        if (menu.classList.contains('hidden')) {
+          icon.innerHTML = '&#9776;'; // ☰
+        } else {
+          icon.innerHTML = '&#10005;'; // ✖
+        }
+      });
+    });
+  </script>
+
+  
+ 
+</body>
+</html>

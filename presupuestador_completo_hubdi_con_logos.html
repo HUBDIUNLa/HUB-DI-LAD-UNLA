@@ -130,159 +130,225 @@
 }
 </style>
 
-  
-
   <script>
-    const materialesPorProceso = {
-      "Corte Láser": ["MDF 3mm", "MDF 6mm", "Acrílico 3mm", "Cartón 2mm", "Chapa 2.0mm - 1x2m", "Chapa 2.0mm - 1.245x2.44m", "Chapa 2.5mm - 1.245x2.44m", "Chapa 3.2mm - 1.5x3m", "Chapa 3.2mm - 1.5x6m", "Chapa 4.7mm - 1.5x3m", "Chapa 6.3mm - 1.5x3m"],
-      "Router CNC": ["MDF 3mm", "MDF 6mm", "Acrílico 3mm", "MDF 18mm", "Fenólico 18mm", "Pino laminado", "Multilaminado"],
-      "Impresión 3D": ["PLA", "ABS", "PETG", "TPU", "Nylon", "Ceramica", "Resina", "Filamento flexible"],
-      "Escaneado 3D": ["-"],
-      "Modelado 3D": ["-"],
-      "Confección de plano": ["-"],
-      "Confección de archivo": ["-"],
-    };
+  const materialesPorProceso = {
+    "Corte Láser": ["MDF 3mm", "MDF 6mm", "Acrílico 3mm", "Cartón 2mm", "Chapa 2.0mm - 1x2m", "Chapa 2.0mm - 1.245x2.44m", "Chapa 2.5mm - 1.245x2.44m", "Chapa 3.2mm - 1.5x3m", "Chapa 3.2mm - 1.5x6m", "Chapa 4.7mm - 1.5x3m", "Chapa 6.3mm - 1.5x3m"],
+    "Router CNC": ["MDF 3mm", "MDF 6mm", "Acrílico 3mm", "MDF 18mm", "Fenólico 18mm", "Pino laminado", "Multilaminado"],
+    "Impresión 3D": ["PLA", "ABS", "PETG", "TPU", "Nylon", "Ceramica", "Resina", "Filamento flexible"],
+    "Escaneado 3D": ["-"],
+    "Modelado 3D": ["-"],
+    "Confección de plano": ["-"],
+    "Digitalización de archivo": ["-"],
+  };
 
-    const coefTamanio = { "Chico": 0.2, "Mediano": 0.5, "Grande": 1 };
-    const coefComplejidad = { "Baja": 1, "Media": 1.5, "Alta": 2 };
-    const coefProceso = {
-      "Corte Láser": 1,
-      "Escaneado 3D": 1.1,
-      "Impresión 3D": 1.3,
-      "Modelado 3D": 1.4,
-      "Confección de plano": 1.2,
-      "Confección de archivo": 1.2,
-      "Router CNC": 1.2
-    };
-    const precioMaterial = {
-      "MDF 3mm": 25000,
-      "MDF 6mm": 35000,
-      "Acrílico 3mm": 42000,
-      "Cartón 2mm": 8000,
-      "MDF 18mm": 60000,
-      "Fenólico 18mm": 100000,
-      "Pino laminado": 85000,
-      "Multilaminado": 95000,
-      "PLA": 8500,
-      "ABS": 9200,
-      "PETG": 9700,
-      "TPU": 11000,
-      "Nylon": 12500,
-      "Aluminio": 15000,
-      "Madera dura": 9500,
-      "Plástico técnico": 8800,
-      "-": 60000,
-      "Chapa 2.0mm - 1x2m": 64527.61,
-      "Chapa 2.0mm - 1.245x2.44m": 102150.18,
-      "Chapa 2.5mm - 1.245x2.44m": 113161.25,
-      "Chapa 3.2mm - 1.5x3m": 206320.50,
-      "Chapa 3.2mm - 1.5x6m": 412641.00,
-      "Chapa 4.7mm - 1.5x3m": 319883.92,
-      "Chapa 6.3mm - 1.5x3m": 428880.42,
+  const coefTamanio = { "Chico": 0.2, "Mediano": 0.5, "Grande": 1 };
+  const coefComplejidad = { "Baja": 1, "Media": 1.5, "Alta": 2 };
+  const coefProceso = {
+    "Corte Láser": 1,
+    "Escaneado 3D": 1.1,
+    "Impresión 3D": 1.3,
+    "Modelado 3D": 1.4,
+    "Confección de plano": 1.2,
+    "Digitalización de archivo": 1.2,
+    "Router CNC": 1.2
+  };
+  const precioMaterial = {
+    "MDF 3mm": 25000,
+    "MDF 6mm": 35000,
+    "Acrílico 3mm": 42000,
+    "Cartón 2mm": 8000,
+    "MDF 18mm": 60000,
+    "Fenólico 18mm": 100000,
+    "Pino laminado": 85000,
+    "Multilaminado": 95000,
+    "PLA": 8500,
+    "ABS": 9200,
+    "PETG": 9700,
+    "TPU": 11000,
+    "Nylon": 12500,
+    "Aluminio": 15000,
+    "Madera dura": 9500,
+    "Plástico técnico": 8800,
+    "-": 60000,
+    "Chapa 2.0mm - 1x2m": 64527.61,
+    "Chapa 2.0mm - 1.245x2.44m": 102150.18,
+    "Chapa 2.5mm - 1.245x2.44m": 113161.25,
+    "Chapa 3.2mm - 1.5x3m": 206320.50,
+    "Chapa 3.2mm - 1.5x6m": 412641.00,
+    "Chapa 4.7mm - 1.5x3m": 319883.92,
+    "Chapa 6.3mm - 1.5x3m": 428880.42,
+  };
 
-    };
+  function actualizarMateriales(selectProceso) {
+    const fila = selectProceso.closest('.item');
+    const materialSelect = fila.querySelector('.material');
+    const materiales = materialesPorProceso[selectProceso.value] || [];
+    materialSelect.innerHTML = "";
+    materiales.forEach(mat => {
+      const option = document.createElement("option");
+      option.value = mat;
+      option.textContent = mat;
+      materialSelect.appendChild(option);
+    });
+    calcularTotal();
+  }
 
-    function actualizarMateriales(selectProceso) {
-      const fila = selectProceso.closest('.item');
-      const materialSelect = fila.querySelector('.material');
-      const materiales = materialesPorProceso[selectProceso.value] || [];
-      materialSelect.innerHTML = "";
-      materiales.forEach(mat => {
-        const option = document.createElement("option");
-        option.value = mat;
-        option.textContent = mat;
-        materialSelect.appendChild(option);
-      });
-      calcularTotal();
-    }
+  function calcularTotal() {
+    const filas = document.querySelectorAll('.item');
+    let total = 0;
+    let resumenBody = document.getElementById("resumenBody");
+    resumenBody.innerHTML = "";
 
-    function calcularTotal() {
-  const filas = document.querySelectorAll('.item');
-  let total = 0;
-  let resumenBody = document.getElementById("resumenBody");
-  resumenBody.innerHTML = "";
+    filas.forEach((fila) => {
+      const proceso = fila.querySelector('.proceso').value;
+      const material = fila.querySelector('.material').value;
+      const tamanio = fila.querySelector('.tamanio').value;
+      const complejidad = fila.querySelector('.complejidad').value;
+      const sinPlano = !fila.querySelector('.plano').checked;
+      const sinMaterial = !fila.querySelector('.material-propio').checked;
 
-  filas.forEach((fila, index) => {
-    const proceso = fila.querySelector('.proceso').value;
-    const material = fila.querySelector('.material').value;
-    const tamanio = fila.querySelector('.tamanio').value;
-    const complejidad = fila.querySelector('.complejidad').value;
-    const sinPlano = !fila.querySelector('.plano').checked;
-    const extra = sinPlano ? 60000 : 0;
+      const extra = (sinPlano ? 60000 : 0) + (sinMaterial ? 50000 : 0);
 
-    const precioBase = precioMaterial[material] || 0;
-    const precio = precioBase * coefTamanio[tamanio] * coefComplejidad[complejidad] * (coefProceso[proceso] || 1) + extra;
-    total += precio;
+      const precioBase = precioMaterial[material] || 0;
+      const precio = precioBase * coefTamanio[tamanio] * coefComplejidad[complejidad] * (coefProceso[proceso] || 1) + extra;
+      total += precio;
 
-    // Mostrar subtotal en la misma fila
-    const subtotalDiv = fila.querySelector('.subtotal');
-    if (subtotalDiv) {
-      subtotalDiv.textContent = `$ ${precio.toFixed(2)}`;
-    }
+      const subtotalDiv = fila.querySelector('.subtotal');
+      if (subtotalDiv) {
+        subtotalDiv.textContent = `$ ${precio.toFixed(2)}`;
+      }
 
-    // Agregar al resumen
-    const row = document.createElement("tr");
-    row.innerHTML = `
-      <td class="border px-2 py-1 text-center"><i class="fas fa-${iconoProceso(proceso)}"></i> ${proceso}</td>
-      <td class="border px-2 py-1 text-center">${material}</td>
-      <td class="border px-2 py-1 text-center">${tamanio}</td>
-      <td class="border px-2 py-1 text-center">${complejidad}</td>
-      <td class="border px-2 py-1 text-center">${sinPlano ? "No" : "Sí"}</td>
-      <td class="border px-2 py-1 text-right">$ ${precio.toFixed(2)}</td>`;
-    resumenBody.appendChild(row);
-  });
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td class="border px-2 py-1 text-center"><i class="fas fa-${iconoProceso(proceso)}"></i> ${proceso}</td>
+        <td class="border px-2 py-1 text-center">${material}</td>
+        <td class="border px-2 py-1 text-center">${tamanio}</td>
+        <td class="border px-2 py-1 text-center">${complejidad}</td>
+        <td class="border px-2 py-1 text-center">${sinPlano ? "No" : "Sí"}</td>
+        <td class="border px-2 py-1 text-center">${sinMaterial ? "No" : "Sí"}</td>
+        <td class="border px-2 py-1 text-right">$ ${precio.toFixed(2)}</td>`;
+      resumenBody.appendChild(row);
+    });
 
-  document.getElementById("totalFinal").textContent = "$ " + total.toFixed(2);
-}
+    document.getElementById("totalFinal").textContent = "$ " + total.toFixed(2);
+  }
 
+  function iconoProceso(proceso) {
+    return {
+      "Corte Láser": "cut",
+      "Escaneado 3D": "camera",
+      "Impresión 3D": "cube",
+      "Modelado 3D": "project-diagram",
+      "Confección de plano": "drafting-compass",
+      "Digitalización de archivo": "file-alt",
+      "Router CNC": "tree"
+    }[proceso] || "tools";
+  }
 
-    function iconoProceso(proceso) {
-      return {
-        "Corte Láser": "cut",
-        "Escaneado 3D": "camera",
-        "Impresión 3D": "cube",
-        "Modelado 3D": "project-diagram",
-        "Confección de plano": "drafting-compass",
-        "Confección de archivo": "file-alt",
-        "Router CNC": "tree"
-      }[proceso] || "tools";
-    }
+  function agregarFila() {
+    const container = document.getElementById("itemsContainer");
+    const div = document.createElement("div");
+    div.className = "item bg-white p-4 rounded shadow mb-4 grid gap-2 sm:grid-cols-3 md:grid-cols-7";
+    div.innerHTML = `
+  
+      <select class="proceso border p-2 rounded" onchange="actualizarMateriales(this)">
+        <option disabled selected>Proceso</option>
+        ${Object.keys(materialesPorProceso).map(p => `<option>${p}</option>`).join("")}
+      </select>
+      <select class="material border p-2 rounded"></select>
+      <select class="tamanio border rounded text-sm w-24 px-1 py-1" onchange="calcularTotal()">
+    <option>Chico</option><option>Mediano</option><option>Grande</option>
+  </select>
+  <select class="complejidad border rounded text-sm w-24 px-1 py-1" onchange="calcularTotal()">
+    <option>Baja</option><option>Media</option><option>Alta</option>
+  </select>
+      <label class="flex items-center">
+        <input type="checkbox" class="material-propio mr-2" onchange="calcularTotal()">
+        ¿Trae el material para realizar el servicio?
+      </label>
+      <label class="flex items-center">
+        <input type="checkbox" class="plano mr-2" onchange="calcularTotal()">
+        ¿Tiene plano o archivo listo para el servicio productivo?
+      </label>
+      <div class="subtotal text-right font-semibold col-span-1 md:col-start-7">$ 0.00</div>
+      
+    `;
+    container.appendChild(div);
+    calcularTotal();
+  }
 
-    function agregarFila() {
-      const container = document.getElementById("itemsContainer");
-      const div = document.createElement("div");
-      div.className = "item bg-white p-4 rounded shadow mb-4 grid gap-2 sm:grid-cols-3 md:grid-cols-6";
-      div.innerHTML = `
-        <select class="proceso border p-2 rounded" onchange="actualizarMateriales(this)">
-          <option disabled selected>Proceso</option>
-          ${Object.keys(materialesPorProceso).map(p => `<option>${p}</option>`).join("")}
-        </select>
-        <select class="material border p-2 rounded"></select>
-        <select class="tamanio border p-2 rounded" onchange="calcularTotal()">
-          <option>Chico</option><option>Mediano</option><option>Grande</option>
-        </select>
-        <select class="complejidad border p-2 rounded" onchange="calcularTotal()">
-          <option>Baja</option><option>Media</option><option>Alta</option>
-        </select>
-        <label class="flex items-center"><input type="checkbox" class="plano mr-2" onchange="calcularTotal()">¿Tiene plano o archivo listo para el servicio productivo?</label>
-        <div class="subtotal text-right font-semibold">$ 0.00</div>`;
-      container.appendChild(div);
-      calcularTotal();
-    }
-
-  // Función para eliminar la última fila
   function sacarFila() {
     const container = document.getElementById("itemsContainer");
     const items = container.getElementsByClassName("item");
     if (items.length > 0) {
       container.removeChild(items[items.length - 1]);
-      calcularTotal(); // actualiza el resumen
+      calcularTotal();
     }
   }
 
+  window.onload = () => agregarFila();
 
-    window.onload = () => agregarFila();
-  </script>
+  document.getElementById('fecha').addEventListener('change', function () {
+  // Obtener la fecha en formato dd/MM/yyyy
+  const fechaSeleccionada = this.value;
+  console.log('Fecha seleccionada (dd/MM/yyyy):', fechaSeleccionada);
+  
+  // Convertir a formato yyyy-MM-dd para que JavaScript lo entienda correctamente
+  const partes = fechaSeleccionada.split('/');
+  const fechaConvertida = `${partes[2]}-${partes[1]}-${partes[0]}`;
+
+  // Crear el objeto Date
+  const fecha = new Date(fechaConvertida);
+  console.log('Fecha convertida (yyyy-MM-dd):', fechaConvertida);
+  
+  if (isNaN(fecha)) {
+    console.error('Fecha no válida');
+    return;
+  }
+
+  // Sumar 15 días
+  fecha.setDate(fecha.getDate() + 15);
+  console.log('Fecha después de sumar 15 días:', fecha);
+
+  const dia = String(fecha.getDate()).padStart(2, '0');
+  const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+  const anio = fecha.getFullYear();
+
+  // Actualizar el valor del plazo de validez
+  document.getElementById('plazoValidez').value = `${dia}/${mes}/${anio}`;
+  console.log('Valor de plazoValidez:', `${dia}/${mes}/${anio}`);
+});
+
+document.getElementById('generarResumen').addEventListener('click', () => {
+  const nombre = document.querySelector('input[type="text"]:nth-of-type(1)').value;
+  const dni = document.querySelector('input[type="text"]:nth-of-type(2)').value;
+  const cuil = document.querySelector('input[type="text"]:nth-of-type(3)').value;
+  const direccion = document.querySelector('input[type="text"]:nth-of-type(4)').value;
+  const fecha = document.getElementById('fecha').value;
+  const plazo = document.getElementById('plazoValidez').value;
+
+  const formasPago = Array.from(document.querySelectorAll('input[name="pago"]:checked')).map(cb => cb.value);
+  const conformidad = document.querySelector('input[name="conformidad"]:checked')?.value || "No especificado";
+
+  const datosHTML = ` 
+    <li><strong>Apellido y Nombre:</strong> ${nombre}</li>
+    <li><strong>DNI:</strong> ${dni}</li>
+    <li><strong>CUIL:</strong> ${cuil}</li>
+    <li><strong>Dirección:</strong> ${direccion}</li>
+    <li><strong>Fecha:</strong> ${fecha}</li>
+    <li><strong>Plazo de validez:</strong> ${plazo}</li>
+    <li><strong>Forma de pago:</strong> ${formasPago.join(', ') || 'No especificada'}</li>
+    <li><strong>¿Presto conformidad?:</strong> ${conformidad}</li>
+  `;
+
+  document.getElementById('datosPersona').innerHTML = datosHTML;
+  document.getElementById('resumenSolicitante').classList.remove('hidden');
+});
+
+</script>
+
+
+  
 </head>
 
   <body class="bg-[#f9f7f4] text-[#222] font-sans pt-20"> <!-- Compensa altura del menú fijo -->
@@ -349,9 +415,22 @@
     </ul>
   </nav>
 
+
+<br>
+<!-- Botones alineados a la derecha en todos los tamaños -->
+<div class="flex justify-end items-center gap-4 pr-6 print-hidden">
+  <a href="index1asistencia.html" class="bg-[#80142f] px-4 py-2 text-white rounded hover:bg-[#5e0f22] font-semibold">
+    Inicio
+  </a>
+  <a href="servicios.html" class="bg-[#80142f] px-4 py-2 text-white rounded hover:bg-[#5e0f22] font-semibold">
+    Volver a Servicios
+  </a>
+</div>
 <br>
 <br>
-<br>
+
+
+
 
  <div class="print-header print:flex hidden justify-center">
   <img src="images/Recurso 4Bfondoblanco.png" alt="Logo HUB" class="logo-impresion" />
@@ -362,6 +441,7 @@
   <div class="max-w-7xl mx-auto">
   <div class="mb-6 p-4 bg-white shadow rounded">
     <h2 class="font-semibold text-lg mb-2">Instrucciones:</h2>
+    <p>0. Completa los campos Datos del solicitante.</p>
     <p>1. Selecciona el proceso y material deseado.</p>
     <p>2. Completa los campos de tamaño, complejidad y si tiene plano.</p>
     <p>3. Haz clic en "Agregar ítem" para añadir más servicios.</p>
@@ -375,6 +455,83 @@
       </p>
     <p>10. ¡Gracias por elegir HUB DI UNLa!</p>
   </div>
+
+  <!-- Datos del solicitante -->
+<div class="bg-white p-6 mt-8 rounded shadow space-y-6">
+  <h3 class="text-xl font-semibold">Datos del solicitante</h3>
+
+  <div class="grid md:grid-cols-2 gap-4">
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Apellido y Nombre</label>
+      <input type="text" class="mt-1 block w-full border-gray-300 rounded shadow-sm" />
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700">DNI</label>
+      <input type="text" class="mt-1 block w-full border-gray-300 rounded shadow-sm" />
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700">CUIL</label>
+      <input type="text" class="mt-1 block w-full border-gray-300 rounded shadow-sm" />
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Dirección</label>
+      <input type="text" class="mt-1 block w-full border-gray-300 rounded shadow-sm" />
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Fecha</label>
+      <!-- Fecha -->
+     <input type="date" id="fecha" class="mt-1 block w-full border-gray-300 rounded shadow-sm" />
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Plazo de validez</label> 
+      <input type="text" id="plazoValidez" class="mt-1 block w-full border-gray-300 rounded shadow-sm bg-gray-100" readonly />
+    </div>
+  </div>
+
+  <!-- Forma de pago -->
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-2">Forma de pago</label>
+    <div class="flex flex-wrap gap-4">
+      <label class="flex items-center space-x-2">
+        <input type="checkbox" name="pago" value="Efectivo" class="rounded" />
+        <span>Efectivo</span>
+      </label>
+      <label class="flex items-center space-x-2">
+        <input type="checkbox" name="pago" value="Transferencia" class="rounded" />
+        <span>Transferencia</span>
+      </label>
+      <label class="flex items-center space-x-2">
+        <input type="checkbox" name="pago" value="Cheque" class="rounded" />
+        <span>Cheque</span>
+      </label>
+      <label class="flex items-center space-x-2">
+        <input type="checkbox" name="pago" value="Tarjeta de crédito" class="rounded" />
+        <span>Tarjeta de crédito</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Conformidad -->
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-2">¿Presto conformidad?</label>
+    <div class="flex space-x-6">
+      <label class="flex items-center space-x-2">
+        <input type="radio" name="conformidad" value="Sí" class="rounded" />
+        <span>Sí</span>
+      </label>
+      <label class="flex items-center space-x-2">
+        <input type="radio" name="conformidad" value="No" class="rounded" />
+        <span>No</span>
+      </label>
+    </div>
+  </div>
+</div>
+
   
 
   <div class="mb-6 p-4 bg-white shadow rounded">
@@ -397,29 +554,35 @@
     
 
 <div class="max-w-7xl mx-auto">
-<div id="resumen" class="mt-10 p-4 bg-white rounded shadow">
-      <h2 class="text-2xl font-bold mb-4">Resumen de presupuesto</h2>
-      <table class="table-auto w-full border border-gray-300 text-sm">
-        <thead class="bg-gray-100">
-          <tr>
-            <th class="border px-2 py-1">Proceso</th>
-            <th class="border px-2 py-1">Material</th>
-            <th class="border px-2 py-1">Tamaño</th>
-            <th class="border px-2 py-1">Complejidad</th>
-            <th class="border px-2 py-1">Archivo o plano listo para corte o ejecución</th>
-            <th class="border px-2 py-1 text-right">Subtotal</th>
-          </tr>
-        </thead>
-        <tbody id="resumenBody"></tbody>
-        <tfoot>
-          <tr class="font-bold">
-            <td colspan="5" class="text-right px-2 py-2">Total:</td>
-            <td class="text-right px-2 py-2" id="totalFinal">$ 0.00</td>
-          </tr>
-        </tfoot>
-      </table>
+  <div id="resumen" class="mt-10 p-4 bg-white rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">Resumen de presupuesto</h2>
+
+    <!-- Tabla -->
+    <table class="table-auto w-full border border-gray-300 text-sm">
+      <thead class="bg-gray-100">
+        <tr>
+          <th class="border px-2 py-1">Proceso</th>
+          <th class="border px-2 py-1">Material</th>
+          <th class="border px-1 py-1">Tamaño</th>
+          <th class="border px-1 py-1">Complejidad</th>
+          <th class="border px-2 py-1">Trajo archivo o plano útil</th>
+          <th class="border px-2 py-1">Trajo material</th>
+          <th class="border px-2 py-1 text-right">Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="resumenBody"></tbody>
+    </table>
+
+    <!-- Total separado -->
+    <div class="flex justify-end mt-6">
+      <div class="bg-gray-100 border border-gray-300 rounded-lg px-6 py-4 text-right shadow-sm">
+        <p class="font-semibold text-lg">Total:</p>
+        <p id="totalFinal" class="text-2xl font-bold text-green-700">$ 0.00</p>
+      </div>
     </div>
-    </div>
+  </div>
+</div>
+
 
     <br>
 
@@ -431,7 +594,12 @@
   <img src="images/firmahubpdf.png" alt="Logo HUB" class="logo-impresion" />
 </div>
 
- 
+ <!-- Datos del solicitante resumidos -->
+<div id="resumenSolicitante" class="bg-white mt-8 p-6 rounded shadow hidden">
+  <h3 class="text-xl font-semibold mb-4">Datos del solicitante</h3>
+  <ul class="space-y-1 text-sm text-gray-700" id="datosPersona"></ul>
+</div>
+
     <div class="mt-6 print:hidden text-center">
       <button onclick="window.print()" class="bg-vino text-white px-6 py-2 rounded shadow">Imprimir presupuesto</button>
     </div>
