@@ -639,10 +639,38 @@ document.getElementById('generarResumen').addEventListener('click', () => {
 
   </script>
 
-<!-- jsPDF -->
+  <!-- jsPDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <script>
+  function actualizarPlazo(fechaBaseStr) {
+    const fecha = new Date(fechaBaseStr);
+    if (isNaN(fecha)) return;
+    fecha.setDate(fecha.getDate() + 15);
+
+    const dia = String(fecha.getDate()).padStart(2, '0');
+    const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+    const anio = fecha.getFullYear();
+    document.getElementById('plazoValidez').value = `${dia}/${mes}/${anio}`;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const fechaInput = document.getElementById('fecha');
+    const hoy = new Date();
+    const yyyy = hoy.getFullYear();
+    const mm = String(hoy.getMonth() + 1).padStart(2, '0');
+    const dd = String(hoy.getDate()).padStart(2, '0');
+    const hoyStr = `${yyyy}-${mm}-${dd}`;
+    fechaInput.value = hoyStr;
+    actualizarPlazo(hoyStr);
+
+    fechaInput.addEventListener('change', function () {
+      actualizarPlazo(this.value);
+    });
+
+    document.getElementById("solicitarPresupuestoBtn").addEventListener("click", generarYEnviarPDF);
+  });
+
   async function generarYEnviarPDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
@@ -734,6 +762,7 @@ document.getElementById('generarResumen').addEventListener('click', () => {
     }
   }
 </script>
+
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
