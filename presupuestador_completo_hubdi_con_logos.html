@@ -636,38 +636,12 @@ document.getElementById('generarResumen').addEventListener('click', () => {
       icon.innerHTML = menu.classList.contains('hidden') ? '&#9776;' : '&#10005;';
     });
   });
-</script>
 
-<script>
-  function actualizarPlazo(fechaBaseStr) {
-    const fecha = new Date(fechaBaseStr);
-    if (isNaN(fecha)) return;
-    fecha.setDate(fecha.getDate() + 15);
-
-    const dia = String(fecha.getDate()).padStart(2, '0');
-    const mes = String(fecha.getMonth() + 1).padStart(2, '0');
-    const anio = fecha.getFullYear();
-    document.getElementById('plazoValidez').value = `${dia}/${mes}/${anio}`;
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const fechaInput = document.getElementById('fecha');
-    const hoy = new Date();
-    const yyyy = hoy.getFullYear();
-    const mm = String(hoy.getMonth() + 1).padStart(2, '0');
-    const dd = String(hoy.getDate()).padStart(2, '0');
-    const hoyStr = `${yyyy}-${mm}-${dd}`;
-    fechaInput.value = hoyStr;
-    actualizarPlazo(hoyStr);
-
-    fechaInput.addEventListener('change', function () {
-      actualizarPlazo(this.value);
-    });
-  });
-</script>
+  </script>
 
 <!-- jsPDF -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 <script>
   async function generarYEnviarPDF() {
     const { jsPDF } = window.jspdf;
@@ -739,31 +713,32 @@ document.getElementById('generarResumen').addEventListener('click', () => {
     const formData = new FormData();
     formData.append("pdf", pdfBlob, "presupuesto.pdf");
 
-    // Envío del PDF
-try {
-  console.log("Enviando solicitud al servidor...");
+    try {
+      console.log("Enviando solicitud al servidor...");
 
-  const response = await fetch("https://backend-hubdi.onrender.com/enviar-presupuesto", {
-    method: "POST",
-    body: formData,
-  });
+      const response = await fetch("https://backend-hubdi.onrender.com/enviar-presupuesto", {
+        method: "POST",
+        body: formData,
+      });
 
-  console.log("Respuesta:", response);
+      console.log("Respuesta:", response);
 
-  if (response.ok) {
-    alert("El presupuesto ha sido enviado por correo electrónico.");
-  } else {
-    alert("Error al enviar el presupuesto.");
+      if (response.ok) {
+        alert("El presupuesto ha sido enviado por correo electrónico.");
+      } else {
+        alert("Error al enviar el presupuesto.");
+      }
+    } catch (error) {
+      console.error("Error al enviar el presupuesto:", error);
+      alert("Error al enviar el presupuesto.");
+    }
   }
-} catch (error) {
-  console.error("Error al enviar el presupuesto:", error);
-  alert("Error al enviar el presupuesto.");
-}
-}
+</script>
 
-// ✅ ESTE BLOQUE VA FUERA de la función
-document.getElementById("solicitarPresupuestoBtn").addEventListener("click", generarYEnviarPDF);
-
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("solicitarPresupuestoBtn").addEventListener("click", generarYEnviarPDF);
+  });
 </script>
 
 </body>
