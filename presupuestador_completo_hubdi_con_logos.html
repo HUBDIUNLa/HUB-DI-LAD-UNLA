@@ -652,6 +652,17 @@ document.getElementById('generarResumen').addEventListener('click', () => {
   document.addEventListener("DOMContentLoaded", () => {
     const { jsPDF } = window.jspdf;
 
+    // Establecer la fecha actual
+    const fechaInput = document.getElementById("fecha");
+    const hoy = new Date();
+    fechaInput.value = hoy.toISOString().split("T")[0];
+
+    // Calcular y establecer el plazo de validez (15 días después)
+    const plazoInput = document.getElementById("plazoValidez");
+    const plazo = new Date(hoy);
+    plazo.setDate(plazo.getDate() + 15);
+    plazoInput.value = plazo.toISOString().split("T")[0];
+
     document.getElementById("solicitarPresupuestoBtn").addEventListener("click", async () => {
       const emailInput = document.getElementById('emailSolicitante');
       const emailSolicitante = emailInput.value.trim();
@@ -665,7 +676,6 @@ document.getElementById('generarResumen').addEventListener('click', () => {
         emailInput.classList.remove("border-red-500");
       }
 
-      // Crear el PDF
       const doc = new jsPDF();
 
       const nombre = document.querySelector('input[type="text"]:nth-of-type(1)').value;
@@ -730,7 +740,6 @@ document.getElementById('generarResumen').addEventListener('click', () => {
       doc.setFontSize(13);
       doc.text(`Total: ${total}`, 10, y);
 
-      // Crear y enviar FormData
       const pdfBlob = doc.output("blob");
       const formData = new FormData();
       formData.append("pdf", pdfBlob, "presupuesto.pdf");
@@ -754,15 +763,3 @@ document.getElementById('generarResumen').addEventListener('click', () => {
     });
   });
 </script>
-
-
-
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById("solicitarPresupuestoBtn").addEventListener("click", generarYEnviarPDF);
-  });
-</script>
-
-</body>
-</html>
