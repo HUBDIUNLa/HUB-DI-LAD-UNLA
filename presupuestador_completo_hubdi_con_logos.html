@@ -740,7 +740,7 @@ document.getElementById('generarResumen').addEventListener('click', () => {
     formData.append("pdf", pdfBlob, "presupuesto.pdf");
 
     try {
-      const response = await fetch("http://127.0.0.1:3000/enviar-presupuesto", {
+      const response = await fetch("https://backend-hubdi.onrender.com//enviar-presupuesto", {
         method: "POST",
         body: formData,
       });
