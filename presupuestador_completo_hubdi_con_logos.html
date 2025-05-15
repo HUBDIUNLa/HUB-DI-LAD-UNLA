@@ -653,6 +653,19 @@ document.getElementById('generarResumen').addEventListener('click', () => {
     const { jsPDF } = window.jspdf;
 
     document.getElementById("solicitarPresupuestoBtn").addEventListener("click", async () => {
+      const emailInput = document.getElementById('emailSolicitante');
+      const emailSolicitante = emailInput.value.trim();
+
+      // Validación de email
+      if (!emailSolicitante || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailSolicitante)) {
+        alert("Por favor, ingresá un correo electrónico válido.");
+        emailInput.classList.add("border-red-500");
+        return;
+      } else {
+        emailInput.classList.remove("border-red-500");
+      }
+
+      // Crear el PDF
       const doc = new jsPDF();
 
       const nombre = document.querySelector('input[type="text"]:nth-of-type(1)').value;
@@ -717,11 +730,10 @@ document.getElementById('generarResumen').addEventListener('click', () => {
       doc.setFontSize(13);
       doc.text(`Total: ${total}`, 10, y);
 
+      // Crear y enviar FormData
       const pdfBlob = doc.output("blob");
       const formData = new FormData();
       formData.append("pdf", pdfBlob, "presupuesto.pdf");
-
-      const emailSolicitante = document.getElementById('emailSolicitante').value;
       formData.append("email", emailSolicitante);
 
       try {
