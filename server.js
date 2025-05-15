@@ -11,6 +11,8 @@ const upload = multer();
 // Habilitar CORS para GitHub Pages
 app.use(cors({ origin: "https://hubdiunla.github.io" }));
 
+app.use(express.urlencoded({ extended: true }));
+
 app.post("/enviar-presupuesto", upload.single("pdf"), async (req, res) => {
   try {
     const transporter = nodemailer.createTransport({
@@ -21,19 +23,20 @@ app.post("/enviar-presupuesto", upload.single("pdf"), async (req, res) => {
       },
     });
 
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: "estefifondevilasancet@gmail.com",
-      subject: "Presupuesto HUB DI UNLa",
-      text: "Adjunto encontrarás el presupuesto solicitado.",
-      attachments: [
-        {
-          filename: "presupuesto.pdf",
-          content: req.file.buffer,
-        },
-      ],
-    };
+const mailOptions = {
+  from: process.env.EMAIL_USER,
+  to: `estefifondevilasancet@gmail.com, ${req.body.email}`, // ambos destinatarios
+  subject: "Presupuesto HUB DI UNLa",
+  text: "Adjunto encontrarás el presupuesto solicitado.",
+  attachments: [
+    {
+      filename: "presupuesto.pdf",
+      content: req.file.buffer,
+    },
+  ],
+};
 
+  
     await transporter.sendMail(mailOptions);
     res.status(200).send("Correo enviado exitosamente.");
   } catch (error) {
