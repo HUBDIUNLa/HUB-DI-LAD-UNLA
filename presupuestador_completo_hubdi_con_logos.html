@@ -463,7 +463,7 @@ document.getElementById('generarResumen').addEventListener('click', () => {
 <div class="bg-white p-6 mt-8 rounded shadow space-y-6">
   <h3 class="text-xl font-semibold">Datos del solicitante</h3>
 
-  <div class="grid md:grid-cols-2 gap-4">
+  <div class="grid md:grid-cols-4 gap-4">
     <div>
       <label class="block text-sm font-medium text-gray-700">Apellido y Nombre</label>
       <input type="text" class="mt-1 block w-full border-gray-300 rounded shadow-sm" />
@@ -486,51 +486,41 @@ document.getElementById('generarResumen').addEventListener('click', () => {
 
     <div>
       <label class="block text-sm font-medium text-gray-700">Fecha</label>
-      <!-- Fecha -->
-     <input type="date" id="fecha" class="mt-1 block w-full border-gray-300 rounded shadow-sm" />
+      <input type="date" id="fecha" class="mt-1 block w-full border-gray-300 rounded shadow-sm" />
     </div>
 
     <div>
-      <label class="block text-sm font-medium text-gray-700">Plazo de validez</label> 
+      <label class="block text-sm font-medium text-gray-700">Plazo de validez</label>
       <input type="text" id="plazoValidez" class="mt-1 block w-full border-gray-300 rounded shadow-sm bg-gray-100" readonly />
     </div>
-  </div>
 
-  <!-- Forma de pago -->
-  <div>
-    <label class="block text-sm font-medium text-gray-700 mb-2">Forma de pago</label>
-    <div class="flex flex-wrap gap-4">
-      <label class="flex items-center space-x-2">
-        <input type="checkbox" name="pago" value="Efectivo" class="rounded" />
-        <span>Efectivo</span>
-      </label>
-      <label class="flex items-center space-x-2">
-        <input type="checkbox" name="pago" value="Transferencia" class="rounded" />
-        <span>Transferencia</span>
-      </label>
-      <label class="flex items-center space-x-2">
-        <input type="checkbox" name="pago" value="Cheque" class="rounded" />
-        <span>Cheque</span>
-      </label>
-      <label class="flex items-center space-x-2">
-        <input type="checkbox" name="pago" value="Tarjeta de crédito" class="rounded" />
-        <span>Tarjeta de crédito</span>
-      </label>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Forma de pago</label>
+      <div class="flex flex-wrap gap-2 mt-1">
+        <label class="flex items-center space-x-1">
+          <input type="checkbox" name="pago" value="Efectivo" class="rounded" />
+          <span>Efectivo</span>
+        </label>
+        <label class="flex items-center space-x-1">
+          <input type="checkbox" name="pago" value="Transferencia" class="rounded" />
+          <span>Transferencia</span>
+        </label>
+       
+      </div>
     </div>
-  </div>
 
-  <!-- Conformidad -->
-  <div>
-    <label class="block text-sm font-medium text-gray-700 mb-2">¿Presto conformidad?</label>
-    <div class="flex space-x-6">
-      <label class="flex items-center space-x-2">
-        <input type="radio" name="conformidad" value="Sí" class="rounded" />
-        <span>Sí</span>
-      </label>
-      <label class="flex items-center space-x-2">
-        <input type="radio" name="conformidad" value="No" class="rounded" />
-        <span>No</span>
-      </label>
+    <div>
+      <label class="block text-sm font-medium text-gray-700">¿Presto conformidad?</label>
+      <div class="flex space-x-4 mt-1">
+        <label class="flex items-center space-x-1">
+          <input type="radio" name="conformidad" value="Sí" class="rounded" />
+          <span>Sí</span>
+        </label>
+        <label class="flex items-center space-x-1">
+          <input type="radio" name="conformidad" value="No" class="rounded" />
+          <span>No</span>
+        </label>
+      </div>
     </div>
   </div>
 </div>
@@ -597,16 +587,22 @@ document.getElementById('generarResumen').addEventListener('click', () => {
   <img src="images/firmahubpdf.png" alt="Logo HUB" class="logo-impresion" />
 </div>
 
- <!-- Datos del solicitante resumidos -->
+<!-- Datos del solicitante resumidos -->
 <div id="resumenSolicitante" class="bg-white mt-8 p-6 rounded shadow hidden">
   <h3 class="text-xl font-semibold mb-4">Datos del solicitante</h3>
   <ul class="space-y-1 text-sm text-gray-700" id="datosPersona"></ul>
 </div>
 
-    <div class="mt-6 print:hidden text-center">
-      <button onclick="window.print()" class="bg-vino text-white px-6 py-2 rounded shadow">Imprimir presupuesto</button>
-    </div>
-  </div>
+<div class="mt-6 print:hidden text-center">
+  <button onclick="window.print()" class="bg-vino text-white px-6 py-3 rounded-lg shadow">Imprimir presupuesto</button>
+</div>
+
+<!-- Botón para solicitar presupuesto -->
+<div class="mt-6 print:hidden text-center">
+  <button id="solicitarPresupuestoBtn" class="bg-violaceo text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#4e098c] transition">
+    Solicitar presupuesto
+  </button>
+</div>
 
 <footer class="bg-[#3e2d4f] text-white text-center py-6 mt-20 print:hidden">
   <div class="flex justify-center items-center gap-6 mb-4">
@@ -618,62 +614,50 @@ document.getElementById('generarResumen').addEventListener('click', () => {
 </footer>
 
 <!-- JS para abrir/cerrar el menú en móvil -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    const icon = document.getElementById('menu-icon');
 
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
+      menu.classList.toggle('flex-col');
+      menu.classList.toggle('absolute');
+      menu.classList.toggle('top-full');
+      menu.classList.toggle('left-0');
+      menu.classList.toggle('bg-[#3e2d4f]');
+      menu.classList.toggle('w-full');
+      menu.classList.toggle('p-4');
+      menu.classList.toggle('shadow-md');
+      menu.classList.toggle('z-40');
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const toggle = document.getElementById('menu-toggle');
-      const menu = document.getElementById('menu');
-      const icon = document.getElementById('menu-icon');
-  
-      toggle.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-        menu.classList.toggle('flex');
-        menu.classList.toggle('flex-col');
-        menu.classList.toggle('absolute');
-        menu.classList.toggle('top-full');
-        menu.classList.toggle('left-0');
-        menu.classList.toggle('bg-[#3e2d4f]');
-        menu.classList.toggle('w-full');
-        menu.classList.toggle('p-4');
-        menu.classList.toggle('shadow-md');
-        menu.classList.toggle('z-40');
-  
-        // Cambiar icono
-        if (menu.classList.contains('hidden')) {
-          icon.innerHTML = '&#9776;'; // ☰
-        } else {
-          icon.innerHTML = '&#10005;'; // ✖
-        }
-      });
+      icon.innerHTML = menu.classList.contains('hidden') ? '&#9776;' : '&#10005;';
     });
-  </script>
+  });
+</script>
 
 <script>
   function actualizarPlazo(fechaBaseStr) {
     const fecha = new Date(fechaBaseStr);
     if (isNaN(fecha)) return;
-
     fecha.setDate(fecha.getDate() + 15);
 
     const dia = String(fecha.getDate()).padStart(2, '0');
     const mes = String(fecha.getMonth() + 1).padStart(2, '0');
     const anio = fecha.getFullYear();
-
     document.getElementById('plazoValidez').value = `${dia}/${mes}/${anio}`;
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     const fechaInput = document.getElementById('fecha');
-
     const hoy = new Date();
     const yyyy = hoy.getFullYear();
     const mm = String(hoy.getMonth() + 1).padStart(2, '0');
     const dd = String(hoy.getDate()).padStart(2, '0');
     const hoyStr = `${yyyy}-${mm}-${dd}`;
-
     fechaInput.value = hoyStr;
-
     actualizarPlazo(hoyStr);
 
     fechaInput.addEventListener('change', function () {
@@ -682,7 +666,97 @@ document.getElementById('generarResumen').addEventListener('click', () => {
   });
 </script>
 
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  async function generarYEnviarPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
 
+    const nombre = document.querySelector('input[type="text"]:nth-of-type(1)').value;
+    const dni = document.querySelector('input[type="text"]:nth-of-type(2)').value;
+    const cuil = document.querySelector('input[type="text"]:nth-of-type(3)').value;
+    const direccion = document.querySelector('input[type="text"]:nth-of-type(4)').value;
+    const fecha = document.getElementById('fecha').value;
+    const plazo = document.getElementById('plazoValidez').value;
+    const formasPago = Array.from(document.querySelectorAll('input[name="pago"]:checked')).map(cb => cb.value).join(', ');
+    const conformidad = document.querySelector('input[name="conformidad"]:checked')?.value || "No especificado";
 
+    doc.setFontSize(16);
+    doc.text("Presupuesto HUB DI UNLa", 10, 10);
+
+    doc.setFontSize(12);
+    let y = 20;
+    const datos = [
+      `Nombre: ${nombre}`,
+      `DNI: ${dni}`,
+      `CUIL: ${cuil}`,
+      `Dirección: ${direccion}`,
+      `Fecha: ${fecha}`,
+      `Plazo de validez: ${plazo}`,
+      `Forma de pago: ${formasPago}`,
+      `¿Presto conformidad?: ${conformidad}`,
+    ];
+    datos.forEach(d => {
+      doc.text(d, 10, y);
+      y += 7;
+    });
+
+    const rows = [];
+    document.querySelectorAll('.item').forEach(fila => {
+      const proceso = fila.querySelector('.proceso').value;
+      const material = fila.querySelector('.material').value;
+      const tamanio = fila.querySelector('.tamanio').value;
+      const complejidad = fila.querySelector('.complejidad').value;
+      const plano = fila.querySelector('.plano').checked ? "Sí" : "No";
+      const materialPropio = fila.querySelector('.material-propio').checked ? "Sí" : "No";
+      const subtotal = fila.querySelector('.subtotal').textContent;
+      rows.push([proceso, material, tamanio, complejidad, plano, materialPropio, subtotal]);
+    });
+
+    doc.text("Detalle de servicios:", 10, y + 5);
+    y += 10;
+    const startX = 10;
+    const colWidths = [30, 30, 20, 25, 25, 25, 25];
+    const headers = ["Proceso", "Material", "Tamaño", "Complejidad", "Plano", "Material", "Subtotal"];
+    headers.forEach((h, i) => {
+      doc.text(h, startX + colWidths.slice(0, i).reduce((a, b) => a + b, 0), y);
+    });
+    y += 6;
+    rows.forEach(row => {
+      row.forEach((text, i) => {
+        doc.text(String(text), startX + colWidths.slice(0, i).reduce((a, b) => a + b, 0), y);
+      });
+      y += 6;
+    });
+
+    y += 4;
+    const total = document.getElementById("totalFinal").textContent;
+    doc.setFontSize(13);
+    doc.text(`Total: ${total}`, 10, y);
+
+    const pdfBlob = doc.output("blob");
+    const formData = new FormData();
+    formData.append("pdf", pdfBlob, "presupuesto.pdf");
+
+    try {
+      const response = await fetch("http://127.0.0.1:3000/enviar-presupuesto", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        alert("El presupuesto ha sido enviado por correo electrónico.");
+      } else {
+        alert("Error al enviar el presupuesto.");
+      }
+    } catch (error) {
+      console.error("Error al enviar el presupuesto:", error);
+      alert("Error al enviar el presupuesto.");
+    }
+  }
+
+  document.getElementById("solicitarPresupuestoBtn").addEventListener("click", generarYEnviarPDF);
+</script>
 </body>
 </html>
