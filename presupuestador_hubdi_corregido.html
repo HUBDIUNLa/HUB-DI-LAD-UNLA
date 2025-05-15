@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presupuestador HUB DI UNLa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" href="favicon_hub_only_rounded.ico" type="image/x-icon" />
+  <link rel="icon" href="images/favicon_hub_only_rounded.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            violeta: '#9676d8',
+            morado: '#6A1B9A',
+            fondo: '#FAF5FF',
+            bordo: '#a2263f',
+            celeste: '#0c6d99',
+            azul: '#1D3B6D',
+            berenjena: '#5c4554',
+            bordooscuro: '#552c5b',
+            violaceo: '#6a4b8e',
+            celestonoscuro: '#1394ad',
+            vino: '#80142f',
+            violetagrafito: '#3e2d4f',
+            lila: '#C587C5',
+            violaceoclaro: '#e0d1fa',
+          },
+          fontSize: {
+            '2xl': '1.5rem',
+            '3xl': '1.875rem',
+            '4xl': '2.25rem',
+            '5xl': '3rem',
+            '6xl': '3.75rem',
+          },
+          fontWeight: {
+            normal: 400,
+            medium: 500,
+            bold: 700,
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body>
+  <!-- Aquí iría todo el contenido actual que ya tenés -->
+  <!-- Agregamos el botón que faltaba -->
+  <div class="mt-4 text-center print:hidden">
+    <button id="generarResumen" class="bg-morado text-white px-6 py-2 rounded shadow hover:bg-[#4e098c]">
+      Generar resumen
+    </button>
+  </div>
+</body>
+</html>

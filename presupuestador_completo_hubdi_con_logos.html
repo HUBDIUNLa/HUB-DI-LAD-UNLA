@@ -128,7 +128,7 @@
 </style>
 
 
-  <script>
+ <script>
   const materialesPorProceso = {
     "Corte Láser": ["MDF 3mm", "MDF 6mm", "Acrílico 3mm", "Cartón 2mm", "Chapa 2.0mm - 1x2m", "Chapa 2.0mm - 1.245x2.44m", "Chapa 2.5mm - 1.245x2.44m", "Chapa 3.2mm - 1.5x3m", "Chapa 3.2mm - 1.5x6m", "Chapa 4.7mm - 1.5x3m", "Chapa 6.3mm - 1.5x3m"],
     "Router CNC": ["MDF 3mm", "MDF 6mm", "Acrílico 3mm", "MDF 18mm", "Fenólico 18mm", "Pino laminado", "Multilaminado"],
@@ -206,15 +206,12 @@
       const sinMaterial = !fila.querySelector('.material-propio').checked;
 
       const extra = (sinPlano ? 60000 : 0) + (sinMaterial ? 50000 : 0);
-
       const precioBase = precioMaterial[material] || 0;
       const precio = precioBase * coefTamanio[tamanio] * coefComplejidad[complejidad] * (coefProceso[proceso] || 1) + extra;
       total += precio;
 
       const subtotalDiv = fila.querySelector('.subtotal');
-      if (subtotalDiv) {
-        subtotalDiv.textContent = `$ ${precio.toFixed(2)}`;
-      }
+      if (subtotalDiv) subtotalDiv.textContent = `$ ${precio.toFixed(2)}`;
 
       const row = document.createElement("tr");
       row.innerHTML = `
@@ -248,18 +245,17 @@
     const div = document.createElement("div");
     div.className = "item bg-white p-4 rounded shadow mb-4 grid gap-2 sm:grid-cols-3 md:grid-cols-7";
     div.innerHTML = `
-  
       <select class="proceso border p-2 rounded" onchange="actualizarMateriales(this)">
         <option disabled selected>Proceso</option>
         ${Object.keys(materialesPorProceso).map(p => `<option>${p}</option>`).join("")}
       </select>
       <select class="material border p-2 rounded"></select>
       <select class="tamanio border rounded text-sm w-24 px-1 py-1" onchange="calcularTotal()">
-    <option>Chico</option><option>Mediano</option><option>Grande</option>
-  </select>
-  <select class="complejidad border rounded text-sm w-24 px-1 py-1" onchange="calcularTotal()">
-    <option>Baja</option><option>Media</option><option>Alta</option>
-  </select>
+        <option>Chico</option><option>Mediano</option><option>Grande</option>
+      </select>
+      <select class="complejidad border rounded text-sm w-24 px-1 py-1" onchange="calcularTotal()">
+        <option>Baja</option><option>Media</option><option>Alta</option>
+      </select>
       <label class="flex items-center">
         <input type="checkbox" class="material-propio mr-2" onchange="calcularTotal()">
         ¿Trae el material para realizar el servicio?
@@ -269,7 +265,6 @@
         ¿Tiene plano o archivo listo para el servicio productivo?
       </label>
       <div class="subtotal text-right font-semibold col-span-1 md:col-start-7">$ 0.00</div>
-      
     `;
     container.appendChild(div);
     calcularTotal();
@@ -283,67 +278,8 @@
       calcularTotal();
     }
   }
-
-  window.onload = () => agregarFila();
-
-  document.getElementById('fecha').addEventListener('change', function () {
-  // Obtener la fecha en formato dd/MM/yyyy
-  const fechaSeleccionada = this.value;
-  console.log('Fecha seleccionada (dd/MM/yyyy):', fechaSeleccionada);
-  
-  // Convertir a formato yyyy-MM-dd para que JavaScript lo entienda correctamente
-  const partes = fechaSeleccionada.split('/');
-  const fechaConvertida = `${partes[2]}-${partes[1]}-${partes[0]}`;
-
-  // Crear el objeto Date
-  const fecha = new Date(fechaConvertida);
-  console.log('Fecha convertida (yyyy-MM-dd):', fechaConvertida);
-  
-  if (isNaN(fecha)) {
-    console.error('Fecha no válida');
-    return;
-  }
-
-  // Sumar 15 días
-  fecha.setDate(fecha.getDate() + 15);
-  console.log('Fecha después de sumar 15 días:', fecha);
-
-  const dia = String(fecha.getDate()).padStart(2, '0');
-  const mes = String(fecha.getMonth() + 1).padStart(2, '0');
-  const anio = fecha.getFullYear();
-
-  // Actualizar el valor del plazo de validez
-  document.getElementById('plazoValidez').value = `${dia}/${mes}/${anio}`;
-  console.log('Valor de plazoValidez:', `${dia}/${mes}/${anio}`);
-});
-
-document.getElementById('generarResumen').addEventListener('click', () => {
-  const nombre = document.querySelector('input[type="text"]:nth-of-type(1)').value;
-  const dni = document.querySelector('input[type="text"]:nth-of-type(2)').value;
-  const cuil = document.querySelector('input[type="text"]:nth-of-type(3)').value;
-  const direccion = document.querySelector('input[type="text"]:nth-of-type(4)').value;
-  const fecha = document.getElementById('fecha').value;
-  const plazo = document.getElementById('plazoValidez').value;
-
-  const formasPago = Array.from(document.querySelectorAll('input[name="pago"]:checked')).map(cb => cb.value);
-  const conformidad = document.querySelector('input[name="conformidad"]:checked')?.value || "No especificado";
-
-  const datosHTML = ` 
-    <li><strong>Apellido y Nombre:</strong> ${nombre}</li>
-    <li><strong>DNI:</strong> ${dni}</li>
-    <li><strong>CUIL:</strong> ${cuil}</li>
-    <li><strong>Dirección:</strong> ${direccion}</li>
-    <li><strong>Fecha:</strong> ${fecha}</li>
-    <li><strong>Plazo de validez:</strong> ${plazo}</li>
-    <li><strong>Forma de pago:</strong> ${formasPago.join(', ') || 'No especificada'}</li>
-    <li><strong>¿Presto conformidad?:</strong> ${conformidad}</li>
-  `;
-
-  document.getElementById('datosPersona').innerHTML = datosHTML;
-  document.getElementById('resumenSolicitante').classList.remove('hidden');
-});
-
 </script>
+
 
 
   
@@ -606,6 +542,12 @@ document.getElementById('generarResumen').addEventListener('click', () => {
   </button>
 </div>
 
+<div class="mt-4 text-center print:hidden">
+    <button id="generarResumen" class="bg-morado text-white px-6 py-2 rounded shadow hover:bg-[#4e098c]">
+      Generar resumen
+    </button>
+  </div>
+
 <footer class="bg-[#3e2d4f] text-white text-center py-6 mt-20 print:hidden">
   <div class="flex justify-center items-center gap-6 mb-4">
     <img src="images/Recurso 4Bfondoblanco.png" alt="Logo HUB" class="h-10" />
@@ -616,8 +558,13 @@ document.getElementById('generarResumen').addEventListener('click', () => {
 </footer>
 
 <!-- JS para abrir/cerrar el menú en móvil -->
+
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    // Menú hamburguesa
     const toggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('menu');
     const icon = document.getElementById('menu-icon');
@@ -634,37 +581,67 @@ document.getElementById('generarResumen').addEventListener('click', () => {
       menu.classList.toggle('p-4');
       menu.classList.toggle('shadow-md');
       menu.classList.toggle('z-40');
-
       icon.innerHTML = menu.classList.contains('hidden') ? '&#9776;' : '&#10005;';
     });
-  });
 
-  </script>
+    // Agregar primera fila al iniciar
+    agregarFila();
 
-  <!-- jsPDF -->
-
-<!-- jsPDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const { jsPDF } = window.jspdf;
-
-    // Establecer la fecha actual
+    // Autocompletar fecha y plazo
     const fechaInput = document.getElementById("fecha");
     const hoy = new Date();
     fechaInput.value = hoy.toISOString().split("T")[0];
 
-    // Calcular y establecer el plazo de validez (15 días después)
     const plazoInput = document.getElementById("plazoValidez");
     const plazo = new Date(hoy);
     plazo.setDate(plazo.getDate() + 15);
     plazoInput.value = plazo.toISOString().split("T")[0];
 
+    // Escuchar cambios de fecha
+    fechaInput.addEventListener('change', function () {
+      const fecha = new Date(this.value);
+      if (isNaN(fecha)) return;
+
+      fecha.setDate(fecha.getDate() + 15);
+      const dia = String(fecha.getDate()).padStart(2, '0');
+      const mes = String(fecha.getMonth() + 1).padStart(2, '0');
+      const anio = fecha.getFullYear();
+      plazoInput.value = `${anio}-${mes}-${dia}`;
+    });
+
+    // Botón generar resumen
+    const resumenBtn = document.getElementById('generarResumen');
+    if (resumenBtn) {
+      resumenBtn.addEventListener('click', () => {
+        const nombre = document.querySelector('input[type="text"]:nth-of-type(1)').value;
+        const dni = document.querySelector('input[type="text"]:nth-of-type(2)').value;
+        const cuil = document.querySelector('input[type="text"]:nth-of-type(3)').value;
+        const direccion = document.querySelector('input[type="text"]:nth-of-type(4)').value;
+        const fecha = document.getElementById('fecha').value;
+        const plazo = document.getElementById('plazoValidez').value;
+        const formasPago = Array.from(document.querySelectorAll('input[name="pago"]:checked')).map(cb => cb.value);
+        const conformidad = document.querySelector('input[name="conformidad"]:checked')?.value || "No especificado";
+
+        const datosHTML = `
+          <li><strong>Apellido y Nombre:</strong> ${nombre}</li>
+          <li><strong>DNI:</strong> ${dni}</li>
+          <li><strong>CUIL:</strong> ${cuil}</li>
+          <li><strong>Dirección:</strong> ${direccion}</li>
+          <li><strong>Fecha:</strong> ${fecha}</li>
+          <li><strong>Plazo de validez:</strong> ${plazo}</li>
+          <li><strong>Forma de pago:</strong> ${formasPago.join(', ') || 'No especificada'}</li>
+          <li><strong>¿Presto conformidad?:</strong> ${conformidad}</li>
+        `;
+        document.getElementById('datosPersona').innerHTML = datosHTML;
+        document.getElementById('resumenSolicitante').classList.remove('hidden');
+      });
+    }
+
+    // Botón enviar presupuesto
     document.getElementById("solicitarPresupuestoBtn").addEventListener("click", async () => {
       const emailInput = document.getElementById('emailSolicitante');
       const emailSolicitante = emailInput.value.trim();
 
-      // Validación de email
       if (!emailSolicitante || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailSolicitante)) {
         alert("Por favor, ingresá un correo electrónico válido.");
         emailInput.classList.add("border-red-500");
@@ -673,6 +650,7 @@ document.getElementById('generarResumen').addEventListener('click', () => {
         emailInput.classList.remove("border-red-500");
       }
 
+      const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
 
       const nombre = document.querySelector('input[type="text"]:nth-of-type(1)').value;
@@ -686,8 +664,8 @@ document.getElementById('generarResumen').addEventListener('click', () => {
 
       doc.setFontSize(16);
       doc.text("Presupuesto HUB DI UNLa", 10, 10);
-
       doc.setFontSize(12);
+
       let y = 20;
       const datos = [
         `Nombre: ${nombre}`,
@@ -760,3 +738,9 @@ document.getElementById('generarResumen').addEventListener('click', () => {
     });
   });
 </script>
+
+
+
+
+  </body>
+</html>
