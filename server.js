@@ -8,7 +8,8 @@ const cors = require("cors");
 const app = express();
 const upload = multer();
 
-app.use(cors());
+// Habilitar CORS para GitHub Pages
+app.use(cors({ origin: "https://hubdiunla.github.io" }));
 
 app.post("/enviar-presupuesto", upload.single("pdf"), async (req, res) => {
   try {
@@ -22,7 +23,7 @@ app.post("/enviar-presupuesto", upload.single("pdf"), async (req, res) => {
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: "estefifondevilasancet@gmail.com", // Cambiá si querés enviar a otro
+      to: "estefifondevilasancet@gmail.com",
       subject: "Presupuesto HUB DI UNLa",
       text: "Adjunto encontrarás el presupuesto solicitado.",
       attachments: [
@@ -41,6 +42,7 @@ app.post("/enviar-presupuesto", upload.single("pdf"), async (req, res) => {
   }
 });
 
+// Puerto
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor iniciado en http://localhost:${PORT}`);
