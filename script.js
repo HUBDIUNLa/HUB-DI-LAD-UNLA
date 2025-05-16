@@ -44,15 +44,7 @@ const direccion = document.getElementById("direccionSolicitante").value.trim();
       }
 
       const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-
-// Imágenes en base64
-      const ladImg = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAA9klEQVR4nO3SsQ0AIBAEwT4Kk0TAHuWrjGCCFYeyNLsYp7j+Px8fHx8fHx8fHw9/n8vP29fHw9fX2+/Xz8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fH//2Q==";
-      const firmaImg = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUgAAABDCAYAAABcPMrJAAABtElEQVR4nO3XQQ6DIBQFUJjwO/dD8w+TMI+0dCUY+eWxd8glubdNxZJhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwF/t48LG2UkmS5Ha3xn1f0tJ++5KRi+ZPjtnc9Xxd/m0qlWq1Wq1Wq1Wq9XyMZySJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmS3U3fRABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8XfgCOvPAc9vx4nAAAAAElFTkSuQmCC";
-
-// Agregar logos
-      doc.addImage(ladImg, "PNG", 70, 10, 25, 25);
-      doc.addImage(firmaImg, "PNG", 240, 170, 40, 20); // Ajustá posición/tamaño según se vea mejor
+      const doc = new jsPDF({ orientation: "landscape" });
 
 
      const nombre = document.getElementById("nombreSolicitante").value.trim();
