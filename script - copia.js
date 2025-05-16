@@ -42,8 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
         emailInput.classList.remove("border-red-500");
       }
 
+      
+
       const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
+     const doc = new jsPDF({ orientation: "landscape" });
 
       // Imágenes en base64
       const hubImg = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAAA9CAYAAACzSAj3AAABY0lEQVR4nO3YsQ3CMBAF0SJSnMgA3NBSZB3ACux8m5TRDEME+VuX0Wy2ydXn+df5fAxERERERERERERERERER8XtGuVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3j+UreERERERERERERERERETkV/wAHqxGpZ3cqRAAAAAElFTkSuQmCC";

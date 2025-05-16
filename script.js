@@ -52,6 +52,8 @@ const direccion = document.getElementById("direccionSolicitante").value.trim();
 
 // Agregar logos
       doc.addImage(ladImg, "PNG", 70, 10, 25, 25);
+      doc.addImage(firmaImg, "PNG", 240, 170, 40, 20); // Ajustá posición/tamaño según se vea mejor
+
 
      const nombre = document.getElementById("nombreSolicitante").value.trim();
 const dni = document.getElementById("dniSolicitante").value.trim();
