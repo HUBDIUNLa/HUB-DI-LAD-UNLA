@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INTERNO HUB</title>
+
+  <!-- Meta para redes sociales -->
+  <meta property="og:title" content="HUB DI UNLa" />
+  <meta property="og:description" content="Diseño, Diagnóstico e Incubación de proyectos de diseño industrial." />
+  <meta property="og:image" content="https://hubdiunla.github.io/WEB-HUB-DI-UNLa/images/Recurso-4B" />
+  <meta property="og:url" content="https://hubdiunla.github.io/WEB-HUB-DI-UNLa/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Icono -->
+  <link rel="icon" href="favicon_hub_only_rounded.ico" type="image/x-icon" />
+  <link rel="icon" href="images/favicon_hub_only_rounded.ico" type="image/x-icon" />
+
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Fuente Outfit -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            violeta: '#9676d8',
+            morado: '#6A1B9A',
+            fondo: '#FAF5FF',
+            bordo: '#a2263f',
+            celeste: '#0c6d99',
+            azul: '#1D3B6D',
+            berenjena: '#5c4554',
+            bordooscuro: '#552c5b',
+            violaceo: '#6a4b8e',
+            celestonoscuro: '#1394ad',
+            vino: '#80142f',
+            violetagrafito: '#3e2d4f',
+            lila: '#C587C5',
+            violaceoclaro: '#e0d1fa',
+          },
+          fontSize: {
+            '2xl': '1.5rem',
+            '3xl': '1.875rem',
+            '4xl': '2.25rem',
+            '5xl': '3rem',
+            '6xl': '3.75rem',
+          },
+          fontWeight: {
+            normal: 400,
+            medium: 500,
+            bold: 700,
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+
+  <!-- Animaciones -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 1.2s ease-out forwards;
+    }
+
+    .animate-fade-in-delay {
+      animation: fadeIn 1.2s ease-out 0.3s forwards;
+    }
+  </style>
+</head>
+
+  
+
+<body class="bg-[#f9f7f4] text-[#222] font-sans pt-20"> <!-- Compensa altura del menú fijo -->
+
+<!-- NUEVA PÁGINA: UNIDADES EJECUTORAS HUB DI UNLa -->
+<!-- MENÚ DE NAVEGACIÓN -->
+
+<nav class="fixed top-0 left-0 right-0 bg-[#3e2d4f] text-white shadow-md z-50 px-6 py-3 flex items-center justify-between">
+  <div class="flex items-center gap-2 text-lg sm:text-xl font text-white">
+    
+    <!-- Logo LAD -->
+    <a href="https://www.unla.edu.ar/laboratorio-de-diseno-lad" target="_blank" rel="noopener noreferrer" class="hover:underline">
+      <img src="./images/LAD-logo chico.png" alt="LAD Logo" class="h-10 sm:h-12 md:h-14 w-auto object-contain" />
+    </a>
+
+    <!-- Logo UNLa -->
+    <a href="https://www.unla.edu.ar" target="_blank" rel="noopener noreferrer" class="hover:underline">
+      <img src="./images/UNLA RECTANGULAR GRANATE.jpg" alt="UNLa Logo" class="h-10 sm:h-12 md:h-14 w-auto object-contain" />
+      
+    </a>
+
+    <!-- Título -->
+      <a href="index.html#hub" class="block w-full py-1 hover:text-lila">HUB INCUBACION DE DISEÑO INDUSTRIAL</a>
+    
+  </div>
+  
+    <!-- Botón hamburguesa visible solo en sm y md -->
+    <div class="lg:hidden">
+      <button id="menu-toggle" class="text-white text-3xl focus:outline-none">
+        <span id="menu-icon">&#9776;</span>
+      </button>
+    </div>
+  
+    <!-- Menú visible en LG y desplegable en SM/MD -->
+    <ul id="menu" class="hidden lg:flex lg:flex-row items-start lg:items-center gap-4 text-base font text-white">
+    
+      <li><a href="#sobre" class="block w-full py-1 hover:text-lila">Sobre el HUB</a></li>
+      <li><a href="logincursos.html" target="_blank" rel="noopener noreferrer" class="block w-full py-1 hover:text-lila">Aula Web</a></li>
+      <li><a href="#estudios" class="block w-full py-1 hover:text-lila">Ecosistemas</a></li>
+      <li>
+         <!-- Botón a la derecha -->
+  <button id="logoutBtn" class="bg-[#80142f] px-4 py-2 rounded hover:bg-[#5e0f22] font-semibold">
+    Cerrar sesión
+  </button>
+      </li>
+    </ul>
+  </nav>
+
+
+   <!-- LOGO del HUB (compacto arriba del título) -->
+
+   <!-- LOGO y TÍTULO alineados y compactos -->
+<section class="pt-24 pb-6 px-4 bg-violaceoclaro flex justify-center">
+    <div class="max-w-6xl w-full mx-auto flex flex-col items-center">
+      <img src="images/Recurso 4B.png" alt="Logo HUB DI UNLa" class="h-20 sm:h-24 object-contain mb-4" />
+      <div class="relative w-full -mb-10 z-10">
+        <br>
+        <h2 class="bg-violetagrafito text-white text-3xl sm:text-4xl font-bold px-6 py-3 rounded-xl shadow-lg w-full block text-center uppercase">
+          UNIDADES INTERNAS HUB
+        </h2>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CAJA DE TEXTO alineada sin separación extra -->
+  <section class="py-20 px-6 bg-violaceoclaro">
+    <div class="max-w-6xl mx-auto bg-vino text-white rounded-2xl shadow-lg p-6 sm:p-10 text-base leading-relaxed space-y-4">
+     <p> La Unidad Interna del HUB de Incubación de Diseño de la UNLa es un espacio exclusivo para la gestión operativa y estratégica del equipo directivo. Su objetivo es centralizar herramientas internas de trabajo, recursos administrativos y procesos de toma de decisiones vinculados a los servicios y programas del HUB. </p> <p> Este entorno protegido incluye presupuestadores específicos para cursos y servicios institucionales, formularios avanzados, acceso a documentos clave y un repositorio interno de presupuestos y registros. Está diseñado para optimizar la planificación, el seguimiento y la trazabilidad de las actividades del HUB, con criterios de confidencialidad y acceso restringido. </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto mt-16">
+  
+      <div class="rounded-2xl p-6 bg-violetagrafito text-white shadow-md flex flex-col items-center text-center hover:scale-105 transition">
+        <i class="fas fa-project-diagram text-4xl mb-4"></i>
+        <h3 class="text-xl font-semibold mb-2">GESTIÓN GENERAL</h3>
+        <p class="text-sm text-white/90 mb-4">Herramientas de planificación, gestión y seguimiento del HUB DI UNLA.</p>
+        <a href="unidad1_gestion.html" class="bg-white text-violetagrafito font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">Ingresar</a>
+      </div>
+  
+      <div class="rounded-2xl p-6 bg-violaceo text-white shadow-md flex flex-col items-center text-center hover:scale-105 transition">
+        <i class="fas fa-leaf text-4xl mb-4"></i>
+        <h3 class="text-xl font-semibold mb-2">REPOSITORIO</h3>
+        <p class="text-sm text-white/90 mb-4">Espacio de guardado de documentación importante.</p>
+        <a href="unidad2_sustentable.html" class="bg-white text-violaceo font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">Ingresar</a>
+      </div>
+  
+      <div class="rounded-2xl p-6 bg-morado text-white shadow-md flex flex-col items-center text-center hover:scale-105 transition">
+        <i class="fas fa-cube text-4xl mb-4"></i>
+        <h3 class="text-xl font-semibold mb-2">GESTION DE CURSOS</h3>
+        <p class="text-sm text-white/90 mb-4">>Herramientas especificas de la gestion de cursos y capacitaciones.</p>
+        <a href="unidad3_fabricacion.html" class="bg-white text-morado font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">Ingresar</a>
+      </div>
+  
+      <div class="rounded-2xl p-6 bg-berenjena text-white shadow-md flex flex-col items-center text-center hover:scale-105 transition">
+        <i class="fas fa-coins text-4xl mb-4"></i>
+        <h3 class="text-xl font-semibold mb-2">PRESUPUESTADORES</h3>
+        <p class="text-sm text-white/90 mb-4">Herramientas automaticas para el asesoramiento en costos y financiamiento.</p>
+        <a href="unidad4_finanzas.html" class="bg-white text-berenjena font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">Ingresar</a>
+      </div>
+    
+    </div>
+  </section>
+  
+  <!-- FOOTER -->
+  <footer class="bg-[#3e2d4f] text-white text-center py-6 font-bold mt-20">
+    <div class="flex justify-center items-center gap-6 mb-4 flex-wrap">
+      <div class="bg-white flex items-center justify-center rounded p-4" style="height: 4rem; width: auto;">
+        <img src="images/Recurso 4B.png" alt="Logo HUB" class="h-[2.6rem] sm:h-[3.4rem] object-contain" />
+      </div>
+      <img src="images/UNLA RECTANGULAR GRANATE.jpg" alt="Logo UNLa" class="w-12 sm:w-16 h-auto" />
+      <img src="images/LAD-logo chico.png" alt="Logo LAD" class="w-12 sm:w-16 h-auto" />
+    </div>
+    <p class="mb-2">© 2025 HUB DI UNLa</p>
+    <p class="text-sm">2023 <a href="#" class="underline hover:text-white">HUB de Incubación</a>, Diseño WEB</p>
+  </footer>
+  
+  <!-- JS para abrir/cerrar el menú en móvil -->
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('menu');
+      const icon = document.getElementById('menu-icon');
+  
+      toggle.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('flex');
+        menu.classList.toggle('flex-col');
+        menu.classList.toggle('absolute');
+        menu.classList.toggle('top-full');
+        menu.classList.toggle('left-0');
+        menu.classList.toggle('bg-[#3e2d4f]');
+        menu.classList.toggle('w-full');
+        menu.classList.toggle('p-4');
+        menu.classList.toggle('shadow-md');
+        menu.classList.toggle('z-40');
+  
+        // Cambiar icono
+        if (menu.classList.contains('hidden')) {
+          icon.innerHTML = '&#9776;'; // ☰
+        } else {
+          icon.innerHTML = '&#10005;'; // ✖
+        }
+      });
+    });
+  </script>
+
+  
+ 
+  </body>
+</html>
+
+ 
