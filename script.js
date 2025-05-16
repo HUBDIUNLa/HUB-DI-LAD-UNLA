@@ -6,10 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
   
 if (btnResumen) {
   btnResumen.addEventListener('click', () => {
-    const nombre = document.querySelector('input[type="text"]:nth-of-type(1)').value;
-    const dni = document.querySelector('input[type="text"]:nth-of-type(2)').value;
-    const cuil = document.getElementById('cuil').value;
-    const direccion = document.querySelector('input[type="text"]:nth-of-type(4)').value;
+
+    const nombre = document.getElementById("nombreSolicitante").value.trim();
+const dni = document.getElementById("dniSolicitante").value.trim();
+const cuil = document.getElementById("cuilSolicitante").value.trim();
+const direccion = document.getElementById("direccionSolicitante").value.trim();
     const fecha = document.getElementById('fecha').value;
     const plazo = document.getElementById('plazoValidez').value;
     const formasPago = Array.from(document.querySelectorAll('input[name="pago"]:checked')).map(cb => cb.value);
@@ -73,10 +74,10 @@ if (btnResumen) {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
 
-      const nombre = document.querySelector('input[type="text"]:nth-of-type(1)').value;
-      const dni = document.querySelector('input[type="number"]:nth-of-type(2)').value;
-      const cuil = document.querySelector('input[type="number"]:nth-of-type(3)').value;
-      const direccion = document.querySelector('input[type="text"]:nth-of-type(4)').value;
+     const nombre = document.getElementById("nombreSolicitante").value.trim();
+const dni = document.getElementById("dniSolicitante").value.trim();
+const cuil = document.getElementById("cuilSolicitante").value.trim();
+const direccion = document.getElementById("direccionSolicitante").value.trim();
       const fecha = document.getElementById('fecha').value;
       const plazo = document.getElementById('plazoValidez').value;
       const formasPago = Array.from(document.querySelectorAll('input[name="pago"]:checked')).map(cb => cb.value).join(', ');
