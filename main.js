@@ -13,3 +13,4 @@ document.getElementById("logoutBtn").addEventListener("click", () => {
       console.error("Error al cerrar sesión:", error);
     });
 });
+

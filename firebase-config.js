@@ -1,8 +1,7 @@
 
 // firebase-config.js
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import { getAnalytics } from "firebase/analytics";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
 // Configuración de tu app Firebase
 const firebaseConfig = {
@@ -15,10 +14,16 @@ const firebaseConfig = {
   measurementId: "G-ZHG0BJL800"
 };
 
-// Inicialización
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const analytics = getAnalytics(app);
 
-// Exportá lo que necesites
 export { auth };
+
+
+
+
+
+
+
+
