@@ -3,33 +3,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnResumen = document.getElementById('btnResumen');
   const btnPresupuesto = document.getElementById('btnPresupuesto');
 
-  
-if (btnResumen) {
-  btnResumen.addEventListener('click', () => {
+  if (btnResumen) {
+    btnResumen.addEventListener('click', () => {
+      const nombre = document.getElementById("nombreSolicitante").value.trim();
+      const dni = document.getElementById("dniSolicitante").value.trim();
+      const cuil = document.getElementById("cuilSolicitante").value.trim();
+      const direccion = document.getElementById("direccionSolicitante").value.trim();
+      const fecha = document.getElementById('fecha').value;
+      const plazo = document.getElementById('plazoValidez').value;
+      const formasPago = Array.from(document.querySelectorAll('input[name="pago"]:checked')).map(cb => cb.value);
+      const conformidad = document.querySelector('input[name="conformidad"]:checked')?.value || "No especificado";
 
-    const nombre = document.getElementById("nombreSolicitante").value.trim();
-const dni = document.getElementById("dniSolicitante").value.trim();
-const cuil = document.getElementById("cuilSolicitante").value.trim();
-const direccion = document.getElementById("direccionSolicitante").value.trim();
-    const fecha = document.getElementById('fecha').value;
-    const plazo = document.getElementById('plazoValidez').value;
-    const formasPago = Array.from(document.querySelectorAll('input[name="pago"]:checked')).map(cb => cb.value);
-    const conformidad = document.querySelector('input[name="conformidad"]:checked')?.value || "No especificado";
+      const datosHTML = `
+        <li><strong>Apellido y Nombre:</strong> ${nombre}</li>
+        <li><strong>DNI:</strong> ${dni}</li>
+        <li><strong>CUIL:</strong> ${cuil}</li>
+        <li><strong>Dirección:</strong> ${direccion}</li>
+        <li><strong>Fecha:</strong> ${fecha}</li>
+        <li><strong>Plazo de validez:</strong> ${plazo}</li>
+        <li><strong>Forma de pago:</strong> ${formasPago.join(', ') || 'No especificada'}</li>
+        <li><strong>¿Presto conformidad?:</strong> ${conformidad}</li>
+      `;
+      document.getElementById('datosPersona').innerHTML = datosHTML;
+      document.getElementById('resumenSolicitante').classList.remove('hidden');
+    });
+  }
 
-    const datosHTML = `
-      <li><strong>Apellido y Nombre:</strong> ${nombre}</li>
-      <li><strong>DNI:</strong> ${dni}</li>
-      <li><strong>CUIL:</strong> ${cuil}</li>
-      <li><strong>Dirección:</strong> ${direccion}</li>
-      <li><strong>Fecha:</strong> ${fecha}</li>
-      <li><strong>Plazo de validez:</strong> ${plazo}</li>
-      <li><strong>Forma de pago:</strong> ${formasPago.join(', ') || 'No especificada'}</li>
-      <li><strong>¿Presto conformidad?:</strong> ${conformidad}</li>
-    `;
-    document.getElementById('datosPersona').innerHTML = datosHTML;
-    document.getElementById('resumenSolicitante').classList.remove('hidden');
-  });
-}
   if (btnPresupuesto) {
     btnPresupuesto.addEventListener('click', async () => {
       const emailInput = document.getElementById('emailSolicitante');
@@ -46,24 +45,29 @@ const direccion = document.getElementById("direccionSolicitante").value.trim();
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
 
-     const nombre = document.getElementById("nombreSolicitante").value.trim();
-const dni = document.getElementById("dniSolicitante").value.trim();
-const cuil = document.getElementById("cuilSolicitante").value.trim();
-const direccion = document.getElementById("direccionSolicitante").value.trim();
+      // Imágenes en base64
+      const hubImg = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAAA9CAYAAACzSAj3AAABY0lEQVR4nO3YsQ3CMBAF0SJSnMgA3NBSZB3ACux8m5TRDEME+VuX0Wy2ydXn+df5fAxERERERERERERERERER8XtGuVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3iVEeVsxE8E3j+UreERERERERERERERERETkV/wAHqxGpZ3cqRAAAAAElFTkSuQmCC";
+      const ladImg = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAA9klEQVR4nO3SsQ0AIBAEwT4Kk0TAHuWrjGCCFYeyNLsYp7j+Px8fHx8fHx8fHw9/n8vP29fHw9fX2+/Xz8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fH//2Q==";
+      const firmaImg = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUgAAABDCAYAAABcPMrJAAABtElEQVR4nO3XQQ6DIBQFUJjwO/dD8w+TMI+0dCUY+eWxd8glubdNxZJhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwF/t48LG2UkmS5Ha3xn1f0tJ++5KRi+ZPjtnc9Xxd/m0qlWq1Wq1Wq1Wq9XyMZySJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmS3U3fRABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB8XfgCOvPAc9vx4nAAAAAElFTkSuQmCC";
+
+      // Agregar logos
+      doc.addImage(hubImg, "PNG", 40, 10, 25, 25);
+      doc.addImage(ladImg, "PNG", 70, 10, 25, 25);
+
+      const nombre = document.getElementById("nombreSolicitante").value.trim();
+      const dni = document.getElementById("dniSolicitante").value.trim();
+      const cuil = document.getElementById("cuilSolicitante").value.trim();
+      const direccion = document.getElementById("direccionSolicitante").value.trim();
       const fecha = document.getElementById('fecha').value;
       const plazo = document.getElementById('plazoValidez').value;
       const formasPago = Array.from(document.querySelectorAll('input[name="pago"]:checked')).map(cb => cb.value).join(', ');
       const conformidad = document.querySelector('input[name="conformidad"]:checked')?.value || "No especificado";
 
-
-
-
-      
       doc.setFontSize(16);
-      doc.text("Presupuesto HUB DI UNLa", 10, 10);
+      doc.text("Presupuesto HUB DI UNLa", 10, 45);
 
       doc.setFontSize(12);
-      let y = 20;
+      let y = 55;
       const datos = [
         `Nombre: ${nombre}`,
         `DNI: ${dni}`,
@@ -74,7 +78,6 @@ const direccion = document.getElementById("direccionSolicitante").value.trim();
         `Forma de pago: ${formasPago}`,
         `¿Presto conformidad?: ${conformidad}`,
         `Email: ${emailSolicitante}`,
-
       ];
       datos.forEach(d => {
         doc.text(d, 10, y);
@@ -113,6 +116,9 @@ const direccion = document.getElementById("direccionSolicitante").value.trim();
       const total = document.getElementById("totalFinal").textContent;
       doc.setFontSize(13);
       doc.text(`Total: ${total}`, 10, y);
+
+      // Firma del HUB al final del documento
+      doc.addImage(firmaImg, "PNG", 140, 250, 50, 20);
 
       const pdfBlob = doc.output("blob");
       const formData = new FormData();
