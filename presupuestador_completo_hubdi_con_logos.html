@@ -537,13 +537,13 @@
 
 <!-- Botón para solicitar presupuesto -->
 <div class="mt-6 print:hidden text-center">
-  <button id="solicitarPresupuestoBtn" class="bg-violaceo text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#4e098c] transition">
+  <button id="btnPresupuesto" class="bg-violaceo text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#4e098c] transition">
     Solicitar presupuesto
   </button>
 </div>
 
 <div class="mt-4 text-center print:hidden">
-    <button id="generarResumen" class="bg-morado text-white px-6 py-2 rounded shadow hover:bg-[#4e098c]">
+    <button id="btnResumen" class="bg-morado text-white px-6 py-2 rounded shadow hover:bg-[#4e098c]">
       Generar resumen
     </button>
   </div>
@@ -610,7 +610,7 @@
     });
 
     // Botón generar resumen
-    const resumenBtn = document.getElementById('generarResumen');
+    const resumenBtn = document.getElementById('btnResumen');
     if (resumenBtn) {
       resumenBtn.addEventListener('click', () => {
         const nombre = document.querySelector('input[type="text"]:nth-of-type(1)').value;
@@ -638,7 +638,7 @@
     }
 
     // Botón enviar presupuesto
-    document.getElementById("solicitarPresupuestoBtn").addEventListener("click", async () => {
+    document.getElementById("btnPresupuesto").addEventListener("click", async () => {
       const emailInput = document.getElementById('emailSolicitante');
       const emailSolicitante = emailInput.value.trim();
 
@@ -737,10 +737,15 @@
       }
     });
   });
+
+  document.addEventListener('DOMContentLoaded', () => {
+  const btnResumen = document.getElementById('btnResumen');
+  const btnPresupuesto = document.getElementById('btnPresupuesto');
+});
 </script>
 
 
-
+<script src="script.js"></script>
 
   </body>
 </html>
