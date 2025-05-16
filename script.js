@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnResumen) {
     btnResumen.addEventListener('click', () => {
       const nombre = document.querySelector('input[type="text"]:nth-of-type(1)').value;
-      const dni = document.querySelector('input[type="text"]:nth-of-type(2)').value;
-      const cuil = document.querySelector('input[type="text"]:nth-of-type(3)').value;
+      const dni = document.querySelector('input[type="number"]:nth-of-type(2)').value;
+      const cuil = document.querySelector('input[type="number"]:nth-of-type(3)').value;
       const direccion = document.querySelector('input[type="text"]:nth-of-type(4)').value;
       const fecha = document.getElementById('fecha').value;
       const plazo = document.getElementById('plazoValidez').value;
@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const doc = new jsPDF();
 
       const nombre = document.querySelector('input[type="text"]:nth-of-type(1)').value;
-      const dni = document.querySelector('input[type="text"]:nth-of-type(2)').value;
-      const cuil = document.querySelector('input[type="text"]:nth-of-type(3)').value;
+      const dni = document.querySelector('input[type="number"]:nth-of-type(2)').value;
+      const cuil = document.querySelector('input[type="number"]:nth-of-type(3)').value;
       const direccion = document.querySelector('input[type="text"]:nth-of-type(4)').value;
       const fecha = document.getElementById('fecha').value;
       const plazo = document.getElementById('plazoValidez').value;
