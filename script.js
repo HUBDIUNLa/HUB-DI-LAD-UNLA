@@ -68,6 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
         `Plazo de validez: ${plazo}`,
         `Forma de pago: ${formasPago}`,
         `¿Presto conformidad?: ${conformidad}`,
+        `Email: ${emailSolicitante}`,
+
       ];
       datos.forEach(d => {
         doc.text(d, 10, y);
@@ -111,6 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const formData = new FormData();
       formData.append("pdf", pdfBlob, "presupuesto.pdf");
       formData.append("email", emailSolicitante);
+
+      console.log("Enviando a backend:", emailSolicitante, formData);
 
       try {
         const response = await fetch("https://backend-hubdi.onrender.com/enviar-presupuesto", {
