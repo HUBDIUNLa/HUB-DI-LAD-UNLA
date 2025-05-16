@@ -43,14 +43,16 @@ const direccion = document.getElementById("direccionSolicitante").value.trim();
         emailInput.classList.remove("border-red-500");
       }
 
+
       const { jsPDF } = window.jspdf;
-      const doc = new jsPDF({ orientation: "landscape" });
+const doc = new jsPDF({ orientation: "landscape" }); // PDF horizontal
+
 
 
      const nombre = document.getElementById("nombreSolicitante").value.trim();
-const dni = document.getElementById("dniSolicitante").value.trim();
-const cuil = document.getElementById("cuilSolicitante").value.trim();
-const direccion = document.getElementById("direccionSolicitante").value.trim();
+     const dni = document.getElementById("dniSolicitante").value.trim();
+     const cuil = document.getElementById("cuilSolicitante").value.trim();
+     const direccion = document.getElementById("direccionSolicitante").value.trim();
       const fecha = document.getElementById('fecha').value;
       const plazo = document.getElementById('plazoValidez').value;
       const formasPago = Array.from(document.querySelectorAll('input[name="pago"]:checked')).map(cb => cb.value).join(', ');

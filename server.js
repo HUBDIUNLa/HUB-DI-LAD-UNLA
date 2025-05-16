@@ -25,7 +25,7 @@ app.post("/enviar-presupuesto", upload.single("pdf"), async (req, res) => {
 
 const mailOptions = {
   from: process.env.EMAIL_USER,
-  to: `estefifondevilasancet@gmail.com, ${req.body.email}`, // ambos destinatarios
+  to: `hubdiladunla@gmail.com, ${req.body.email}`, // ambos destinatarios
   subject: "Presupuesto HUB DI UNLa",
   text: "Adjunto encontrarás el presupuesto solicitado.",
   attachments: [
