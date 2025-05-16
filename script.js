@@ -3,6 +3,34 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnResumen = document.getElementById('btnResumen');
   const btnPresupuesto = document.getElementById('btnPresupuesto');
 
+  
+if (btnResumen) {
+  btnResumen.addEventListener('click', () => {
+    const nombre = document.querySelector('input[type="text"]:nth-of-type(1)').value;
+    const dni = document.querySelector('input[type="text"]:nth-of-type(2)').value;
+    const cuil = document.getElementById('cuil').value;
+    const direccion = document.querySelector('input[type="text"]:nth-of-type(4)').value;
+    const fecha = document.getElementById('fecha').value;
+    const plazo = document.getElementById('plazoValidez').value;
+    const formasPago = Array.from(document.querySelectorAll('input[name="pago"]:checked')).map(cb => cb.value);
+    const conformidad = document.querySelector('input[name="conformidad"]:checked')?.value || "No especificado";
+
+    const datosHTML = `
+      <li><strong>Apellido y Nombre:</strong> ${nombre}</li>
+      <li><strong>DNI:</strong> ${dni}</li>
+      <li><strong>CUIL:</strong> ${cuil}</li>
+      <li><strong>Dirección:</strong> ${direccion}</li>
+      <li><strong>Fecha:</strong> ${fecha}</li>
+      <li><strong>Plazo de validez:</strong> ${plazo}</li>
+      <li><strong>Forma de pago:</strong> ${formasPago.join(', ') || 'No especificada'}</li>
+      <li><strong>¿Presto conformidad?:</strong> ${conformidad}</li>
+    `;
+    document.getElementById('datosPersona').innerHTML = datosHTML;
+    document.getElementById('resumenSolicitante').classList.remove('hidden');
+  });
+}
+
+/*
   if (btnResumen) {
     btnResumen.addEventListener('click', () => {
       const nombre = document.querySelector('input[type="text"]:nth-of-type(1)').value;
@@ -28,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('resumenSolicitante').classList.remove('hidden');
     });
   }
-
+*/
   if (btnPresupuesto) {
     btnPresupuesto.addEventListener('click', async () => {
       const emailInput = document.getElementById('emailSolicitante');
