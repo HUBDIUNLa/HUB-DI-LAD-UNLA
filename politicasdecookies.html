@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+    <html lang="es">
+
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>FINANZAS SALUDABLES</title>
+    
+      <!-- Meta para redes sociales -->
+      <meta property="og:title" content="FINANZAS SALUDABLES" />
+      <meta property="og:description" content="Coaching financiero y herramientas para una vida financiera saludable y en equilibrio " />
+      <meta property="og:image" content="https://blomstfrisk.github.io/FINANZAS-SALUDABLES/images/logoazuladosintexto.png" />
+      <meta property="og:url" content="https://blomstfrisk.github.io/FINANZAS-SALUDABLES/" />
+      <meta name="twitter:card" content="summary_large_image" />
+    
+      <!-- Icono -->
+      <link rel="icon" href="favicon_hub_only_rounded.ico" type="image/x-icon" />
+      <link rel="icon" href="images/favicon_redondeado.png" type="image/x-icon" />
+    
+      <!-- Estilos personalizados -->
+      <link rel="stylesheet" href="style.css" />
+    
+      <!-- Fuente Outfit -->
+      <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+    
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    
+      <!-- Tailwind CSS -->
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                violeta: '#9676d8',
+                morado: '#6A1B9A',
+                fondo: '#FAF5FF',
+                bordo: '#a2263f',
+                celeste: '#0c6d99',
+                azul: '#1D3B6D',
+                berenjena: '#5c4554',
+                bordooscuro: '#552c5b',
+                violaceo: '#6a4b8e',
+                celestonoscuro: '#1394ad',
+                vino: '#80142f',
+                violetagrafito: '#3e2d4f',
+                lila: '#C587C5',
+                violaceoclaro: '#e0d1fa',
+
+                azulado: '#8EA4D2',
+                azulino: '#6279B8',
+                azulgris: '#49516F',
+                azulmarino: '#184E77', 
+                azulbase: '#1E6091',
+                azulinado: '#1A759F',
+                azulpetrol: '#168AAD',
+                azulverdoso: '#34A0A4',
+                verdepalta: '#6BAB6F',
+                verdepetroloscuro: '#036666',
+                verdepetroleo: '#14746F',
+                verdepetro: '#248277',
+                verdepetroclaro: '#469d89', 
+                verdeinglesclaro: '#3AB795',
+                verdementa: '#A0E8AF',
+                verdeingles: '#477E62',
+                verdepetroseco: '#86BAA1',
+                amarillooro: '#D7B04B',
+                amarillolimon: '#D9ED92',
+                amarillo: '#FFCF56',
+                fondocalido: '#FDFCFB',
+                cyanoscuroelegante: '#006D77',
+                turquesaprofundo: '#007C91',
+
+              },
+              fontSize: {
+                '2xl': '1.5rem',
+                '3xl': '1.875rem',
+                '4xl': '2.25rem',
+                '5xl': '3rem',
+                '6xl': '3.75rem',
+              },
+              fontWeight: {
+                normal: 400,
+                medium: 500,
+                bold: 700,
+              },
+              fontFamily: {
+                sans: ['Outfit', 'sans-serif'],
+              },
+            },
+          },
+        };
+      </script>
+
+    
+      <!-- Animaciones -->
+      <style>
+        html {
+          scroll-behavior: smooth;
+        }
+    
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+    
+        .animate-fade-in {
+          animation: fadeIn 1.2s ease-out forwards;
+        }
+    
+        .animate-fade-in-delay {
+          animation: fadeIn 1.2s ease-out 0.3s forwards;
+        }
+      </style>
+    </head>
+
+      
+    
+    <body class="bg-white text-[#222] font-sans pt-20"> <!-- Compensa altura del menú fijo -->
+    
+<!-- NAV RESPONSIVE CON MENÚ DESPLEGABLE -->
+
+
+  <nav class="fixed top-0 left-0 right-0 bg-white text-white shadow-md z-50 px-6 py-3 flex items-center justify-between">
+  <div class="flex items-center gap-2 text-lg sm:text-xl font text-verdepetroleo">
+    
+    <!-- Logo -->
+    <a href="https://www.instagram.com/verodiazarive/?hl=es-la" target="_blank" rel="noopener noreferrer" class="hover:underline">
+      <img src="./images/logoazuladosintexto.png" alt="LAD Logo" class="h-10 sm:h-12 md:h-14 w-auto object-contain" />
+    </a>
+
+        <!-- Título -->
+      <a href="index.html#fs" class="block w-full py-1 hover:text-azulino">FINANZAS SALUDABLES</a>
+    
+  </div>
+
+ 
+    <!-- Botón hamburguesa visible solo en sm y md -->
+    <div class="lg:hidden">
+      <button id="menu-toggle" class="text-white text-3xl focus:outline-none">
+        <span id="menu-icon">&#9776;</span>
+      </button>
+    </div>
+  
+    <!-- Menú visible en LG y desplegable en SM/MD -->
+    <ul id="menu" class="hidden lg:flex lg:flex-row items-start lg:items-center gap-4 text-base font text-verdepetroleo">
+    
+      <li><a href="#sobre" class="block w-full py-1 hover:text-azulino">Sobre Finanzas Saludables</a></li>
+      <li><a href="#estudios" class="block w-full py-1 hover:text-azulino">Sobre SANGHA</a></li>
+      <li><a href="logincursos.html" target="_blank" rel="noopener noreferrer" class="block w-full py-1 hover:text-azulino">SANGHA Web</a></li>
+      
+      <li>
+  <a id="contactoMail" href="#" 
+     class="block w-full py-1 hover:text-azulino flex items-center space-x-2">
+    <i class="fas fa-envelope"></i>
+    <span>Contacto</span>
+  </a>
+</li>
+      <li class="flex flex-row gap-2 mt-2 lg:mt-0">
+        <a href="index.html" class="flex items-center gap-1 bg-white text-[#80142f] text-sm px-2 py-1 rounded-md shadow hover:bg-gray-100">
+          <img src="./images/ar.png" alt="Español" class="w-4 h-4 rounded-sm" />
+        </a>
+        <a href="indexen.html" class="flex items-center gap-1 bg-white text-[#80142f] text-sm px-2 py-1 rounded-md shadow hover:bg-gray-100">
+          <img src="./images/us.png" alt="English" class="w-4 h-4 rounded-sm" />
+        </a>
+      </li>
+    </ul>
+  </nav>
+  
+  
+
+	<!-- Políticas de cookies con ancho mayor -->
+<section id="cookies" class="py-20 px-6 bg-verdepalta">
+  <div class="mx-auto px-6 py-20 bg-verdepetroloscuro rounded-2xl max-w-5xl">
+    <h2 class="text-5xl text-white font-semibold mb-6 text-center">Política de Cookies</h2>
+     <div class="border-t-4 border-verdementa mt-10 pt-6 text-xs text-center grid grid-cols-1 md:grid-cols-4 gap-4"></div>
+    <div class="text-white text-lg leading-relaxed space-y-6 text-left">
+
+      <!-- contenido markdown -->
+      <div class="markdown prose w-full break-words dark:prose-invert light">
+
+        <p>Última actualización: 21 de mayo 2025</p>
+        <br>
+
+        <p><strong>1. Introducción<br></strong>
+        Bienvenido a <strong>FINANZAS SALUDABLES</strong>. Queremos informarte sobre el uso de cookies en nuestro sitio web y cómo afecta tu experiencia como usuario.</p>
+        <br>
+
+        <p><strong>2. ¿Qué son las Cookies?<br></strong>
+        Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas un sitio web. Estas herramientas tecnológicas nos permiten mejorar la funcionalidad de nuestro sitio y ofrecerte una experiencia más personalizada.</p>
+        <br>
+
+        <p><strong>3. Tipos de Cookies que Utilizamos<br></strong>
+        <strong>Cookies Esenciales:</strong> Necesarias para el funcionamiento básico del sitio y para proporcionarte los servicios que solicitas.<br>
+        <strong>Cookies Analíticas:</strong> Nos ayudan a entender cómo interactúas con nuestro sitio, permitiéndonos mejorar continuamente.<br>
+        <strong>Cookies de Publicidad:</strong> Utilizadas para mostrarte anuncios relevantes basados en tus preferencias y comportamientos de navegación.</p>
+        <br>
+
+        <p><strong>4. Consentimiento para el Uso de Cookies<br></strong>
+        Al acceder a nuestro sitio, aceptas el uso de cookies de acuerdo con esta política. Si no estás de acuerdo, ajusta la configuración de tu navegador o abandona nuestro sitio.</p>
+        <br>
+
+        <p><strong>5. Uso de Cookies en la Comunidad Europea y Estados Unidos<br></strong>
+        <strong>FINANZAS SALUDABLES</strong> cumple con las regulaciones de privacidad de la Unión Europea, incluido el Reglamento General de Protección de Datos (GDPR), y de Estados Unidos. Al utilizar nuestro sitio desde estos lugares, aceptas el uso de cookies de acuerdo con esta política.</p>
+        <br>
+
+        <p><strong>6. Gestión de Cookies<br></strong>
+        Puedes gestionar las preferencias de cookies a través de la configuración de tu navegador. Ten en cuenta que la desactivación de ciertas cookies puede afectar la funcionalidad del sitio.</p>
+        <br>
+
+        <p><strong>7. Cambios en la Política de Cookies<br></strong>
+        Nos reservamos el derecho de actualizar esta política para reflejar cambios en nuestras prácticas y la legislación aplicable. Te recomendamos revisar esta página periódicamente para estar informado.</p>
+        <br>
+
+        <p><strong>8. Contacto<br></strong>
+        Si tienes alguna pregunta sobre nuestra política de cookies, no dudes en ponerte en contacto con nosotros a través de <a href="mailto:finanzas.saludables.emprende@gmail.com" class="text-verdementa hover:underline">finanzas.saludables.emprende@gmail.com</a>.</p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="bg-white text-azulgris font-sans py-20">
+  <div class="max-w-6xl mx-auto px-6 text-center space-y-12">
+    
+    <h2 class="text-4xl font-bold text-azulbase">¿Qué podemos hacer por vos?</h2>
+    
+    <div class="grid md:grid-cols-3 gap-10 text-left">
+      
+      <!-- Bloque 1 -->
+      <div class="bg-verdementa/50 rounded-2xl p-6 shadow-md hover:shadow-lg transition duration-300">
+        <h3 class="text-2xl font-bold text-azulbase mb-2">Consultoría personalizada</h3>
+        <p class="text-base text-azulgris">Te ayudamos a resolver tus desafíos específicos con un acompañamiento 1 a 1.</p>
+      </div>
+
+      <!-- Bloque 2 -->
+      <div class="bg-verdementa/50 rounded-2xl p-6 shadow-md hover:shadow-lg transition duration-300">
+        <h3 class="text-2xl font-bold text-azulbase mb-2">Procesos colaborativos</h3>
+        <p class="text-base text-azulgris">Co-creamos soluciones con vos y tu equipo para que se adapten a su realidad.</p>
+      </div>
+
+      <!-- Bloque 3 -->
+      <div class="bg-verdementa/50 rounded-2xl p-6 shadow-md hover:shadow-lg transition duration-300">
+        <h3 class="text-2xl font-bold text-azulbase mb-2">Capacitaciones a medida</h3>
+        <p class="text-base text-azulgris">Diseñamos talleres y programas de formación según tus objetivos.</p>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+<!--PREFOOTER -->
+
+<section class="bg-verdepetroloscuro text-white py-10 px-4 font-outfit">
+  <!-- Grid superior -->
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
+
+    <!-- CONSULTORÍA -->
+    <div>
+      <h2 class="text-lg font-bold mb-3">CONSULTORÍA</h2>
+      <ul class="space-y-1">
+        <li><a href="#" class="hover:text-verdementa transition-colors">Asesorías en Finanzas</a></li>
+        <li><a href="#" class="hover:text-verdementa transition-colors">Asesorías a Emprendedores</a></li>
+        <li><a href="#" class="hover:text-verdementa transition-colors">Asesorías en Gestión</a></li>
+        <li><a href="#" class="hover:text-verdementa transition-colors">Asesorías en Diseño</a></li>
+        <li><a href="#" class="hover:text-verdementa transition-colors">Asesorías en Comunicación</a></li>
+      </ul>
+    </div>
+
+    <!-- REDES -->
+    <div>
+      <h2 class="text-lg font-bold mb-3">REDES</h2>
+      <div class="flex space-x-4 text-xl">
+        <a href="https://www.instagram.com/finanzas.saludables.ar" target="_blank" class="hover:text-verdementa transition-colors">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+      <div class="mt-4 text-sm leading-relaxed">
+        <p>La Plata, Argentina</p>
+        <p><a href="mailto:finanzas.saludables.emprende@gmail.com" class="hover:text-verdementa transition-colors">finanzas.saludables.emprende@gmail.com</a></p>
+        <p><a href="tel:+5492215738117" class="hover:text-verdementa transition-colors">+54 9221 573 8117</a></p>
+      </div>
+    </div>
+
+    <!-- SECCIONES -->
+    <div>
+      <h2 class="text-lg font-bold mb-3">SECCIONES</h2>
+      <ul class="space-y-1">
+        <li><a href="#" class="hover:text-verdementa transition-colors">SANGHA</a></li>
+        <li><a href="#" class="hover:text-verdementa transition-colors">Cursos</a></li>
+        <li><a href="#" class="hover:text-verdementa transition-colors">Servicios</a></li>
+        <li><a href="#" class="hover:text-verdementa transition-colors">Equipo</a></li>
+        <li><a href="#" class="hover:text-verdementa transition-colors">Contacto</a></li>
+      </ul>
+    </div>
+
+    <!-- LOGO -->
+    <div class="flex items-center justify-center">
+      <div class="bg-white flex items-center justify-center rounded p-4 transition-transform duration-300 hover:scale-105" style="height: 9rem;">
+        <img src="images/logofsbold.png" alt="Logo FS" class="w-auto h-32" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Línea y grid inferior -->
+  <div class="max-w-7xl mx-auto border-t-4 border-verdementa mt-10 pt-6 grid grid-cols-1 md:grid-cols-4 gap-4 text-xs text-left">
+    <a href="politicasdeprivacidad.html" target="_blank" rel="noopener noreferrer" class="hover:text-verdementa transition-colors">Política de privacidad</a>
+    <a href="politicasdecookies.html" target="_blank" rel="noopener noreferrer" class="hover:text-verdementa transition-colors">Política de Cookies</a>
+    <a href="terminosycondiciones.html" target="_blank" rel="noopener noreferrer" class="hover:text-verdementa transition-colors">Términos y condiciones</a>
+    <p>Finanzas Saludables 2025 © Todos los derechos reservados</p>
+  </div>
+</section>
+
+
+   <!-- FOOTER -->
+<footer class="bg-white text-black text-center py-2">
+  <div class="flex justify-center items-center gap-6 mb-4 flex-wrap">
+    <div class="bg-white flex items-center justify-center rounded p-4" style="height: 4rem; width: auto;">
+    <img src="images/logo-bloms.png" alt="Logo Bloms" class="w-12 sm:w-16 h-auto" />
+  </div>
+  <p class="mb-2">© 2025 BLÖMS CONSULTORA todos los derechos reservados. Responsable de DISEÑO DE CONCEPTO, GESTION EMPRENDIMIENTO Y DISEÑO WEB</p>
+ 
+</footer>
+
+<!-- JS para abrir/cerrar el menú en móvil -->
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('menu');
+      const icon = document.getElementById('menu-icon');
+  
+      toggle.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('flex');
+        menu.classList.toggle('flex-col');
+        menu.classList.toggle('absolute');
+        menu.classList.toggle('top-full');
+        menu.classList.toggle('left-0');
+        menu.classList.toggle('bg-[#3e2d4f]');
+        menu.classList.toggle('w-full');
+        menu.classList.toggle('p-4');
+        menu.classList.toggle('shadow-md');
+        menu.classList.toggle('z-40');
+  
+        // Cambiar icono
+        if (menu.classList.contains('hidden')) {
+          icon.innerHTML = '&#9776;'; // ☰
+        } else {
+          icon.innerHTML = '&#10005;'; // ✖
+        }
+      });
+    });
+
+  const menuToggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+
+  menuToggle.addEventListener('click', () => {
+    if (menu.classList.contains('hidden')) {
+      menu.classList.remove('hidden');
+    } else {
+      menu.classList.add('hidden');
+    }
+  });
+  </script>
+
+<script>
+  document.getElementById('contactoMail').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById('nombreUsuario')?.value || '[Nombre]';
+
+    const asunto = 'Consulta sobre el Coaching Finanzas Saludables';
+    const cuerpo = `Hola, me comunico para realizar una consulta sobre la Comunidad Finanzas Saludables.%0A%0AMi pregunta es:%0A%0AQuedo atento/a a su respuesta.%0A%0AMuchas gracias.%0A%0ASaludos,%0A${encodeURIComponent(nombre)}`;
+
+    const mailtoLink = `mailto:finanzas.saludables.emprende@gmail.com?subject=${encodeURIComponent(asunto)}&body=${cuerpo}`;
+
+    window.location.href = mailtoLink;
+  });
+</script>
+
+ 
+  </body>
+</html>
+
+

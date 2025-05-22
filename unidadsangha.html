@@ -1,0 +1,566 @@
+
+<!DOCTYPE html>
+    <html lang="es">
+
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>FINANZAS SALUDABLES</title>
+    
+      <!-- Meta para redes sociales -->
+      <meta property="og:title" content="FINANZAS SALUDABLES" />
+      <meta property="og:description" content="Coaching financiero y herramientas para una vida financiera saludable y en equilibrio " />
+      <meta property="og:image" content="https://blomstfrisk.github.io/FINANZAS-SALUDABLES/images/logoazuladosintexto.png" />
+      <meta property="og:url" content="https://blomstfrisk.github.io/FINANZAS-SALUDABLES/" />
+      <meta name="twitter:card" content="summary_large_image" />
+    
+      <!-- Icono -->
+      <link rel="icon" href="favicon_hub_only_rounded.ico" type="image/x-icon" />
+      <link rel="icon" href="images/favicon_redondeado.png" type="image/x-icon" />
+    
+      <!-- Estilos personalizados -->
+      <link rel="stylesheet" href="style.css" />
+    
+      <!-- Fuente Outfit -->
+      <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+    
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    
+      <!-- Tailwind CSS -->
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                violeta: '#9676d8',
+                morado: '#6A1B9A',
+                fondo: '#FAF5FF',
+                bordo: '#a2263f',
+                celeste: '#0c6d99',
+                azul: '#1D3B6D',
+                berenjena: '#5c4554',
+                bordooscuro: '#552c5b',
+                violaceo: '#6a4b8e',
+                celestonoscuro: '#1394ad',
+                vino: '#80142f',
+                violetagrafito: '#3e2d4f',
+                lila: '#C587C5',
+                violaceoclaro: '#e0d1fa',
+
+                azulado: '#8EA4D2',
+                azulino: '#6279B8',
+                azulgris: '#49516F',
+                azulmarino: '#184E77', 
+                azulbase: '#1E6091',
+                azulinado: '#1A759F',
+                azulpetrol: '#168AAD',
+                azulverdoso: '#34A0A4',
+                verdepalta: '#6BAB6F',
+                verdepetroloscuro: '#036666',
+                verdepetroleo: '#14746F',
+                verdepetro: '#248277',
+                verdepetroclaro: '#469d89', 
+                verdeinglesclaro: '#3AB795',
+                verdementa: '#A0E8AF',
+                verdeingles: '#477E62',
+                verdepetroseco: '#86BAA1',
+                amarillooro: '#D7B04B',
+                amarillolimon: '#D9ED92',
+                amarillo: '#FFCF56',
+                fondocalido: '#FDFCFB',
+                cyanoscuroelegante: '#006D77',
+                turquesaprofundo: '#007C91',
+                verdepaltaoscuro: '#247864',
+                verdeolivaoscuro: '#2F6650',
+
+              },
+              fontSize: {
+                '2xl': '1.5rem',
+                '3xl': '1.875rem',
+                '4xl': '2.25rem',
+                '5xl': '3rem',
+                '6xl': '3.75rem',
+              },
+              fontWeight: {
+                normal: 400,
+                medium: 500,
+                bold: 700,
+              },
+              fontFamily: {
+                sans: ['Outfit', 'sans-serif'],
+              },
+            },
+          },
+        };
+      </script>
+
+    
+      <!-- Animaciones -->
+      <style>
+        html {
+          scroll-behavior: smooth;
+        }
+    
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+    
+        .animate-fade-in {
+          animation: fadeIn 1.2s ease-out forwards;
+        }
+    
+        .animate-fade-in-delay {
+          animation: fadeIn 1.2s ease-out 0.3s forwards;
+        }
+      </style>
+    </head>
+
+      
+    
+    <body class="bg-white text-[#222] font-sans pt-20"> <!-- Compensa altura del menú fijo -->
+    
+<!-- NAV RESPONSIVE CON MENÚ DESPLEGABLE -->
+
+
+  <nav class="fixed top-0 left-0 right-0 bg-white text-white shadow-md z-50 px-6 py-3 flex items-center justify-between">
+  <div class="flex items-center gap-2 text-lg sm:text-xl font text-verdepetroleo">
+    
+    <!-- Logo -->
+    <a href="https://www.instagram.com/verodiazarive/?hl=es-la" target="_blank" rel="noopener noreferrer" class="hover:underline">
+      <img src="./images/logoazuladosintexto.png" alt="LAD Logo" class="h-10 sm:h-12 md:h-14 w-auto object-contain" />
+    </a>
+
+        <!-- Título -->
+      <a href="index.html#fs" class="block w-full py-1 hover:text-azulino">FINANZAS SALUDABLES</a>
+    
+  </div>
+
+ 
+    <!-- Botón hamburguesa visible solo en sm y md -->
+    <div class="lg:hidden">
+      <button id="menu-toggle" class="text-white text-3xl focus:outline-none">
+        <span id="menu-icon">&#9776;</span>
+      </button>
+    </div>
+  
+    <!-- Menú visible en LG y desplegable en SM/MD -->
+    <ul id="menu" class="hidden lg:flex lg:flex-row items-start lg:items-center gap-4 text-base font text-verdepetroleo">
+    
+      <li><a href="index.html#sobre" class="block w-full py-1 hover:text-azulino">Sobre FINANZAS SALUDABLES</a></li>
+      <li><a href="#estudios" class="block w-full py-1 hover:text-azulino">Sobre SANGHA</a></li>
+      <li><a href="logincursos.html" target="_blank" rel="noopener noreferrer" class="block w-full py-1 hover:text-azulino">SANGHA Web</a></li>
+      
+      <li>
+  <a id="contactoMail" href="#" 
+     class="block w-full py-1 hover:text-azulino flex items-center space-x-2">
+    <i class="fas fa-envelope"></i>
+    <span>Contacto</span>
+  </a>
+</li>
+      <li class="flex flex-row gap-2 mt-2 lg:mt-0">
+        <a href="index.html" class="flex items-center gap-1 bg-white text-[#80142f] text-sm px-2 py-1 rounded-md shadow hover:bg-gray-100">
+          <img src="./images/ar.png" alt="Español" class="w-4 h-4 rounded-sm" />
+        </a>
+        <a href="indexen.html" class="flex items-center gap-1 bg-white text-[#80142f] text-sm px-2 py-1 rounded-md shadow hover:bg-gray-100">
+          <img src="./images/us.png" alt="English" class="w-4 h-4 rounded-sm" />
+        </a>
+      </li>
+    </ul>
+  </nav>
+  
+
+   <!-- LOGO de SANGHA(compacto arriba del título) -->
+
+   <!-- LOGO y TÍTULO alineados y compactos -->
+<section class="pt-2 pb-2 px-2 bg-fondocalido flex justify-center">
+    <div class="max-w-6xl w-full mx-auto flex flex-col items-center">
+      <img src="images/logosanghacuadrado.png" alt="Logo SANGHA" class="h-20 sm:h-60 object-contain mb-1" />
+      <div class="relative w-full -mb-10 z-10">
+        <br>
+        <h2 class="bg-verdepetroloscuro text-white text-3xl sm:text-4xl font-bold px-6 py-3 rounded-xl shadow-lg w-full block text-center uppercase">
+          SANGHA COMUNIDAD EMPRENDEDORA Y FINANCIERA
+        </h2>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CAJA DE TEXTO alineada sin separación extra -->
+  <section class="py-20 px-6 bg-azulverdoso">
+    <div class="max-w-6xl mx-auto bg-verdepaltaoscuro text-white rounded-2xl shadow-lg p-6 sm:p-10 text-base leading-relaxed space-y-4">
+      <p>
+  La SANGHA de Finanzas Saludables es una comunidad de aprendizaje, contención y crecimiento colectivo para emprendedores y emprendedoras que desean transformar su vínculo con el dinero y el trabajo desde una mirada integral. Es un espacio donde la experiencia individual se enriquece con la fuerza del grupo, promoviendo la colaboración, el respeto y el desarrollo personal y profesional.
+</p>
+<p>
+  La comunidad está organizada en espacios temáticos y actividades guiadas por profesionales del coaching financiero y otras disciplinas complementarias, que brindan herramientas, metodologías y acompañamiento para el fortalecimiento de los proyectos de cada integrante. Se fomenta el intercambio genuino y el trabajo en red como motores del crecimiento sustentable.
+</p>
+<p>
+  Cada instancia de la SANGHA —ya sea un encuentro, una dinámica grupal o una actividad formativa— está pensada para cultivar el bienestar, la claridad financiera y el empoderamiento emprendedor, entendiendo que el progreso económico también puede ser consciente, humano y en comunidad.
+</p>
+    </div>
+
+    <br>
+
+
+    <!-- Sección de estudios -->
+    <section id="estudios" class="py-10 px-6 bg-verdeazulado">
+      <h2 class="text-7xl font-semibold text-center mb-12 text-white">SANGHA</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        
+        <!-- MEMBRESIA -->
+        <div class="rounded-2xl p-6 shadow text-white flex flex-col items-center text-center justify-between bg-verdepetro hover:scale-105 transition">
+          <div class="text-6xl mb-4 h-20 flex items-center justify-center">
+          
+              <div class="w-16 h-16 flex items-center justify-center">
+                <i class="fas fa-user-friends" text-white text-[3.6rem]"></i>
+            </div>
+            <br>
+          </div>
+          <h3 class="text-xl font-semibold mb-1">MEMBRESIA</h3>
+          <p class="text-sm text-white/80 mb-4">Primera escala: Comunidad y acompañamiento emprendedor. Encuentros, redes y recursos para fortalecer tu camino.</p>
+          <a href="logincursos.html" target="_blank" rel="noopener noreferrer" class="bg-white text-verdepetro font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">
+            Ir al sitio Web
+          </a>
+        </div>
+
+        <!-- RECURSOS -->
+        <div class="rounded-2xl p-6 shadow text-white flex flex-col items-center text-center justify-between bg-verdeingles hover:scale-105 transition">
+          <div class="text-6xl mb-4 h-20 flex items-center justify-center">
+
+            <div class="w-16 h-16 flex items-center justify-center">
+              <i class="fas fa-gift text-white text-[3.6rem]"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold mb-1">RECURSOS BONUS</h3>
+          <p class="text-sm text-white/80 mb-4">Segunda escala: Recursos que inspiran. Accedé a guías, herramientas, bonus y contenidos exclusivos para nutrir tu desarrollo personal y emprendedor..</p>
+          <a href="index1branding.html" target="_blank" rel="noopener noreferrer" class="bg-white text-verdeingles font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">
+            Ver recursos
+          </a>
+        </div>
+
+        <!-- TIENDA -->
+        <div class="rounded-2xl p-6 shadow text-white flex flex-col items-center text-center justify-between bg-turquesaprofundo hover:scale-105 transition">
+            <div class="text-8xl mb-4 h-20 flex items-center justify-center">
+              <div class="w-16 h-16 flex items-center justify-center">
+                <i class="fas fa-shopping-cart text-white text-[3.6rem]"></i>
+              </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-1">TIENDA</h3>
+            <p class="text-sm text-white/80 mb-4">Tercera escala: Tienda Consciente. Descubrí productos digitales y físicos diseñados para acompañarte en tu camino emprendedor con propósito y equilibrio.</p>
+            <a href="index1producto.html" target="_blank" rel="noopener noreferrer" class="bg-white text-turquesaprofundo font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">
+              Ir a la tienda
+            </a>
+          </div>
+    </section>
+
+     <!-- LOGO y TÍTULO alineados y compactos -->
+<section id="equipoprofesionales" class="pt-6 pb-6 px-4 bg-verdeazulado flex justify-center">
+    <div class="max-w-6xl w-full mx-auto flex flex-col items-center">
+      <div class="relative w-full -mb-10 z-10">
+        <br>
+        <h2 class="bg-verdepetroloscuro text-white text-3xl sm:text-4xl font-bold px-6 py-3 rounded-xl shadow-lg w-full block text-center uppercase">
+          EQUIPO DE PROFESIONALES
+        </h2>
+      </div>
+    </div>
+  </section>
+
+
+   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mt-16">
+
+  <div class="rounded-2xl p-6 bg-verdepetroloscuro text-white shadow-md flex flex-col justify-between text-center hover:scale-105 transition min-h-[520px]">
+    <img src="images/vero.png" alt="Profesional Finanzas" class="w-40 h-40 rounded-2xl mb-4 object-cover mx-auto">
+    <div class="flex-grow">
+      <p class="text-lg text-white/90 mb-4">Verónica Diaz Arive</p>
+      <div class="border-t-4 border-verdementa mt-10 pt-6 text-xs text-center grid grid-cols-1 md:grid-cols-4 gap-4"></div>
+       <h3 class="text-xl font-semibold mb-2">COACHING FINANCIERO FINANZAS SOSTENIBLES</h3>
+      <p class="text-sm text-white/90 mb-4">Lic. en Economía, es la creadora de FINANZAS SALUDABLES y SANGHA, Fundadora de la EPB ( Escuela Productiva Bonaerense) como tyambien de la Incubadora de negocios de la UNLP, ofrece asesoramiento en costos, financiamiento, modelos de negocio y estrategias de sustentabilidad económica.</p>
+    </div>
+    <a href="unidad4_finanzas.html" class="bg-white text-verdepetroloscuro font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition mt-auto">Contacto</a>
+  </div>
+
+  <div class="rounded-2xl p-6 bg-verdepetro text-white shadow-md flex flex-col justify-between text-center hover:scale-105 transition min-h-[520px]">
+    <img src="images/diego.jpeg" alt="Profesional Fabricación" class="w-40 h-40 rounded-2xl mb-4 object-cover mx-auto">
+    <div class="flex-grow">
+      <p class="text-lg text-white/90 mb-4">Diego Velazco</p>
+           <div class="border-t-4 border-verdementa mt-10 pt-6 text-xs text-center grid grid-cols-1 md:grid-cols-4 gap-4"></div>
+       <h3 class="text-xl font-semibold mb-2">DISEÑO DE PRODUCTOS Y FABRICACIÓN DIGITAL</h3>
+      <p class="text-sm text-white/90 mb-4"> Diseñador Industrial, Especialista en Metodología y CEO de INKAO, estudio y consultora de Diseño Industrial. Especializado en Diseño y producción de productos en madera y metal. Modelado y diseño 3D, prototipado rápido y fabricación aditiva. Vincula diseño, tecnología y experimentación material.</p>
+    </div>
+    <a href="unidad3_fabricacion.html" class="bg-white text-verdepetro font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition mt-auto">Contacto</a>
+  </div>
+
+  <div class="rounded-2xl p-6 bg-cyanoscuroelegante text-white shadow-md flex flex-col justify-between text-center hover:scale-105 transition min-h-[520px]">
+    <img src="images/estefi.jpeg" alt="Profesional Gestión" class="w-40 h-40 rounded-2xl mb-4 object-cover mx-auto">
+    <div class="flex-grow">
+           <p class="text-lg text-white/90 mb-4">Estefanía Fondevila Sancet</p>
+        <div class="border-t-4 border-verdementa mt-10 pt-6 text-xs text-center grid grid-cols-1 md:grid-cols-4 gap-4"></div>
+        <h3 class="text-xl font-semibold mb-2">GESTIÓN DEL DISEÑO DE PRODUCTOS Y SERVICIOS</h3>
+      <p class="text-sm text-white/90 mb-4"> Esp. en Metodología y programadora web, Responsable de la consultora BLÖMS y fundadora del HUB de Diseño Industrial de la UNLa, desarrolla herramientas de planificación, diagnóstico, desarrollo y seguimiento de proyectos y emprendimientos. Articula con empresas, instituciones y equipos interdisciplinarios.</p>
+    </div>
+    <a href="unidad1_gestion.html" class="bg-white text-cyanoscuroelegante font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition mt-auto">Contacto</a>
+  </div>
+
+  <div class="rounded-2xl p-6 bg-verdepetroloscuro text-white shadow-md flex flex-col justify-between text-center hover:scale-105 transition min-h-[520px]">
+    <img src="images/profesionales/humano.jpg" alt="Profesional Diseño Grafico" class="w-40 h-40 rounded-2xl mb-4 object-cover mx-auto">
+    <div class="flex-grow">
+     
+      <p class="text-lg text-white/90 mb-4">Claudio ... </p>
+        <div class="border-t-4 border-verdementa mt-10 pt-6 text-xs text-center grid grid-cols-1 md:grid-cols-4 gap-4"></div>
+       <h3 class="text-xl font-semibold mb-2">DISEÑO y COMUNICACION VISUAL</h3>
+            <p class="text-sm text-white/90 mb-4">Dueño del estudio FOCA, con experiencia internacional, centra su acción en el diseño comunicacional y web, con enfoque participativo para proyectos con impacto.</p>
+    </div>
+    <a href="unidad6_humano.html" class="bg-white text-verdepetroloscuro font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition mt-auto">Contacto</a>
+  </div>
+
+  <div class="rounded-2xl p-6 bg-verdepetro text-white shadow-md flex flex-col justify-between text-center hover:scale-105 transition min-h-[520px]">
+    <img src="images/profesionales/sustentable.jpg" alt="Profesional Economía" class="w-40 h-40 rounded-2xl mb-4 object-cover mx-auto">
+    <div class="flex-grow">
+    
+      <p class="text-lg text-white/90 mb-4">Facundo .... </p>
+        <div class="border-t-4 border-verdementa mt-10 pt-6 text-xs text-center grid grid-cols-1 md:grid-cols-4 gap-4"></div>
+          <h3 class="text-xl font-semibold mb-2">ECONOMIA PARA LA PRODUCCION</h3>
+      <p class="text-sm text-white/90 mb-4">Lic. en Economía, promueve el modelo de negocio responsable mediante estrategias sostenibles, análisis de ciclo de vida de los productos y criterios de circularidad.</p>
+    </div>
+    <a href="unidad2_sustentable.html" class="bg-white text-verdepetro font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition mt-auto">Contacto</a>
+  </div>
+
+  <div class="rounded-2xl p-6 bg-cyanoscuroelegante text-white shadow-md flex flex-col justify-between text-center hover:scale-105 transition min-h-[520px]">
+    <img src="images/profesionales/ia.jpg" alt="Profesional Gestion de calidad" class="w-40 h-40 rounded-2xl mb-4 object-cover mx-auto">
+    <div class="flex-grow">
+     
+      <p class="text-lg text-white/90 mb-4">Florencia .... </p>
+        <div class="border-t-4 border-verdementa mt-10 pt-6 text-xs text-center grid grid-cols-1 md:grid-cols-4 gap-4"></div>
+         <h3 class="text-xl font-semibold mb-2">GESTIÓN Y MADURACION DE EMPRENDIMIENTOS</h3>
+      <p class="text-sm text-white/90 mb-4">explora el potencial de los diferentes emprendimientos y su relación con la gestión de calidad aplicándolo al análisis de datos para la toma de decisiones.</p>
+    </div>
+    <a href="unidad5_ia.html" class="bg-white text-cyanoscuroelegante font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition mt-auto">Contacto</a>
+  </div>
+
+</div>
+
+</div>
+
+  
+    </div>
+
+  </section>
+
+  <!-- Botón flotante de WhatsApp con estilos corregidos -->
+<div class="fixed bottom-6 right-6 z-50">
+  <a href="https://wa.me/5492215738117"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg transition-transform transform hover:scale-110">
+
+    <!-- Ícono de WhatsApp -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" viewBox="0 0 32 32" fill="currentColor">
+      <path d="M16.001 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.59 4.45 1.71 6.39L3.2 28.8l6.6-1.73c1.83.96 3.9 1.47 6.2 1.47 7.07 0 12.8-5.73 12.8-12.8s-5.73-12.8-12.8-12.8zm0 23.2c-2.01 0-3.95-.56-5.63-1.61l-.4-.24-3.92 1.03 1.05-3.82-.26-.41a10.44 10.44 0 01-1.54-5.44c0-5.77 4.7-10.48 10.48-10.48s10.48 4.7 10.48 10.48-4.7 10.48-10.48 10.48zm5.38-7.56c-.3-.15-1.77-.88-2.05-.98s-.48-.15-.68.15-.79 1-.96 1.21-.36.24-.66.08a8.33 8.33 0 01-2.4-1.47 9.49 9.49 0 01-1.69-2.13c-.18-.3 0-.47.14-.63s.32-.36.48-.54c.15-.18.32-.39.44-.61a.58.58 0 000-.55c-.15-.15-.68-1.67-.94-2.29s-.5-.53-.69-.54h-.57c-.22 0-.56.08-.86.38s-1.13 1.1-1.13 2.68 1.15 3.1 1.32 3.28c.16.16 2.27 3.43 5.5 4.81a19.25 19.25 0 001.9.7 4.56 4.56 0 002.1.14c.63-.1 1.87-.75 2.13-1.48.27-.74.27-1.35.19-1.46s-.3-.23-.6-.38z"/>
+    </svg>
+  </a>
+</div>
+
+<!--PREFOOTER -->
+
+<section class="bg-verdepetroloscuro text-white py-10 px-4 font-outfit">
+  <!-- Grid superior -->
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
+
+    <!-- CONSULTORÍA -->
+    <div>
+      <h2 class="text-lg font-bold mb-3">CONSULTORÍA</h2>
+      <ul class="space-y-1">
+        <li><a href="#" class="hover:text-verdementa transition-colors">Asesorías en Finanzas</a></li>
+        <li><a href="#" class="hover:text-verdementa transition-colors">Asesorías a Emprendedores</a></li>
+        <li><a href="#" class="hover:text-verdementa transition-colors">Asesorías en Gestión</a></li>
+        <li><a href="#" class="hover:text-verdementa transition-colors">Asesorías en Diseño</a></li>
+        <li><a href="#" class="hover:text-verdementa transition-colors">Asesorías en Comunicación</a></li>
+      </ul>
+    </div>
+
+    <!-- REDES -->
+    <div>
+      <h2 class="text-lg font-bold mb-3">REDES</h2>
+      <div class="flex space-x-4 text-xl">
+        <a href="https://www.instagram.com/finanzas.saludables.ar" target="_blank" class="hover:text-verdementa transition-colors">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+      <div class="mt-4 text-sm leading-relaxed">
+        <p>La Plata, Argentina</p>
+        <p><a href="mailto:finanzas.saludables.emprende@gmail.com" class="hover:text-verdementa transition-colors">finanzas.saludables.emprende@gmail.com</a></p>
+        <p><a href="tel:+5492215738117" class="hover:text-verdementa transition-colors">+54 9221 573 8117</a></p>
+      </div>
+    </div>
+
+    <!-- SECCIONES -->
+    <div>
+      <h2 class="text-lg font-bold mb-3">SECCIONES</h2>
+      <ul class="space-y-1">
+        <li><a href="#" class="hover:text-verdementa transition-colors">SANGHA</a></li>
+        <li><a href="#" class="hover:text-verdementa transition-colors">Cursos</a></li>
+        <li><a href="#" class="hover:text-verdementa transition-colors">Servicios</a></li>
+        <li><a href="#" class="hover:text-verdementa transition-colors">Equipo</a></li>
+        <li><a href="#" class="hover:text-verdementa transition-colors">Contacto</a></li>
+      </ul>
+    </div>
+
+    <!-- LOGO -->
+    <div class="flex items-center justify-center">
+      <div class="bg-white flex items-center justify-center rounded p-4 transition-transform duration-300 hover:scale-105" style="height: 9rem;">
+        <img src="images/logofsbold.png" alt="Logo FS" class="w-auto h-32" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Línea y grid inferior -->
+  <div class="max-w-7xl mx-auto border-t-4 border-verdementa mt-10 pt-6 grid grid-cols-1 md:grid-cols-4 gap-4 text-xs text-left">
+    <a href="politicasdeprivacidad.html" target="_blank" rel="noopener noreferrer" class="hover:text-verdementa transition-colors">Política de privacidad</a>
+    <a href="politicasdecookies.html" target="_blank" rel="noopener noreferrer" class="hover:text-verdementa transition-colors">Política de Cookies</a>
+    <a href="terminosycondiciones.html" target="_blank" rel="noopener noreferrer" class="hover:text-verdementa transition-colors">Términos y condiciones</a>
+    <p>Finanzas Saludables 2025 © Todos los derechos reservados</p>
+  </div>
+</section>
+
+    
+
+   <!-- FOOTER -->
+<footer class="bg-white text-black text-center py-2">
+  <div class="flex justify-center items-center gap-6 mb-4 flex-wrap">
+    <div class="bg-white flex items-center justify-center rounded p-4" style="height: 4rem; width: auto;">
+    <img src="images/logo-bloms.png" alt="Logo Bloms" class="w-12 sm:w-16 h-auto" />
+  </div>
+  <p class="mb-2">© 2025 BLÖMS CONSULTORA todos los derechos reservados. Responsable de DISEÑO DE CONCEPTO, GESTION EMPRENDIMIENTO Y DISEÑO WEB</p>
+ 
+</footer>
+  
+   
+
+<!-- JS para abrir/cerrar el menú en móvil -->
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('menu');
+      const icon = document.getElementById('menu-icon');
+  
+      toggle.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        menu.classList.toggle('flex');
+        menu.classList.toggle('flex-col');
+        menu.classList.toggle('absolute');
+        menu.classList.toggle('top-full');
+        menu.classList.toggle('left-0');
+        menu.classList.toggle('bg-[#3e2d4f]');
+        menu.classList.toggle('w-full');
+        menu.classList.toggle('p-4');
+        menu.classList.toggle('shadow-md');
+        menu.classList.toggle('z-40');
+  
+        // Cambiar icono
+        if (menu.classList.contains('hidden')) {
+          icon.innerHTML = '&#9776;'; // ☰
+        } else {
+          icon.innerHTML = '&#10005;'; // ✖
+        }
+      });
+    });
+
+  const menuToggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+
+  menuToggle.addEventListener('click', () => {
+    if (menu.classList.contains('hidden')) {
+      menu.classList.remove('hidden');
+    } else {
+      menu.classList.add('hidden');
+    }
+  });
+  </script>
+
+<script>
+  document.getElementById('contactoMail').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById('nombreUsuario')?.value || '[Nombre]';
+
+    const asunto = 'Consulta sobre el Coaching Finanzas Saludables';
+    const cuerpo = `Hola, me comunico para realizar una consulta sobre la Comunidad Finanzas Saludables.%0A%0AMi pregunta es:%0A%0AQuedo atento/a a su respuesta.%0A%0AMuchas gracias.%0A%0ASaludos,%0A${encodeURIComponent(nombre)}`;
+
+    const mailtoLink = `mailto:finanzas.saludables.emprende@gmail.com?subject=${encodeURIComponent(asunto)}&body=${cuerpo}`;
+
+    window.location.href = mailtoLink;
+  });
+</script>
+
+<script>
+  document.getElementById('formComunidad').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById('nombreUsuario').value.trim();
+    const email = document.getElementById('correoUsuario').value.trim();
+
+    if (!nombre || !email) return;
+
+    // Reemplazá esta URL con la que te dio SheetBest
+    const endpoint = "https://api.sheetbest.com/sheets/5c1c5dc7-d22e-4014-95d7-5005d25b56c2";
+
+    const data = {
+      nombre: nombre,
+      email: email
+    };
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        document.getElementById('mensajeSuscripcion').classList.remove('hidden');
+        document.getElementById('formComunidad').reset();
+      } else {
+        alert("Hubo un error al enviar tus datos. Intentá más tarde.");
+      }
+    } catch (error) {
+      alert("Error de red. Verificá tu conexión.");
+      console.error(error);
+    }
+  });
+</script>
+
+<script>
+  document.getElementById('formComunidad').addEventListener('submit', function(e) {
+    e.preventDefault(); // Evita envío tradicional
+
+    // Aquí puedes agregar la integración con un backend o Google Forms
+
+    // Mostrar mensaje de confirmación
+    const mensaje = document.getElementById('mensajeSuscripcion');
+    mensaje.classList.remove('hidden');
+
+    // Opcional: limpiar formulario
+    this.reset();
+
+    // Opcional: ocultar mensaje después de unos segundos
+    setTimeout(() => {
+      mensaje.classList.add('hidden');
+    }, 5000);
+  });
+</script>
+
+
+  
+ 
+  </body>
+</html>
