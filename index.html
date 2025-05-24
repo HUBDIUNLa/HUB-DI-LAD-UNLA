@@ -475,7 +475,7 @@
     });
   </script>
 
-  <script>
+ <script>
   document.getElementById('formComunidad').addEventListener('submit', async function (e) {
     e.preventDefault();
 
@@ -484,7 +484,6 @@
 
     if (!nombre || !email) return;
 
-    // Usamos nuestra API personalizada en Vercel para ocultar la API key de SheetBest
     const endpoint = "https://guardar-api-sheetbest-hub.vercel.app/api/guardarSuscripcion";
 
     const data = {
@@ -500,8 +499,10 @@
       });
 
       if (response.ok) {
-        document.getElementById('mensajeSuscripcion').classList.remove('hidden');
-        document.getElementById('formComunidad').reset();
+        const mensaje = document.getElementById('mensajeSuscripcion');
+        mensaje.classList.remove('hidden');
+        this.reset();
+        setTimeout(() => mensaje.classList.add('hidden'), 5000);
       } else {
         alert("Hubo un error al enviar tus datos. Intentá más tarde.");
       }
@@ -511,26 +512,3 @@
     }
   });
 </script>
-
-  <script>
-  document.getElementById('formComunidad').addEventListener('submit', function(e) {
-    e.preventDefault(); // Evita envío tradicional
-
-    // Aquí puedes agregar la integración con un backend o Google Forms
-
-    // Mostrar mensaje de confirmación
-    const mensaje = document.getElementById('mensajeSuscripcion');
-    mensaje.classList.remove('hidden');
-
-    // Opcional: limpiar formulario
-    this.reset();
-
-    // Opcional: ocultar mensaje después de unos segundos
-    setTimeout(() => {
-      mensaje.classList.add('hidden');
-    }, 5000);
-  });
-</script>
- 
-  </body>
-</html>
