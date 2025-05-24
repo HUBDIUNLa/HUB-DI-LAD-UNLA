@@ -336,23 +336,44 @@
 
     
 
-    <!-- Comunidad -->
-    <section id="comunidad" class="py-20 px-6 bg-[#a2263f] text-center">
-      <h2 class="text-5xl font-semibold mb-6 text-white">Sumate al HUB</h2>
-      <p class="max-w-xl mx-auto mb-6 text-lg text-white">
-        Recibí recursos, novedades sobre nuestro HUB y el ecosistema emprendedor de Diseño.
-      </p>
-      <div class="flex justify-center flex-wrap gap-2">
-        <input
-          type="email"
-          placeholder="Tu correo electrónico"
-          class="px-4 py-2 rounded-l-xl border border-gray-300"
-        />
-        <button class="bg-violaceo text-white px-4 py-2 rounded-r-xl hover:bg-[#1f3556] transition">
-          Suscribirme
-        </button>
-      </div>
-    </section>
+ 
+
+<!-- Comunidad -->
+<section id="comunidad" class="py-20 px-6 bg-[#a2263f] text-center">
+  <h2 class="text-5xl font-semibold mb-6 text-white">Sumate al HUB</h2>
+  <p class="max-w-xl mx-auto mb-6 text-lg text-white">
+    Recibí recursos, novedades y muchas cosas más sobre nuestro HUB y el ecosistema emprendedor.
+  </p>
+
+  <!-- Formulario -->
+  <form id="formComunidad" class="max-w-xl mx-auto space-y-4">
+    <div class="text-left">
+      <label for="nombreUsuario" class="block text-sm font-medium text-white mb-1">Tu nombre:</label>
+      <input type="text" id="nombreUsuario" name="nombreUsuario" placeholder="Ej: Juan Pérez"
+             class="w-full rounded-md border-gray-300 shadow-sm focus:border-lila focus:ring focus:ring-lila focus:ring-opacity-50 p-2" required>
+    </div>
+
+    <div class="flex">
+      <input
+        id="correoUsuario"
+        type="email"
+        placeholder="Tu correo electrónico"
+        class="flex-grow px-4 py-2 rounded-l-md border border-gray-300 focus:outline-none"
+        required
+      />
+      <button type="submit"
+        class="bg-violaceo text-white px-4 py-2 rounded-r-md hover:bg-lila transition">
+        Suscribirme
+      </button>
+    </div>
+  </form>
+
+  <!-- Mensaje de confirmación -->
+  <p id="mensajeSuscripcion" class="mt-6 text-green-100 hidden">¡Gracias por suscribirte!</p>
+</section>
+
+
+
 
    <!-- PREFOOTER -->
 <section class="bg-vino text-white py-10 px-4 font-outfit">
@@ -454,7 +475,62 @@
     });
   </script>
 
-  
+  <script>
+  document.getElementById('formComunidad').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById('nombreUsuario').value.trim();
+    const email = document.getElementById('correoUsuario').value.trim();
+
+    if (!nombre || !email) return;
+
+    // Usamos nuestra API personalizada en Vercel para ocultar la API key de SheetBest
+    const endpoint = "https://guardar-api-sheetbest.vercel.app/api/guardarSuscripcion";
+
+    const data = {
+      nombre: nombre,
+      email: email
+    };
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        document.getElementById('mensajeSuscripcion').classList.remove('hidden');
+        document.getElementById('formComunidad').reset();
+      } else {
+        alert("Hubo un error al enviar tus datos. Intentá más tarde.");
+      }
+    } catch (error) {
+      alert("Error de red. Verificá tu conexión.");
+      console.error(error);
+    }
+  });
+</script>
+
+  <script>
+  document.getElementById('formComunidad').addEventListener('submit', function(e) {
+    e.preventDefault(); // Evita envío tradicional
+
+    // Aquí puedes agregar la integración con un backend o Google Forms
+
+    // Mostrar mensaje de confirmación
+    const mensaje = document.getElementById('mensajeSuscripcion');
+    mensaje.classList.remove('hidden');
+
+    // Opcional: limpiar formulario
+    this.reset();
+
+    // Opcional: ocultar mensaje después de unos segundos
+    setTimeout(() => {
+      mensaje.classList.add('hidden');
+    }, 5000);
+  });
+</script>
  
   </body>
 </html>
