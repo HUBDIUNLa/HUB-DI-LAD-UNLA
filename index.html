@@ -475,7 +475,7 @@
     });
   </script>
 
- <script>
+  <script>
   document.getElementById('formComunidad').addEventListener('submit', async function (e) {
     e.preventDefault();
 
@@ -484,6 +484,7 @@
 
     if (!nombre || !email) return;
 
+    // Usamos nuestra API personalizada en Vercel para ocultar la API key de SheetBest
     const endpoint = "https://guardar-api-sheetbest-hub.vercel.app/api/guardarSuscripcion";
 
     const data = {
@@ -512,3 +513,7 @@
     }
   });
 </script>
+
+
+ </body>
+</html>
