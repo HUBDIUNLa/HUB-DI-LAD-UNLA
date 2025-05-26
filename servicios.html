@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="style.css" />
 
   <!-- Fuente Outfit -->
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;600&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -57,9 +57,15 @@
             '6xl': '3.75rem',
           },
           fontWeight: {
-            normal: 400,
-            medium: 500,
-            bold: 700,
+            thin: 100,
+  extralight: 200,
+  light: 300,
+  normal: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+  extrabold: 800,
+  black: 900,
           },
           fontFamily: {
             sans: ['Outfit', 'sans-serif'],
@@ -172,12 +178,16 @@
   
     <!-- CAJA DE TEXTO alineada sin separación extra -->
   <section class="py-20 px-6 bg-violaceoclaro">
-    <div class="max-w-6xl mx-auto bg-vino text-white rounded-2xl shadow-lg p-6 sm:p-10 text-base leading-relaxed space-y-4">
+    <div class="max-w-6xl mx-auto bg-vino text-white rounded-2xl shadow-lg p-6 sm:p-10 text-base leading-relaxed space-y-4 font-light">
+
       <p> 
         Los servicios de produccion del HUB de Incubación de Diseño UNLa están diseñados para potenciar proyectos en diferentes etapas de desarrollo. Estos servicios brindan soporte técnico, estratégico y formativo tanto a estudiantes como a emprendedores, pymes y cooperativas. Cada servicio representa una vía concreta de acompañamiento, especializada en áreas clave del diseño y la innovación aplicada.
       </p>
       <p> Es importante la articulación de la Universidad con el sistema productivo asi como con el sistema científico y tecnológico, para generar sinergias que permitan la transferencia de conocimiento y tecnología. El HUB busca facilitar la conexión entre los proyectos incubados y las necesidades del mercado, promoviendo un ecosistema colaborativo que impulse el desarrollo sostenible y la innovación en el diseño industrial.
           </p>
+          <h2 class="text-xl font-semibold text-white">¿Que son los Servicios de Producción?</h2>
+      <p>
+        Los servicios de producción son un conjunto de servicios que brindan apoyo especializado a empresas y emprendedores en diversas áreas, como la gestión empresarial, el desarrollo de productos, la mejora de procesos y la implementación de tecnologías. Su objetivo es fortalecer las capacidades de las organizaciones y contribuir a su crecimiento sostenible.<p>La Asistencia a Cooperativas, PYMEs, Empresas y Emprendimientos es una línea estratégica del HUB que busca fortalecer el entramado productivo local mediante herramientas de diseño, gestión e innovación. Su objetivo es acompañar a los actores económicos en el desarrollo, mejora o reconversión de sus productos, servicios o modelos de negocio.</p> <p>Este acompañamiento puede incluir diagnósticos de diseño, rediseño de productos, mejora de procesos, estrategias de branding y comunicación, sostenibilidad, incorporación de tecnologías, así como también capacitación y asistencia técnica adaptada a cada realidad.</p> <p>El enfoque del HUB se basa en la colaboración, la transferencia de conocimientos y la co-creación. Trabajamos junto a cada organización para detectar oportunidades de mejora, diseñar soluciones a medida y potenciar su crecimiento con impacto territorial.</p> <p>Además, promovemos una mirada integral que articula saberes proyectuales, tecnológicos y sociales, entendiendo que el desarrollo productivo sostenible requiere soluciones situadas, inclusivas e innovadoras.</p> 
     </div>
   
     <!-- Tarjetas de Servicios -->
@@ -185,7 +195,7 @@
   
       <div class="rounded-2xl p-6 bg-violaceo text-white shadow-md flex flex-col items-center text-center hover:scale-105 transition">
         <i class="fas fa-chalkboard-teacher text-4xl mb-4"></i>
-        <h3 class="text-xl font-semibold mb-2">CURSOS DE CAPACITACIÓN PARA LA EMPRESA</h3>
+        <h3 class="text-xl font-semibold mb-2">CURSOS PARA LA EMPRESA</h3>
         <p class="text-sm text-white/90 mb-4">Ofrecemos formaciones específicas a medida para el sector productivo que lon solicite en normas, tecnologías y software digitales, fabricación digital y más. Con enfoque práctico y certificado institucional.</p>
         <a href="cursospagina1capacitacionespymes.html" class="mt-auto bg-white text-violaceo font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">Solicitar este servicio</a>
       </div>
@@ -193,7 +203,7 @@
       <div class="rounded-2xl p-6 bg-violaceo text-white shadow-md flex flex-col items-center text-center hover:scale-105 transition">
         <i class="fas fa-cogs text-4xl mb-4"></i>
         <h3 class="text-xl font-semibold mb-2">SERVICIOS TECNOLÓGICOS</h3>
-        <p class="text-sm text-white/90 mb-4">Incluyen prototipado, impresión 3D, digitalización, corte láser y modelado. Disponibles para estudiantes, emprendedores y cooperativas.</p>
+        <p class="text-sm text-white/90 mb-4">Incluyen prototipado, impresión 3D, digitalización, routeado, corte láser y modelado. Disponibles para empresas, emprendedores y cooperativas.</p>
         <a href="serviciosspagina1tecnologicos.html" class="mt-auto bg-white text-violaceo font-bold px-4 py-2 rounded-xl hover:bg-[#e6e6e6] transition">Solicitar este servicio</a>
       </div>
   
@@ -208,6 +218,8 @@
     </div>
   </section>
 
+
+
   <div class="max-w-7xl mx-auto p-6">
   <div class="bg-white p-4 rounded-xl shadow-lg border">
     <iframe 
@@ -215,6 +227,7 @@
     </iframe>
   </div>
 </div>
+
 
    <!-- PREFOOTER -->
 <section class="bg-vino text-white py-10 px-4 font-outfit">
