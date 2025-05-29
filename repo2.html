@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Repositorio de Documentos</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            violeta: '#9676d8',
+            morado: '#6A1B9A',
+            fondo: '#FAF5FF',
+            bordo: '#a2263f',
+            celeste: '#0c6d99',
+            azul: '#1D3B6D',
+            berenjena: '#5c4554',
+            bordooscuro: '#552c5b',
+            violaceo: '#6a4b8e',
+            celestonoscuro: '#1394ad',
+            vino: '#80142f',
+            violetagrafito: '#3e2d4f',
+            lila: '#C587C5',
+            violaceoclaro: '#e0d1fa',
+            azulado: '#8EA4D2',
+            azulino: '#6279B8',
+            azulgris: '#49516F',
+            azulmarino: '#184E77', 
+            azulbase: '#1E6091',
+            azulinado: '#1A759F',
+            azulpetrol: '#168AAD',
+            azulverdoso: '#34A0A4',
+            verdepalta: '#6BAB6F',
+            verdepetroloscuro: '#036666',
+            verdepetroleo: '#14746F',
+            verdepetro: '#248277',
+            verdepetroclaro: '#469d89', 
+            verdeinglesclaro: '#3AB795',
+            verdementa: '#A0E8AF',
+            verdeingles: '#477E62',
+            verdepetroseco: '#86BAA1',
+            amarillooro: '#D7B04B',
+            amarillolimon: '#D9ED92',
+            amarillo: '#FFCF56',
+            fondocalido: '#FDFCFB',
+            cyanoscuroelegante: '#006D77',
+            turquesaprofundo: '#007C91',
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeIn 1.2s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-fondo font-sans text-violetagrafito">
+
+  <div class="max-w-4xl mx-auto px-6 py-10 animate-fade-in">
+    <h1 class="text-3xl font-bold mb-6 text-morado">📚 Repositorio de Documentos</h1>
+
+    <!-- Categoría: Documentación Técnica -->
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-4">📁 Documentación Técnica</h2>
+      <ul class="space-y-3">
+        <li class="flex justify-between items-center bg-violaceoclaro p-3 rounded-lg shadow">
+          <span>📄 Manual de uso del sistema</span>
+          <a href="https://drive.google.com/file/d/ID1/view?usp=sharing" target="_blank"
+            class="bg-morado hover:bg-vino text-white text-sm px-3 py-1 rounded transition">
+            Ver
+          </a>
+        </li>
+        <li class="flex justify-between items-center bg-violaceoclaro p-3 rounded-lg shadow">
+          <span>📄 Especificaciones técnicas</span>
+          <a href="https://drive.google.com/file/d/ID2/view?usp=sharing" target="_blank"
+            class="bg-morado hover:bg-vino text-white text-sm px-3 py-1 rounded transition">
+            Ver
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Categoría: Formularios -->
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-4">📁 Formularios</h2>
+      <ul class="space-y-3">
+        <li class="flex justify-between items-center bg-violaceoclaro p-3 rounded-lg shadow">
+          <span>📄 Solicitud de inscripción</span>
+          <a href="https://drive.google.com/file/d/ID3/view?usp=sharing" target="_blank"
+            class="bg-morado hover:bg-vino text-white text-sm px-3 py-1 rounded transition">
+            Ver
+          </a>
+        </li>
+        <li class="flex justify-between items-center bg-violaceoclaro p-3 rounded-lg shadow">
+          <span>📄 Formulario de contacto</span>
+          <a href="https://drive.google.com/file/d/ID4/view?usp=sharing" target="_blank"
+            class="bg-morado hover:bg-vino text-white text-sm px-3 py-1 rounded transition">
+            Ver
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Categoría: Recursos Visuales -->
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-4">📁 Recursos Visuales</h2>
+      <ul class="space-y-3">
+        <li class="flex justify-between items-center bg-violaceoclaro p-3 rounded-lg shadow">
+          <span>📄 Logo institucional</span>
+          <a href="https://drive.google.com/file/d/ID5/view?usp=sharing" target="_blank"
+            class="bg-morado hover:bg-vino text-white text-sm px-3 py-1 rounded transition">
+            Ver
+          </a>
+        </li>
+        <li class="flex justify-between items-center bg-violaceoclaro p-3 rounded-lg shadow">
+          <span>📄 Plantilla editable</span>
+          <a href="https://drive.google.com/file/d/ID6/view?usp=sharing" target="_blank"
+            class="bg-morado hover:bg-vino text-white text-sm px-3 py-1 rounded transition">
+            Ver
+          </a>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+</body>
+</html>
