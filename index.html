@@ -156,55 +156,61 @@
   </nav>
   
   
-      <!-- HERO con logo de fondo -->
+    <section id="inicio" class="min-h-screen flex items-center justify-center px-6 py-12">
 
-      <section
+  <div class="flex flex-col md:flex-row items-center gap-10 max-w-7xl mx-auto">
 
-      id="inicio"
-  class="relative h-[calc(100vh-80px)] bg-center bg-no-repeat flex items-center justify-center"
-  style="background-image: url('images/logohubtealsinfondo.png'); background-size: 80%;"
->
-  <!-- Enlace invisible para permitir clic -->
-  <a href="#hub" class="absolute inset-0 z-20 cursor-pointer" aria-label="Ir al inicio"></a>
+    <!-- IZQUIERDA → IMAGEN -->
+    <div class="w-full md:w-1/2 flex justify-center">
+      <img 
+        src="images/logohubtealsinfondo.png" 
+        alt="Logo HUB" 
+        class="w-[80%] max-w-md object-contain"
+      />
+    </div>
 
-  <div class="absolute inset-0 bg-black/0.025"></div>
+    <!-- DERECHA → TEXTO + BOTONES -->
+    <div class="w-full md:w-1/2 text-center md:text-left">
 
-  <div class="relative z-10 text-white text-center animate-fade-in">
-    <!-- <h1 class="text-4xl font-bold">HUB DI UNLa</h1> -->
+      <h1 class="text-5xl font-bold mb-4">
+        HUB DE INCUBACION DE DISEÑO
+      </h1>
+
+      <p class="text-xl mb-4">
+        Diseño Industrial y en Comunicación Visual, con estrategia y propósito,
+        permitiendo que la economía del conocimiento esté a tu alcance.
+      </p>
+
+      <p class="text-xl mb-8">
+        Te invitamos a que conozcas nuestro HUB.
+      </p>
+
+      <!-- BOTONES -->
+      <div class="grid grid-cols-2 gap-4 max-w-md mx-auto md:mx-0">
+
+        <a href="#estudios" class="bg-[#404A4D] text-white px-4 py-2 rounded-2xl text-sm font-bold text-center hover:bg-[#0E7469] transition">
+          CAPACITACIONES
+        </a>
+
+        <a href="#estudios" class="bg-[#404A4D] text-white px-4 py-2 rounded-2xl text-sm font-bold text-center hover:bg-[#0E7469] transition">
+          INCUBADORA
+        </a>
+
+        <a href="#estudios" class="bg-[#404A4D] text-white px-4 py-2 rounded-2xl text-sm font-bold text-center hover:bg-[#0E7469] transition">
+          PROYECTOS
+        </a>
+
+        <a href="unidadequipo.html" class="bg-[#404A4D] text-white px-4 py-2 rounded-2xl text-sm font-bold text-center hover:bg-[#0E7469] transition">
+          EQUIPO
+        </a>
+
+      </div>
+
+    </div>
+
   </div>
-</section>
-  
-    
-      <!-- Hero principal con texto -->
-      <section 
-      id="hub"
-      class="text-center py-20 px-4">
-       
-        <h1 class="text-5xl font-bold mb-4">HUB DE INCUBACION DE DISEÑO</h1>
-        <p class="text-xl max-w-xl mx-auto mb-8">
-          Diseño Industrial y en Comunicación Visual, con estrategia y propósito, permitiendo que la economía del conocimiento esté a tu alcance.
-        </p>
-        <p class="text-xl max-w-xl mx-auto mb-8">
-            Te invitamos a que conozcas nuestro HUB.
-          </p>
 
-          <div class="flex flex-wrap justify-center gap-4">
-           
-            <a href="#estudios" class="bg-[#404A4D] text-white px-6 py-3 rounded-2xl text-lg font-bold shadow hover:bg-[#0E7469] transition inline-block">
-              CAPACITACIONES Y CURSOS
-            </a>
-            <a href="#estudios" class="bg-[#404A4D] text-white px-6 py-3 rounded-2xl text-lg font-bold shadow hover:bg-[#0E7469] transition inline-block">
-              INCUBADORA DE TIF Y PPP
-            </a>
-            <a href="#estudios" class="bg-[#404A4D] text-white px-6 py-3 rounded-2xl text-lg font-bold shadow hover:bg-[#0E7469] transition inline-block">
-              HISTORIAL DE PROYECTOS
-            </a>
-             <a href="unidadequipo.html" class="bg-[#404A4D] text-white px-6 py-3 rounded-2xl text-lg font-bold shadow hover:bg-[#0E7469] transition inline-block">
-              EQUIPO DE TRABAJO
-            </a>
-          </div>
-          
-      </section>
+</section>
   
   <!-- Animaciones personalizadas -->
   <style>
